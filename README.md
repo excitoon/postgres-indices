@@ -82,3 +82,7 @@ Watch the `bench` container logs for progress. Results will appear in `OUT_DIR` 
 ```bash
 scp -r testdb:postgres-demo/results/'*'.json results/ && python3 plot.py
 ```
+
+### Machine
+
+Standard D4ads v6 (4 vcpus, 16 GiB memory).
