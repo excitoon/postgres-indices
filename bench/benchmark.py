@@ -1,4 +1,5 @@
 import json
+import hashlib
 import math
 import os
 import time
@@ -19,12 +20,23 @@ DB_PASSWORD = os.getenv("DB_PASSWORD", "postgres")
 SCHEMA = os.getenv("SCHEMA", "public")
 MAX_N = int(os.getenv("MAX_N", "25"))
 M_MAX = int(os.getenv("M_MAX", "30"))
-INSERT_BATCH = int(os.getenv("INSERT_BATCH", "1000"))
+INSERT_BATCH = int(os.getenv("INSERT_BATCH", "10"))
 RESULTS_PATH = "/bench/results.json"
 REPEATS = int(os.getenv("REPEATS", "3"))
 # If first measured time is small (< TIME_THRESHOLD_S), only do FEW_REPEATS to save time
 TIME_THRESHOLD_S = float(os.getenv("TIME_THRESHOLD_S", "5"))
 FEW_REPEATS = int(os.getenv("FEW_REPEATS", "2"))
+# When measuring no-index scans, set a very large random_page_cost to strongly discourage any random access
+NOIDX_RANDOM_PAGE_COST = float(os.getenv("NOIDX_RANDOM_PAGE_COST", "1000000"))
+# Seeds controlling shuffling and range selection (deterministic across runs)
+C01_RANGE_SEED = os.getenv("C01_RANGE_SEED", "12345")
+# Deterministic sequence for c01; can be set to 'id' mode
+C01_SHUFFLE_SEED = os.getenv("C01_SHUFFLE_SEED", "bench-seed")
+C01_AS_ID = os.getenv("C01_AS_ID", "false").strip().lower() in ("1", "true", "yes", "on")
+SELECT_COLUMN = os.getenv("SELECT_COLUMN", "c01").lower()
+# Range width in value space for the SELECT predicate
+SELECT_RANGE_WIDTH = int(os.getenv("SELECT_RANGE_WIDTH", "10"))
+SHUFFLE_BATCH = int(os.getenv("SHUFFLE_BATCH", "100000"))
 
 # Contract
 # Inputs: MAX_N (1..25), M (1..30), INSERT_BATCH
@@ -72,43 +84,43 @@ CREATE TABLE IF NOT EXISTS source_data (
 CREATE_FILL_FUNCTION = """
 CREATE OR REPLACE FUNCTION fill_source_data(n_rows bigint) RETURNS void AS $$
 BEGIN
-  INSERT INTO source_data (
-    c01,c02,c03,c04,c05,c06,c07,c08,c09,c10,
-    c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,
-    c21,c22,c23,c24,c25,c26,c27,c28,c29,c30
-  )
-  SELECT
-        mod(gs, 1000),                   -- c01 small cardinality
-        mod((gs / 10), 10000),           -- c02 correlated range
-        mod((gs * 17), 500000),          -- c03 permuted
-        mod((gs * 37 + 13), 1000000),    -- c04 permuted different
-        mod((gs >> 3), 20000),           -- c05 power-of-two pattern
-        mod(gs, 2),                      -- c06 boolean-like int
-        mod(gs, 7),                      -- c07 week-like
-        mod(gs, 24),                     -- c08 hour-like
-        mod(gs, 60),                     -- c09 minute-like
-        mod(gs, 100),                    -- c10 bucket
-        mod((gs * 3), 100000),           -- c11
-        mod((gs * 5 + 1), 75000),        -- c12
-        mod((gs * 7 + 3), 50000),        -- c13
-        mod((gs * 11 + 5), 25000),       -- c14
-        mod((gs * 13 + 7), 12500),       -- c15
-        mod((gs * 17 + 9), 8000),        -- c16
-        mod((gs * 19 + 11), 4000),       -- c17
-        mod((gs * 23 + 13), 2000),       -- c18
-        mod((gs * 29 + 15), 1000),       -- c19
-        mod((gs * 31 + 17), 500),        -- c20
-    md5(gs::text),               -- c21 pseudo text
-    md5((gs*7)::text),           -- c22 pseudo text different
-    left(md5((gs*13)::text), 16),-- c23 shorter text
-    left(md5((gs*17)::text), 8), -- c24 shorter text
-        (mod(gs, 100000)) / 3.0,         -- c25 numeric
-        (mod(gs, 50000)) / 7.0,          -- c26 numeric
-        to_timestamp(1700000000 + mod(gs, 1000000)), -- c27 recent timestamps
-        date '2020-01-01' + (mod(gs, 2000))::int,    -- c28 dates
-        (mod(gs, 2)) = 0,                -- c29 boolean
-    decode(left(md5(gs::text), 16), 'hex')     -- c30 bytea
-  FROM generate_series(1, n_rows) AS gs;
+    INSERT INTO source_data (
+        c01,c02,c03,c04,c05,c06,c07,c08,c09,c10,
+        c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,
+        c21,c22,c23,c24,c25,c26,c27,c28,c29,c30
+    )
+    SELECT
+            mod(gs, 1000),                   -- c01 small cardinality
+            mod((gs / 10), 10000),           -- c02 correlated range
+            mod((gs * 17), 500000),          -- c03 permuted
+            mod((gs * 37 + 13), 1000000),    -- c04 permuted different
+            mod((gs >> 3), 20000),           -- c05 power-of-two pattern
+            mod(gs, 2),                      -- c06 boolean-like int
+            mod(gs, 7),                      -- c07 week-like
+            mod(gs, 24),                     -- c08 hour-like
+            mod(gs, 60),                     -- c09 minute-like
+            mod(gs, 100),                    -- c10 bucket
+            mod((gs * 3), 100000),           -- c11
+            mod((gs * 5 + 1), 75000),        -- c12
+            mod((gs * 7 + 3), 50000),        -- c13
+            mod((gs * 11 + 5), 25000),       -- c14
+            mod((gs * 13 + 7), 12500),       -- c15
+            mod((gs * 17 + 9), 8000),        -- c16
+            mod((gs * 19 + 11), 4000),       -- c17
+            mod((gs * 23 + 13), 2000),       -- c18
+            mod((gs * 29 + 15), 1000),       -- c19
+            mod((gs * 31 + 17), 500),        -- c20
+        md5(gs::text),               -- c21 pseudo text
+        md5((gs*7)::text),           -- c22 pseudo text different
+        left(md5((gs*13)::text), 16),-- c23 shorter text
+        left(md5((gs*17)::text), 8), -- c24 shorter text
+            (mod(gs, 100000)) / 3.0,         -- c25 numeric
+            (mod(gs, 50000)) / 7.0,          -- c26 numeric
+            to_timestamp(1700000000 + mod(gs, 1000000)), -- c27 recent timestamps
+            date '2020-01-01' + (mod(gs, 2000))::int,    -- c28 dates
+            (mod(gs, 2)) = 0,                -- c29 boolean
+        decode(left(md5(gs::text), 16), 'hex')     -- c30 bytea
+    FROM generate_series(1, n_rows) AS gs;
 END;
 $$ LANGUAGE plpgsql;
 """
@@ -209,6 +221,51 @@ def ensure_baseline(conn):
             exec_sql(cur, "SELECT fill_source_data(%s);", (to_add,))
             exec_sql(cur, "VACUUM ANALYZE source_data;")
 
+        # Build deterministic random sequence for c01 (leave c02 intact):
+        # - If C01_AS_ID=true, set c01 = id for the first `target` rows
+        # - Else, derive an arithmetic permutation from C01_SHUFFLE_SEED like before
+        print("Preparing c01 deterministic sequence...")
+        # Work in id ranges directly; avoid copying from source_data
+        exec_sql(cur, "SELECT COALESCE(MIN(id),0) FROM source_data;")
+        base_id = cur.fetchone()[0] or 0
+        end_id = base_id + target - 1
+        batch = max(1, SHUFFLE_BATCH)
+
+        if C01_AS_ID:
+            curr_id = base_id
+            while curr_id <= end_id:
+                hi_id = min(curr_id + batch - 1, end_id)
+                print(f"  Setting c01 = id for ids {curr_id} to {hi_id}...")
+                exec_sql(cur, """
+                    UPDATE source_data s
+                    SET c01 = s.id
+                    WHERE s.id BETWEEN %s AND %s;
+                """, (curr_id, hi_id))
+                curr_id = hi_id + 1
+        else:
+            # Deterministic pseudo-random permutation using modular linear mapping
+            _seed_bytes = hashlib.md5(C01_SHUFFLE_SEED.encode('utf-8')).digest()
+            _a_raw = int.from_bytes(_seed_bytes[:8], 'big')
+            _b_raw = int.from_bytes(_seed_bytes[8:], 'big')
+            a_mod = _a_raw % target
+            if a_mod % 2 == 0:
+                a_mod = (a_mod + 1) % target
+            if a_mod == 0:
+                a_mod = 1
+            b_mod = _b_raw % target
+
+            curr_id = base_id
+            while curr_id <= end_id:
+                hi_id = min(curr_id + batch - 1, end_id)
+                print(f"  Setting c01 values for ids {curr_id} to {hi_id} with a={a_mod}, b={b_mod}...")
+                exec_sql(cur, """
+                    UPDATE source_data s
+                    SET c01 = mod(((%s::bigint * (s.id - %s::bigint)) + %s::bigint), %s::bigint) + 1
+                    WHERE s.id BETWEEN %s AND %s;
+                """, (a_mod, base_id, b_mod, target, curr_id, hi_id))
+                curr_id = hi_id + 1
+        exec_sql(cur, "VACUUM ANALYZE source_data;")
+
 
 def reset_bench_tables(conn):
     with conn.cursor() as cur:
@@ -227,13 +284,31 @@ def copy_rows(cur, rows: int):
 
 
 def add_indexes(cur, m: int):
-    # Create B-tree indexes on the first m columns including PK (id). PK already indexed; we create on c01.. up to m-1 columns
+    # Create exactly (m-1) non-PK B-tree indexes. Always include an index on the SELECT column
+    # (c02 by default or c01 if configured) so SELECTs leverage it in the with-index scenario.
     m = max(1, min(m, 30))
-    # Ensure PK exists (already from BIGSERIAL primary key).
-    # Create indexes starting from c01 up to c{m-1}
-    for i in range(1, m):
+    to_create = max(0, m - 1)
+    created = 0
+
+    select_col = SELECT_COLUMN
+    if to_create >= 0 and select_col != 'id':
+        exec_sql(cur, f"CREATE INDEX IF NOT EXISTS idx_bench_{select_col} ON bench_data USING btree ({select_col});")
+        created += 1
+
+    i = 1
+    try:
+        skip_num = int(select_col[1:]) if select_col.startswith('c') else -1
+    except Exception:
+        skip_num = -1
+    while created < to_create and i <= 30:
+        if i == skip_num:
+            i += 1
+            continue
         col = f"c{i:02d}"
         exec_sql(cur, f"CREATE INDEX IF NOT EXISTS idx_bench_{col} ON bench_data USING btree ({col});")
+        created += 1
+        i += 1
+
     exec_sql(cur, "VACUUM ANALYZE bench_data;")
 
 
@@ -250,23 +325,75 @@ def drop_indexes(cur):
 
 
 def measure_select_pk_range(cur, table: str, with_index: bool) -> Tuple[float, float]:
-    # Use a highly selective predicate based on PK id to guarantee small row counts and index use when available.
-    # We'll select 10 consecutive ids around the midpoint.
-    exec_sql(cur, f"SELECT COALESCE(MAX(id),0) FROM {table};")
-    max_id = cur.fetchone()[0] or 0
-    if max_id <= 10:
-        low = 1
+    # Use a selective predicate based on SELECT_COLUMN.
+    # For c02: it's a deterministic random permutation of 1..N; a width of 10 will match ~10 rows.
+    # For c01: it's a low-cardinality integer; a width of W will match many rows depending on table size.
+
+    sel_col = SELECT_COLUMN
+    width = max(1, SELECT_RANGE_WIDTH)
+
+    values = None  # used for IN/ANY queries in the LCG c01 branch
+    if sel_col == 'id':
+        # For id, ids are contiguous; choose an in-range window of exact width
+        exec_sql(cur, f"SELECT COALESCE(MIN(id),0), COALESCE(MAX(id),0) FROM {table};")
+        min_val, max_val = cur.fetchone()
+        span = max(1, (max_val - min_val + 1) - (width - 1))
+        seed_str = f"{C01_RANGE_SEED}:{table}:id:{max_val}:{min_val}:{width}"
+        h = hashlib.md5(seed_str.encode('utf-8')).hexdigest()
+        rnd = int(h[:8], 16)
+        start_offset = rnd % span
+        low = min_val + start_offset
+        high = low + width - 1
     else:
-        low = max(1, max_id // 2)
-    high = min(max_id, low + 9)
+        # For non-id columns
+        exec_sql(cur, f"SELECT COUNT(*) FROM {table};")
+        cnt = cur.fetchone()[0] or 0
+        if C01_AS_ID or sel_col != 'c01':
+            # Treat like a contiguous numeric domain; base it on current c01 min/max
+            exec_sql(cur, f"SELECT COALESCE(MIN({sel_col}),0), COALESCE(MAX({sel_col}),0) FROM {table};")
+            min_val, max_val = cur.fetchone()
+            eff_width = min(width, max(1, max_val - min_val + 1))
+            span = max(1, (max_val - min_val + 1) - (eff_width - 1))
+            seed_str = f"{C01_RANGE_SEED}:{table}:{sel_col}:{max_val}:{min_val}:{eff_width}:idmode"
+            h = hashlib.md5(seed_str.encode('utf-8')).hexdigest()
+            rnd = int(h[:8], 16)
+            start_offset = rnd % span
+            low = min_val + start_offset
+            high = low + eff_width - 1
+        else:
+            # Use the same LCG parameters as c01 generation to pick exactly `eff_width` values
+            _seed_bytes = hashlib.md5(C01_SHUFFLE_SEED.encode('utf-8')).digest()
+            _a_raw = int.from_bytes(_seed_bytes[:8], 'big')
+            _b_raw = int.from_bytes(_seed_bytes[8:], 'big')
+            T = 1 << MAX_N
+            a_mod = _a_raw % T
+            if a_mod % 2 == 0:
+                a_mod = (a_mod + 1) % T
+            if a_mod == 0:
+                a_mod = 1
+            b_mod = _b_raw % T
+            eff_width = min(width, cnt) if cnt > 0 else width
+            max_start = max(0, cnt - eff_width)
+            seed_str = f"{C01_RANGE_SEED}:{table}:{sel_col}:T={T}:cnt={cnt}:w={eff_width}:a={a_mod}:b={b_mod}"
+            h = hashlib.md5(seed_str.encode('utf-8')).hexdigest()
+            rnd = int(h[:8], 16)
+            start_k = rnd % (max_start + 1) if max_start >= 0 else 0
+            # Compose exact value list via the same permutation
+            values = [ (a_mod * (start_k + i) + b_mod) % T + 1 for i in range(eff_width) ]
 
     if with_index:
         exec_sql(cur, "SET enable_seqscan TO off;")
     else:
+        # Ensure planner avoids any index-based strategies and heavily penalizes random page access.
+        # This amplifies preference for pure sequential scans in the no-index scenario.
         exec_sql(cur, "SET enable_indexscan TO off; SET enable_bitmapscan TO off; SET enable_indexonlyscan TO off;")
+        exec_sql(cur, f"SET random_page_cost TO {NOIDX_RANDOM_PAGE_COST};")
 
     def run_query():
-        exec_sql(cur, f"SELECT COUNT(*) FROM {table} WHERE id BETWEEN %s AND %s;", (low, high))
+        if values is not None:
+            exec_sql(cur, f"SELECT COUNT(*) FROM {table} WHERE {sel_col} = ANY(%s);", (values,))
+        else:
+            exec_sql(cur, f"SELECT COUNT(*) FROM {table} WHERE {sel_col} BETWEEN %s AND %s;", (low, high))
         cur.fetchone()
 
     t_cold = time_ms(run_query)
@@ -281,45 +408,45 @@ def measure_insert_cold_hot(cur, rows: int, table: str) -> Tuple[float, float]:
     batch = INSERT_BATCH
 
     def insert_batch():
-        exec_sql(cur, f"""
-            INSERT INTO {table} (
-              c01,c02,c03,c04,c05,c06,c07,c08,c09,c10,
-              c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,
-              c21,c22,c23,c24,c25,c26,c27,c28,c29,c30
-            )
-            SELECT
-              mod(gs, 1000),
-              mod((gs / 10), 10000),
-              mod((gs * 17), 500000),
-              mod((gs * 37 + 13), 1000000),
-              mod((gs >> 3), 20000),
-              mod(gs, 2),
-              mod(gs, 7),
-              mod(gs, 24),
-              mod(gs, 60),
-              mod(gs, 100),
-              mod((gs * 3), 100000),
-              mod((gs * 5 + 1), 75000),
-              mod((gs * 7 + 3), 50000),
-              mod((gs * 11 + 5), 25000),
-              mod((gs * 13 + 7), 12500),
-              mod((gs * 17 + 9), 8000),
-              mod((gs * 19 + 11), 4000),
-              mod((gs * 23 + 13), 2000),
-              mod((gs * 29 + 15), 1000),
-              mod((gs * 31 + 17), 500),
-              md5(gs::text),
-              md5((gs*7)::text),
-              left(md5((gs*13)::text), 16),
-              left(md5((gs*17)::text), 8),
-              (mod(gs, 100000)) / 3.0,
-              (mod(gs, 50000)) / 7.0,
-              to_timestamp(1700000000 + (mod(gs, 1000000))),
-              date '2020-01-01' + ((mod(gs, 2000)))::int,
-              (mod(gs, 2)) = 0,
-              decode(left(md5(gs::text), 16), 'hex')
-            FROM generate_series(1, %s) AS gs;
-        """, (batch,))
+                exec_sql(cur, f"""
+                        INSERT INTO {table} (
+                            c01,c02,c03,c04,c05,c06,c07,c08,c09,c10,
+                            c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,
+                            c21,c22,c23,c24,c25,c26,c27,c28,c29,c30
+                        )
+                        SELECT
+                            mod(gs, 1000),
+                            mod((gs / 10), 10000),
+                            mod((gs * 17), 500000),
+                            mod((gs * 37 + 13), 1000000),
+                            mod((gs >> 3), 20000),
+                            mod(gs, 2),
+                            mod(gs, 7),
+                            mod(gs, 24),
+                            mod(gs, 60),
+                            mod(gs, 100),
+                            mod((gs * 3), 100000),
+                            mod((gs * 5 + 1), 75000),
+                            mod((gs * 7 + 3), 50000),
+                            mod((gs * 11 + 5), 25000),
+                            mod((gs * 13 + 7), 12500),
+                            mod((gs * 17 + 9), 8000),
+                            mod((gs * 19 + 11), 4000),
+                            mod((gs * 23 + 13), 2000),
+                            mod((gs * 29 + 15), 1000),
+                            mod((gs * 31 + 17), 500),
+                            md5(gs::text),
+                            md5((gs*7)::text),
+                            left(md5((gs*13)::text), 16),
+                            left(md5((gs*17)::text), 8),
+                            (mod(gs, 100000)) / 3.0,
+                            (mod(gs, 50000)) / 7.0,
+                            to_timestamp(1700000000 + (mod(gs, 1000000))),
+                            date '2020-01-01' + ((mod(gs, 2000)))::int,
+                            (mod(gs, 2)) = 0,
+                            decode(left(md5(gs::text), 16), 'hex')
+                        FROM generate_series(1, %s) AS gs;
+                """, (batch,))
 
     cold_ms = time_ms(insert_batch)
     hot_ms = time_ms(insert_batch)

@@ -499,6 +499,34 @@ def plot_all(df: pd.DataFrame, outdir: Path, *, dpi: int | None = None):
         "INSERT hot: with vs no-index (ms)", "surface_insert_hot_with_vs_noidx.png",
         use_log=True, invert=False, smooth=True
     )
+
+    # SELECT vs INSERT combined (with indexes)
+    composite_two_surfaces(
+        "with_insert_cold_ms", "INSERT cold (with idx)",
+        "with_select_cold_ms", "SELECT cold (with idx)",
+        "WITH IDX: SELECT vs INSERT (cold, ms)", "surface_withidx_select_vs_insert_cold.png",
+        use_log=True, invert=True, smooth=True
+    )
+    composite_two_surfaces(
+        "with_insert_hot_ms", "INSERT hot (with idx)",
+        "with_select_hot_ms", "SELECT hot (with idx)",
+        "WITH IDX: SELECT vs INSERT (hot, ms)", "surface_withidx_select_vs_insert_hot.png",
+        use_log=True, invert=True, smooth=True
+    )
+
+    # SELECT vs INSERT combined (no indexes)
+    composite_two_surfaces(
+        "noidx_insert_cold_ms", "INSERT cold (no idx)",
+        "noidx_select_cold_ms", "SELECT cold (no idx)",
+        "NO IDX: SELECT vs INSERT (cold, ms)", "surface_noidx_select_vs_insert_cold.png",
+        use_log=True, invert=True, smooth=True
+    )
+    composite_two_surfaces(
+        "noidx_insert_hot_ms", "INSERT hot (no idx)",
+        "noidx_select_hot_ms", "SELECT hot (no idx)",
+        "NO IDX: SELECT vs INSERT (hot, ms)", "surface_noidx_select_vs_insert_hot.png",
+        use_log=True, invert=True, smooth=True
+    )
     composite_two_surfaces(
         "with_insert_hot_ms", "INSERT hot (with idx)",
         "noidx_insert_hot_ms", "INSERT hot (no idx)",
