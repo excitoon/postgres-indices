@@ -268,8 +268,8 @@ def measure_select_pk_range(cur, table: str, with_index: bool, return_explain: b
         #exec_sql(cur, f"SET random_page_cost TO {NOIDX_RANDOM_PAGE_COST};")
 
     # Build SQL and params to reuse for EXPLAIN and timing
-    sql = f"SELECT COUNT(*) FROM {table} WHERE id BETWEEN %s AND %s;"
-    params = (low, high)
+    sql = f"SELECT COUNT(*) FROM {table} WHERE id BETWEEN {low} AND {high};"
+    params = tuple()#(low, high)
 
     explain_text = None
     if return_explain:
@@ -416,7 +416,7 @@ def run_for_N(conn, N: int, M_idx: int) -> Dict:
             "select_samples_hot_ms": sel_hot_samples_w,
             "insert_samples_cold_ms": ins_cold_samples_w,
             "insert_samples_hot_ms": ins_hot_samples_w,
-            "select_explain": explain_with_idx,
+            "select_explain": explain_with_idx.splitlines(),
         }
 
         # No-index run: sizes once, then repeated timings with recreation each time
@@ -467,7 +467,7 @@ def run_for_N(conn, N: int, M_idx: int) -> Dict:
             "select_samples_hot_ms": sel_hot_samples_n,
             "insert_samples_cold_ms": ins_cold_samples_n,
             "insert_samples_hot_ms": ins_hot_samples_n,
-            "select_explain": explain_no_idx,
+            "select_explain": explain_no_idx.splitlines(),
         }
 
         return {
