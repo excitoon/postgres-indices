@@ -25,6 +25,7 @@ REPEATS = int(os.getenv("REPEATS", "3"))
 # If first measured time is small (< TIME_THRESHOLD_S), only do FEW_REPEATS to save time
 TIME_THRESHOLD_S = float(os.getenv("TIME_THRESHOLD_S", "5"))
 FEW_REPEATS = int(os.getenv("FEW_REPEATS", "2"))
+NOIDX_RANDOM_PAGE_COST = float(os.getenv("NOIDX_RANDOM_PAGE_COST", "1000000"))
 
 # Contract
 # Inputs: MAX_N (1..25), M (1..30), INSERT_BATCH
@@ -249,7 +250,7 @@ def drop_indexes(cur):
     exec_sql(cur, "VACUUM ANALYZE bench_data;")
 
 
-def measure_select_pk_range(cur, table: str, with_index: bool) -> Tuple[float, float]:
+def measure_select_pk_range(cur, table: str, with_index: bool, return_explain: bool = False) -> Tuple[float, float, str | None]:
     # Use a highly selective predicate based on PK id to guarantee small row counts and index use when available.
     # We'll select 10 consecutive ids around the midpoint.
     exec_sql(cur, f"SELECT COALESCE(MAX(id),0) FROM {table};")
@@ -264,16 +265,27 @@ def measure_select_pk_range(cur, table: str, with_index: bool) -> Tuple[float, f
         exec_sql(cur, "SET enable_seqscan TO off;")
     else:
         exec_sql(cur, "SET enable_indexscan TO off; SET enable_bitmapscan TO off; SET enable_indexonlyscan TO off;")
+        #exec_sql(cur, f"SET random_page_cost TO {NOIDX_RANDOM_PAGE_COST};")
+
+    # Build SQL and params to reuse for EXPLAIN and timing
+    sql = f"SELECT COUNT(*) FROM {table} WHERE id BETWEEN %s AND %s;"
+    params = (low, high)
+
+    explain_text = None
+    if return_explain:
+        exec_sql(cur, f"EXPLAIN (FORMAT TEXT) {sql}", params)
+        explain_lines = [r[0] for r in cur.fetchall()]
+        explain_text = "\n".join(explain_lines)
 
     def run_query():
-        exec_sql(cur, f"SELECT COUNT(*) FROM {table} WHERE id BETWEEN %s AND %s;", (low, high))
+        exec_sql(cur, sql, params)
         cur.fetchone()
 
     t_cold = time_ms(run_query)
     t_hot = time_ms(run_query)
 
     exec_sql(cur, "RESET ALL;")
-    return t_cold, t_hot
+    return t_cold, t_hot, explain_text
 
 
 def measure_insert_cold_hot(cur, rows: int, table: str) -> Tuple[float, float]:
@@ -361,6 +373,7 @@ def run_for_N(conn, N: int, M_idx: int) -> Dict:
         sel_hot_samples_w: List[float] = []
         ins_cold_samples_w: List[float] = []
         ins_hot_samples_w: List[float] = []
+        explain_with_idx: str | None = None
 
         # Dynamic repeats: decide after the first iteration based on measured times
         threshold_ms = TIME_THRESHOLD_S * 1000.0
@@ -369,7 +382,9 @@ def run_for_N(conn, N: int, M_idx: int) -> Dict:
         while it < target_repeats:
             # SELECT timings
             _setup_bench_with_idx(cur, rows, M_idx)
-            sc, sh = measure_select_pk_range(cur, 'bench_data', with_index=True)
+            sc, sh, plan_txt = measure_select_pk_range(cur, 'bench_data', with_index=True, return_explain=(it == 0))
+            if it == 0:
+                explain_with_idx = plan_txt
             sel_cold_samples_w.append(sc)
             sel_hot_samples_w.append(sh)
             exec_sql(cur, "DROP TABLE IF EXISTS bench_data;")
@@ -401,6 +416,7 @@ def run_for_N(conn, N: int, M_idx: int) -> Dict:
             "select_samples_hot_ms": sel_hot_samples_w,
             "insert_samples_cold_ms": ins_cold_samples_w,
             "insert_samples_hot_ms": ins_hot_samples_w,
+            "select_explain": explain_with_idx,
         }
 
         # No-index run: sizes once, then repeated timings with recreation each time
@@ -412,13 +428,16 @@ def run_for_N(conn, N: int, M_idx: int) -> Dict:
         sel_hot_samples_n: List[float] = []
         ins_cold_samples_n: List[float] = []
         ins_hot_samples_n: List[float] = []
+        explain_no_idx: str | None = None
 
         threshold_ms = TIME_THRESHOLD_S * 1000.0
         target_repeats = max(1, REPEATS)
         it = 0
         while it < target_repeats:
             _setup_bench_noidx(cur, rows)
-            sc, sh = measure_select_pk_range(cur, 'bench_data_noidx', with_index=False)
+            sc, sh, plan_txt = measure_select_pk_range(cur, 'bench_data_noidx', with_index=False, return_explain=(it == 0))
+            if it == 0:
+                explain_no_idx = plan_txt
             sel_cold_samples_n.append(sc)
             sel_hot_samples_n.append(sh)
             exec_sql(cur, "DROP TABLE IF EXISTS bench_data_noidx;")
@@ -448,6 +467,7 @@ def run_for_N(conn, N: int, M_idx: int) -> Dict:
             "select_samples_hot_ms": sel_hot_samples_n,
             "insert_samples_cold_ms": ins_cold_samples_n,
             "insert_samples_hot_ms": ins_hot_samples_n,
+            "select_explain": explain_no_idx,
         }
 
         return {
