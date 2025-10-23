@@ -33,7 +33,7 @@ NOIDX_RANDOM_PAGE_COST = float(os.getenv("NOIDX_RANDOM_PAGE_COST", "1000000"))
 
 DDL_TABLE = """
 CREATE TABLE IF NOT EXISTS source_data (
-    id BIGSERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     c01 INTEGER,
     c02 INTEGER,
     c03 INTEGER,
@@ -263,17 +263,19 @@ def measure_select_pk_range(cur, table: str, with_index: bool, return_explain: b
 
     if with_index:
         exec_sql(cur, "SET enable_seqscan TO off;")
+        exec_sql(cur, "SET enable_indexscan TO on; SET enable_bitmapscan TO on; SET enable_indexonlyscan TO on;")
     else:
+        exec_sql(cur, "SET enable_seqscan TO on;")
         exec_sql(cur, "SET enable_indexscan TO off; SET enable_bitmapscan TO off; SET enable_indexonlyscan TO off;")
         #exec_sql(cur, f"SET random_page_cost TO {NOIDX_RANDOM_PAGE_COST};")
 
     # Build SQL and params to reuse for EXPLAIN and timing
-    sql = f"SELECT COUNT(*) FROM {table} WHERE id BETWEEN {low} AND {high};"
+    sql = f"SELECT COUNT(*) FROM {table} WHERE id = {low}::int4;"
     params = tuple()#(low, high)
 
     explain_text = None
     if return_explain:
-        exec_sql(cur, f"EXPLAIN (FORMAT TEXT) {sql}", params)
+        exec_sql(cur, f"EXPLAIN (VERBOSE, FORMAT TEXT) {sql}", params)
         explain_lines = [r[0] for r in cur.fetchall()]
         explain_text = "\n".join(explain_lines)
 
