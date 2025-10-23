@@ -7,56 +7,56 @@
             "storage_index_pct": 33.33333333333333,
             "table_bytes": 49152,
             "index_bytes": 16384,
-            "select_cold_ms": 0.058583999816619325,
-            "select_hot_ms": 0.04325000008975621,
-            "insert_cold_ms": 0.8495840002069599,
-            "insert_hot_ms": 0.3154169999106671,
+            "select_cold_ms": 0.08712499993634992,
+            "select_hot_ms": 0.052834000143775484,
+            "insert_cold_ms": 0.7837090001885372,
+            "insert_hot_ms": 0.2920420001828461,
             "select_samples_cold_ms": [
-                0.058583999816619325
+                0.08712499993634992
             ],
             "select_samples_hot_ms": [
-                0.04325000008975621
+                0.052834000143775484
             ],
             "insert_samples_cold_ms": [
-                0.8495840002069599
+                0.7837090001885372
             ],
             "insert_samples_hot_ms": [
-                0.3154169999106671
+                0.2920420001828461
             ],
             "select_explain": [
-                "Aggregate  (cost=8.14..8.15 rows=1 width=8)",
+                "Aggregate  (cost=8.15..8.16 rows=1 width=8)",
                 "  Output: count(*)",
                 "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.12..8.14 rows=1 width=0)",
                 "        Output: id",
-                "        Index Cond: (bench_data.id = 1)"
+                "        Index Cond: ((bench_data.id >= '1'::smallint) AND (bench_data.id <= '1'::smallint))"
             ]
         },
         "without_indexes": {
             "table_bytes": 49152,
             "index_bytes": 0,
-            "select_cold_ms": 0.05383300003813929,
-            "select_hot_ms": 0.04333400011091726,
+            "select_cold_ms": 0.07904200037955889,
+            "select_hot_ms": 0.049541999942448456,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.5025420000492886,
-            "insert_hot_ms": 0.30125000012048986,
+            "insert_cold_ms": 0.49970899999607354,
+            "insert_hot_ms": 0.30058300035307184,
             "select_samples_cold_ms": [
-                0.05383300003813929
+                0.07904200037955889
             ],
             "select_samples_hot_ms": [
-                0.04333400011091726
+                0.049541999942448456
             ],
             "insert_samples_cold_ms": [
-                0.5025420000492886
+                0.49970899999607354
             ],
             "insert_samples_hot_ms": [
-                0.30125000012048986
+                0.30058300035307184
             ],
             "select_explain": [
-                "Aggregate  (cost=1.01..1.02 rows=1 width=8)",
+                "Aggregate  (cost=1.02..1.03 rows=1 width=8)",
                 "  Output: count(*)",
                 "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..1.01 rows=1 width=0)",
                 "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 1)"
+                "        Filter: ((bench_data_noidx.id >= '1'::smallint) AND (bench_data_noidx.id <= '1'::smallint))"
             ]
         },
         "tuple": [
@@ -64,14 +64,14 @@
             1,
             1,
             33.33333333333333,
-            0.058583999816619325,
-            0.04325000008975621,
-            0.8495840002069599,
-            0.3154169999106671,
-            0.05383300003813929,
-            0.04333400011091726,
-            0.5025420000492886,
-            0.30125000012048986,
+            0.08712499993634992,
+            0.052834000143775484,
+            0.7837090001885372,
+            0.2920420001828461,
+            0.07904200037955889,
+            0.049541999942448456,
+            0.49970899999607354,
+            0.30058300035307184,
             49152,
             16384,
             49152,
@@ -86,56 +86,56 @@
             "storage_index_pct": 66.66666666666666,
             "table_bytes": 49152,
             "index_bytes": 32768,
-            "select_cold_ms": 0.04729200009023771,
-            "select_hot_ms": 0.04183300006843638,
-            "insert_cold_ms": 0.4015419999632286,
-            "insert_hot_ms": 0.3055410002161807,
+            "select_cold_ms": 0.06566699994436931,
+            "select_hot_ms": 0.05041700023866724,
+            "insert_cold_ms": 0.4307079998397967,
+            "insert_hot_ms": 0.28491699958976824,
             "select_samples_cold_ms": [
-                0.04729200009023771
+                0.06566699994436931
             ],
             "select_samples_hot_ms": [
-                0.04183300006843638
+                0.05041700023866724
             ],
             "insert_samples_cold_ms": [
-                0.4015419999632286
+                0.4307079998397967
             ],
             "insert_samples_hot_ms": [
-                0.3055410002161807
+                0.28491699958976824
             ],
             "select_explain": [
-                "Aggregate  (cost=8.14..8.15 rows=1 width=8)",
+                "Aggregate  (cost=8.15..8.16 rows=1 width=8)",
                 "  Output: count(*)",
                 "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.12..8.14 rows=1 width=0)",
                 "        Output: id",
-                "        Index Cond: (bench_data.id = 1)"
+                "        Index Cond: ((bench_data.id >= '1'::smallint) AND (bench_data.id <= '1'::smallint))"
             ]
         },
         "without_indexes": {
             "table_bytes": 49152,
             "index_bytes": 0,
-            "select_cold_ms": 0.0462910002170247,
-            "select_hot_ms": 0.04258299986759084,
+            "select_cold_ms": 0.07070799983921461,
+            "select_hot_ms": 0.05029200019635027,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.3963750000366417,
-            "insert_hot_ms": 0.2683749999050633,
+            "insert_cold_ms": 0.3868750000037835,
+            "insert_hot_ms": 0.2658329999576381,
             "select_samples_cold_ms": [
-                0.0462910002170247
+                0.07070799983921461
             ],
             "select_samples_hot_ms": [
-                0.04258299986759084
+                0.05029200019635027
             ],
             "insert_samples_cold_ms": [
-                0.3963750000366417
+                0.3868750000037835
             ],
             "insert_samples_hot_ms": [
-                0.2683749999050633
+                0.2658329999576381
             ],
             "select_explain": [
-                "Aggregate  (cost=1.01..1.02 rows=1 width=8)",
+                "Aggregate  (cost=1.02..1.03 rows=1 width=8)",
                 "  Output: count(*)",
                 "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..1.01 rows=1 width=0)",
                 "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 1)"
+                "        Filter: ((bench_data_noidx.id >= '1'::smallint) AND (bench_data_noidx.id <= '1'::smallint))"
             ]
         },
         "tuple": [
@@ -143,14 +143,14 @@
             1,
             2,
             66.66666666666666,
-            0.04729200009023771,
-            0.04183300006843638,
-            0.4015419999632286,
-            0.3055410002161807,
-            0.0462910002170247,
-            0.04258299986759084,
-            0.3963750000366417,
-            0.2683749999050633,
+            0.06566699994436931,
+            0.05041700023866724,
+            0.4307079998397967,
+            0.28491699958976824,
+            0.07070799983921461,
+            0.05029200019635027,
+            0.3868750000037835,
+            0.2658329999576381,
             49152,
             32768,
             49152,
@@ -165,56 +165,56 @@
             "storage_index_pct": 33.33333333333333,
             "table_bytes": 49152,
             "index_bytes": 16384,
-            "select_cold_ms": 0.04562499998428393,
-            "select_hot_ms": 0.07337499982895679,
-            "insert_cold_ms": 0.33645899975454086,
-            "insert_hot_ms": 0.3867089999403106,
+            "select_cold_ms": 0.12816599974030396,
+            "select_hot_ms": 0.0899589999789896,
+            "insert_cold_ms": 0.42908399973384803,
+            "insert_hot_ms": 0.40145899993149214,
             "select_samples_cold_ms": [
-                0.04562499998428393
+                0.12816599974030396
             ],
             "select_samples_hot_ms": [
-                0.07337499982895679
+                0.0899589999789896
             ],
             "insert_samples_cold_ms": [
-                0.33645899975454086
+                0.42908399973384803
             ],
             "insert_samples_hot_ms": [
-                0.3867089999403106
+                0.40145899993149214
             ],
             "select_explain": [
-                "Aggregate  (cost=8.15..8.16 rows=1 width=8)",
+                "Aggregate  (cost=12.17..12.18 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.13..8.14 rows=1 width=0)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.13..12.17 rows=2 width=0)",
                 "        Output: id",
-                "        Index Cond: (bench_data.id = 1)"
+                "        Index Cond: ((bench_data.id >= '1'::smallint) AND (bench_data.id <= '2'::smallint))"
             ]
         },
         "without_indexes": {
             "table_bytes": 49152,
             "index_bytes": 0,
-            "select_cold_ms": 0.04558299997370341,
-            "select_hot_ms": 0.07254100000864128,
+            "select_cold_ms": 0.06054200002836296,
+            "select_hot_ms": 0.0781670000833401,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.3745839999282907,
-            "insert_hot_ms": 0.3980410001531709,
+            "insert_cold_ms": 0.3531249999468855,
+            "insert_hot_ms": 0.36283400004322175,
             "select_samples_cold_ms": [
-                0.04558299997370341
+                0.06054200002836296
             ],
             "select_samples_hot_ms": [
-                0.07254100000864128
+                0.0781670000833401
             ],
             "insert_samples_cold_ms": [
-                0.3745839999282907
+                0.3531249999468855
             ],
             "insert_samples_hot_ms": [
-                0.3980410001531709
+                0.36283400004322175
             ],
             "select_explain": [
                 "Aggregate  (cost=1.03..1.04 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..1.02 rows=1 width=0)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..1.03 rows=2 width=0)",
                 "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 1)"
+                "        Filter: ((bench_data_noidx.id >= '1'::smallint) AND (bench_data_noidx.id <= '2'::smallint))"
             ]
         },
         "tuple": [
@@ -222,14 +222,14 @@
             2,
             1,
             33.33333333333333,
-            0.04562499998428393,
-            0.07337499982895679,
-            0.33645899975454086,
-            0.3867089999403106,
-            0.04558299997370341,
-            0.07254100000864128,
-            0.3745839999282907,
-            0.3980410001531709,
+            0.12816599974030396,
+            0.0899589999789896,
+            0.42908399973384803,
+            0.40145899993149214,
+            0.06054200002836296,
+            0.0781670000833401,
+            0.3531249999468855,
+            0.36283400004322175,
             49152,
             16384,
             49152,
@@ -244,56 +244,56 @@
             "storage_index_pct": 66.66666666666666,
             "table_bytes": 49152,
             "index_bytes": 32768,
-            "select_cold_ms": 0.059624999721563654,
-            "select_hot_ms": 0.03400000014153193,
-            "insert_cold_ms": 0.3555839998625743,
-            "insert_hot_ms": 0.1981249997697887,
+            "select_cold_ms": 0.08183299996744609,
+            "select_hot_ms": 0.07899999991423101,
+            "insert_cold_ms": 0.32616699991194764,
+            "insert_hot_ms": 0.16820800010464154,
             "select_samples_cold_ms": [
-                0.059624999721563654
+                0.08183299996744609
             ],
             "select_samples_hot_ms": [
-                0.03400000014153193
+                0.07899999991423101
             ],
             "insert_samples_cold_ms": [
-                0.3555839998625743
+                0.32616699991194764
             ],
             "insert_samples_hot_ms": [
-                0.1981249997697887
+                0.16820800010464154
             ],
             "select_explain": [
-                "Aggregate  (cost=8.15..8.16 rows=1 width=8)",
+                "Aggregate  (cost=12.17..12.18 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.13..8.14 rows=1 width=0)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.13..12.17 rows=2 width=0)",
                 "        Output: id",
-                "        Index Cond: (bench_data.id = 1)"
+                "        Index Cond: ((bench_data.id >= '1'::smallint) AND (bench_data.id <= '2'::smallint))"
             ]
         },
         "without_indexes": {
             "table_bytes": 49152,
             "index_bytes": 0,
-            "select_cold_ms": 0.05291700017551193,
-            "select_hot_ms": 0.03295899978184025,
+            "select_cold_ms": 0.0525000000379805,
+            "select_hot_ms": 0.048207999952865066,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.33308399997622473,
-            "insert_hot_ms": 0.17037499992511584,
+            "insert_cold_ms": 0.28704199985440937,
+            "insert_hot_ms": 0.16070799983936013,
             "select_samples_cold_ms": [
-                0.05291700017551193
+                0.0525000000379805
             ],
             "select_samples_hot_ms": [
-                0.03295899978184025
+                0.048207999952865066
             ],
             "insert_samples_cold_ms": [
-                0.33308399997622473
+                0.28704199985440937
             ],
             "insert_samples_hot_ms": [
-                0.17037499992511584
+                0.16070799983936013
             ],
             "select_explain": [
                 "Aggregate  (cost=1.03..1.04 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..1.02 rows=1 width=0)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..1.03 rows=2 width=0)",
                 "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 1)"
+                "        Filter: ((bench_data_noidx.id >= '1'::smallint) AND (bench_data_noidx.id <= '2'::smallint))"
             ]
         },
         "tuple": [
@@ -301,14 +301,14 @@
             2,
             2,
             66.66666666666666,
-            0.059624999721563654,
-            0.03400000014153193,
-            0.3555839998625743,
-            0.1981249997697887,
-            0.05291700017551193,
-            0.03295899978184025,
-            0.33308399997622473,
-            0.17037499992511584,
+            0.08183299996744609,
+            0.07899999991423101,
+            0.32616699991194764,
+            0.16820800010464154,
+            0.0525000000379805,
+            0.048207999952865066,
+            0.28704199985440937,
+            0.16070799983936013,
             49152,
             32768,
             49152,
@@ -323,229 +323,229 @@
             "storage_index_pct": 33.33333333333333,
             "table_bytes": 49152,
             "index_bytes": 16384,
-            "select_cold_ms": 0.053249999837134965,
-            "select_hot_ms": 0.035417000162851764,
-            "insert_cold_ms": 0.4544580001493159,
-            "insert_hot_ms": 0.23366699997495743,
+            "select_cold_ms": 0.05891699993298971,
+            "select_hot_ms": 0.047250000079657184,
+            "insert_cold_ms": 0.36741700023412704,
+            "insert_hot_ms": 0.17166700035886606,
             "select_samples_cold_ms": [
-                0.053249999837134965
+                0.05891699993298971
+            ],
+            "select_samples_hot_ms": [
+                0.047250000079657184
+            ],
+            "insert_samples_cold_ms": [
+                0.36741700023412704
+            ],
+            "insert_samples_hot_ms": [
+                0.17166700035886606
+            ],
+            "select_explain": [
+                "Aggregate  (cost=12.22..12.23 rows=1 width=8)",
+                "  Output: count(*)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.13..12.21 rows=4 width=0)",
+                "        Output: id",
+                "        Index Cond: ((bench_data.id >= '1'::smallint) AND (bench_data.id <= '4'::smallint))"
+            ]
+        },
+        "without_indexes": {
+            "table_bytes": 49152,
+            "index_bytes": 0,
+            "select_cold_ms": 0.06883299965920742,
+            "select_hot_ms": 0.04374999980427674,
+            "storage_index_pct": 0.0,
+            "insert_cold_ms": 0.3005000003213354,
+            "insert_hot_ms": 0.1847909998105024,
+            "select_samples_cold_ms": [
+                0.06883299965920742
+            ],
+            "select_samples_hot_ms": [
+                0.04374999980427674
+            ],
+            "insert_samples_cold_ms": [
+                0.3005000003213354
+            ],
+            "insert_samples_hot_ms": [
+                0.1847909998105024
+            ],
+            "select_explain": [
+                "Aggregate  (cost=1.07..1.08 rows=1 width=8)",
+                "  Output: count(*)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..1.06 rows=4 width=0)",
+                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
+                "        Filter: ((bench_data_noidx.id >= '1'::smallint) AND (bench_data_noidx.id <= '4'::smallint))"
+            ]
+        },
+        "tuple": [
+            2,
+            4,
+            1,
+            33.33333333333333,
+            0.05891699993298971,
+            0.047250000079657184,
+            0.36741700023412704,
+            0.17166700035886606,
+            0.06883299965920742,
+            0.04374999980427674,
+            0.3005000003213354,
+            0.1847909998105024,
+            49152,
+            16384,
+            49152,
+            0
+        ]
+    },
+    {
+        "N": 2,
+        "rows": 4,
+        "M": 2,
+        "with_indexes": {
+            "storage_index_pct": 66.66666666666666,
+            "table_bytes": 49152,
+            "index_bytes": 32768,
+            "select_cold_ms": 0.06012499989083153,
+            "select_hot_ms": 0.03612499995142571,
+            "insert_cold_ms": 0.9807500000533764,
+            "insert_hot_ms": 0.2348750003875466,
+            "select_samples_cold_ms": [
+                0.06012499989083153
+            ],
+            "select_samples_hot_ms": [
+                0.03612499995142571
+            ],
+            "insert_samples_cold_ms": [
+                0.9807500000533764
+            ],
+            "insert_samples_hot_ms": [
+                0.2348750003875466
+            ],
+            "select_explain": [
+                "Aggregate  (cost=12.22..12.23 rows=1 width=8)",
+                "  Output: count(*)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.13..12.21 rows=4 width=0)",
+                "        Output: id",
+                "        Index Cond: ((bench_data.id >= '1'::smallint) AND (bench_data.id <= '4'::smallint))"
+            ]
+        },
+        "without_indexes": {
+            "table_bytes": 49152,
+            "index_bytes": 0,
+            "select_cold_ms": 0.06791699979658006,
+            "select_hot_ms": 0.037834000067960005,
+            "storage_index_pct": 0.0,
+            "insert_cold_ms": 0.49970899999607354,
+            "insert_hot_ms": 0.18408300002192846,
+            "select_samples_cold_ms": [
+                0.06791699979658006
+            ],
+            "select_samples_hot_ms": [
+                0.037834000067960005
+            ],
+            "insert_samples_cold_ms": [
+                0.49970899999607354
+            ],
+            "insert_samples_hot_ms": [
+                0.18408300002192846
+            ],
+            "select_explain": [
+                "Aggregate  (cost=1.07..1.08 rows=1 width=8)",
+                "  Output: count(*)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..1.06 rows=4 width=0)",
+                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
+                "        Filter: ((bench_data_noidx.id >= '1'::smallint) AND (bench_data_noidx.id <= '4'::smallint))"
+            ]
+        },
+        "tuple": [
+            2,
+            4,
+            2,
+            66.66666666666666,
+            0.06012499989083153,
+            0.03612499995142571,
+            0.9807500000533764,
+            0.2348750003875466,
+            0.06791699979658006,
+            0.037834000067960005,
+            0.49970899999607354,
+            0.18408300002192846,
+            49152,
+            32768,
+            49152,
+            0
+        ]
+    },
+    {
+        "N": 3,
+        "rows": 8,
+        "M": 1,
+        "with_indexes": {
+            "storage_index_pct": 33.33333333333333,
+            "table_bytes": 49152,
+            "index_bytes": 16384,
+            "select_cold_ms": 0.05729099984819186,
+            "select_hot_ms": 0.036082999940845184,
+            "insert_cold_ms": 0.31895900019662804,
+            "insert_hot_ms": 0.21108400005687145,
+            "select_samples_cold_ms": [
+                0.05729099984819186
+            ],
+            "select_samples_hot_ms": [
+                0.036082999940845184
+            ],
+            "insert_samples_cold_ms": [
+                0.31895900019662804
+            ],
+            "insert_samples_hot_ms": [
+                0.21108400005687145
+            ],
+            "select_explain": [
+                "Aggregate  (cost=12.31..12.32 rows=1 width=8)",
+                "  Output: count(*)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.13..12.29 rows=8 width=0)",
+                "        Output: id",
+                "        Index Cond: ((bench_data.id >= '1'::smallint) AND (bench_data.id <= '8'::smallint))"
+            ]
+        },
+        "without_indexes": {
+            "table_bytes": 49152,
+            "index_bytes": 0,
+            "select_cold_ms": 0.05408299966802588,
+            "select_hot_ms": 0.035417000162851764,
+            "storage_index_pct": 0.0,
+            "insert_cold_ms": 0.3392499997971754,
+            "insert_hot_ms": 0.19429199983278522,
+            "select_samples_cold_ms": [
+                0.05408299966802588
             ],
             "select_samples_hot_ms": [
                 0.035417000162851764
             ],
             "insert_samples_cold_ms": [
-                0.4544580001493159
+                0.3392499997971754
             ],
             "insert_samples_hot_ms": [
-                0.23366699997495743
+                0.19429199983278522
             ],
             "select_explain": [
-                "Aggregate  (cost=8.15..8.16 rows=1 width=8)",
+                "Aggregate  (cost=1.14..1.15 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.13..8.15 rows=1 width=0)",
-                "        Output: id",
-                "        Index Cond: (bench_data.id = 1)"
-            ]
-        },
-        "without_indexes": {
-            "table_bytes": 49152,
-            "index_bytes": 0,
-            "select_cold_ms": 0.049540999953023857,
-            "select_hot_ms": 0.0324170000567392,
-            "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.3293330000815331,
-            "insert_hot_ms": 0.1777910001692362,
-            "select_samples_cold_ms": [
-                0.049540999953023857
-            ],
-            "select_samples_hot_ms": [
-                0.0324170000567392
-            ],
-            "insert_samples_cold_ms": [
-                0.3293330000815331
-            ],
-            "insert_samples_hot_ms": [
-                0.1777910001692362
-            ],
-            "select_explain": [
-                "Aggregate  (cost=1.05..1.06 rows=1 width=8)",
-                "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..1.05 rows=1 width=0)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..1.12 rows=8 width=0)",
                 "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 1)"
+                "        Filter: ((bench_data_noidx.id >= '1'::smallint) AND (bench_data_noidx.id <= '8'::smallint))"
             ]
         },
         "tuple": [
-            2,
-            4,
+            3,
+            8,
             1,
             33.33333333333333,
-            0.053249999837134965,
+            0.05729099984819186,
+            0.036082999940845184,
+            0.31895900019662804,
+            0.21108400005687145,
+            0.05408299966802588,
             0.035417000162851764,
-            0.4544580001493159,
-            0.23366699997495743,
-            0.049540999953023857,
-            0.0324170000567392,
-            0.3293330000815331,
-            0.1777910001692362,
-            49152,
-            16384,
-            49152,
-            0
-        ]
-    },
-    {
-        "N": 2,
-        "rows": 4,
-        "M": 2,
-        "with_indexes": {
-            "storage_index_pct": 66.66666666666666,
-            "table_bytes": 49152,
-            "index_bytes": 32768,
-            "select_cold_ms": 0.05029200019635027,
-            "select_hot_ms": 0.03245800007789512,
-            "insert_cold_ms": 0.5280830000629066,
-            "insert_hot_ms": 0.1675829998930567,
-            "select_samples_cold_ms": [
-                0.05029200019635027
-            ],
-            "select_samples_hot_ms": [
-                0.03245800007789512
-            ],
-            "insert_samples_cold_ms": [
-                0.5280830000629066
-            ],
-            "insert_samples_hot_ms": [
-                0.1675829998930567
-            ],
-            "select_explain": [
-                "Aggregate  (cost=8.15..8.16 rows=1 width=8)",
-                "  Output: count(*)",
-                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.13..8.15 rows=1 width=0)",
-                "        Output: id",
-                "        Index Cond: (bench_data.id = 1)"
-            ]
-        },
-        "without_indexes": {
-            "table_bytes": 49152,
-            "index_bytes": 0,
-            "select_cold_ms": 0.05995899982735864,
-            "select_hot_ms": 0.03229200001442223,
-            "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.46979199987617903,
-            "insert_hot_ms": 0.1664169999457954,
-            "select_samples_cold_ms": [
-                0.05995899982735864
-            ],
-            "select_samples_hot_ms": [
-                0.03229200001442223
-            ],
-            "insert_samples_cold_ms": [
-                0.46979199987617903
-            ],
-            "insert_samples_hot_ms": [
-                0.1664169999457954
-            ],
-            "select_explain": [
-                "Aggregate  (cost=1.05..1.06 rows=1 width=8)",
-                "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..1.05 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 1)"
-            ]
-        },
-        "tuple": [
-            2,
-            4,
-            2,
-            66.66666666666666,
-            0.05029200019635027,
-            0.03245800007789512,
-            0.5280830000629066,
-            0.1675829998930567,
-            0.05995899982735864,
-            0.03229200001442223,
-            0.46979199987617903,
-            0.1664169999457954,
-            49152,
-            32768,
-            49152,
-            0
-        ]
-    },
-    {
-        "N": 3,
-        "rows": 8,
-        "M": 1,
-        "with_indexes": {
-            "storage_index_pct": 33.33333333333333,
-            "table_bytes": 49152,
-            "index_bytes": 16384,
-            "select_cold_ms": 0.05916700001762365,
-            "select_hot_ms": 0.033958000130951405,
-            "insert_cold_ms": 0.3586670000004233,
-            "insert_hot_ms": 0.24912500020946027,
-            "select_samples_cold_ms": [
-                0.05916700001762365
-            ],
-            "select_samples_hot_ms": [
-                0.033958000130951405
-            ],
-            "insert_samples_cold_ms": [
-                0.3586670000004233
-            ],
-            "insert_samples_hot_ms": [
-                0.24912500020946027
-            ],
-            "select_explain": [
-                "Aggregate  (cost=8.15..8.16 rows=1 width=8)",
-                "  Output: count(*)",
-                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.13..8.15 rows=1 width=0)",
-                "        Output: id",
-                "        Index Cond: (bench_data.id = 1)"
-            ]
-        },
-        "without_indexes": {
-            "table_bytes": 49152,
-            "index_bytes": 0,
-            "select_cold_ms": 0.05358299995350535,
-            "select_hot_ms": 0.03445899983489653,
-            "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.33400000029359944,
-            "insert_hot_ms": 0.16854099976626458,
-            "select_samples_cold_ms": [
-                0.05358299995350535
-            ],
-            "select_samples_hot_ms": [
-                0.03445899983489653
-            ],
-            "insert_samples_cold_ms": [
-                0.33400000029359944
-            ],
-            "insert_samples_hot_ms": [
-                0.16854099976626458
-            ],
-            "select_explain": [
-                "Aggregate  (cost=1.10..1.11 rows=1 width=8)",
-                "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..1.10 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 1)"
-            ]
-        },
-        "tuple": [
-            3,
-            8,
-            1,
-            33.33333333333333,
-            0.05916700001762365,
-            0.033958000130951405,
-            0.3586670000004233,
-            0.24912500020946027,
-            0.05358299995350535,
-            0.03445899983489653,
-            0.33400000029359944,
-            0.16854099976626458,
+            0.3392499997971754,
+            0.19429199983278522,
             49152,
             16384,
             49152,
@@ -560,56 +560,56 @@
             "storage_index_pct": 66.66666666666666,
             "table_bytes": 49152,
             "index_bytes": 32768,
-            "select_cold_ms": 0.049917000069399364,
-            "select_hot_ms": 0.032374999591411324,
-            "insert_cold_ms": 0.34158300013586995,
-            "insert_hot_ms": 0.16591599978710292,
+            "select_cold_ms": 0.05912500000704313,
+            "select_hot_ms": 0.036750000163010554,
+            "insert_cold_ms": 0.4127500001231965,
+            "insert_hot_ms": 0.18037500012724195,
             "select_samples_cold_ms": [
-                0.049917000069399364
+                0.05912500000704313
             ],
             "select_samples_hot_ms": [
-                0.032374999591411324
+                0.036750000163010554
             ],
             "insert_samples_cold_ms": [
-                0.34158300013586995
+                0.4127500001231965
             ],
             "insert_samples_hot_ms": [
-                0.16591599978710292
+                0.18037500012724195
             ],
             "select_explain": [
-                "Aggregate  (cost=8.15..8.16 rows=1 width=8)",
+                "Aggregate  (cost=12.31..12.32 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.13..8.15 rows=1 width=0)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.13..12.29 rows=8 width=0)",
                 "        Output: id",
-                "        Index Cond: (bench_data.id = 1)"
+                "        Index Cond: ((bench_data.id >= '1'::smallint) AND (bench_data.id <= '8'::smallint))"
             ]
         },
         "without_indexes": {
             "table_bytes": 49152,
             "index_bytes": 0,
-            "select_cold_ms": 0.04720800006907666,
-            "select_hot_ms": 0.031958000363374595,
+            "select_cold_ms": 0.0669999999445281,
+            "select_hot_ms": 0.03999999989900971,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.3204580002602597,
-            "insert_hot_ms": 0.17691699986244203,
+            "insert_cold_ms": 0.3830829996331886,
+            "insert_hot_ms": 0.20691600002464838,
             "select_samples_cold_ms": [
-                0.04720800006907666
+                0.0669999999445281
             ],
             "select_samples_hot_ms": [
-                0.031958000363374595
+                0.03999999989900971
             ],
             "insert_samples_cold_ms": [
-                0.3204580002602597
+                0.3830829996331886
             ],
             "insert_samples_hot_ms": [
-                0.17691699986244203
+                0.20691600002464838
             ],
             "select_explain": [
-                "Aggregate  (cost=1.10..1.11 rows=1 width=8)",
+                "Aggregate  (cost=1.14..1.15 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..1.10 rows=1 width=0)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..1.12 rows=8 width=0)",
                 "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 1)"
+                "        Filter: ((bench_data_noidx.id >= '1'::smallint) AND (bench_data_noidx.id <= '8'::smallint))"
             ]
         },
         "tuple": [
@@ -617,14 +617,14 @@
             8,
             2,
             66.66666666666666,
-            0.049917000069399364,
-            0.032374999591411324,
-            0.34158300013586995,
-            0.16591599978710292,
-            0.04720800006907666,
-            0.031958000363374595,
-            0.3204580002602597,
-            0.17691699986244203,
+            0.05912500000704313,
+            0.036750000163010554,
+            0.4127500001231965,
+            0.18037500012724195,
+            0.0669999999445281,
+            0.03999999989900971,
+            0.3830829996331886,
+            0.20691600002464838,
             49152,
             32768,
             49152,
@@ -639,56 +639,56 @@
             "storage_index_pct": 33.33333333333333,
             "table_bytes": 49152,
             "index_bytes": 16384,
-            "select_cold_ms": 0.0631249999969441,
-            "select_hot_ms": 0.04241599981469335,
-            "insert_cold_ms": 0.31654199983677245,
-            "insert_hot_ms": 0.19537500020305743,
+            "select_cold_ms": 0.057249999827035936,
+            "select_hot_ms": 0.03633300002547912,
+            "insert_cold_ms": 0.4270839999662712,
+            "insert_hot_ms": 0.216958000237355,
             "select_samples_cold_ms": [
-                0.0631249999969441
+                0.057249999827035936
             ],
             "select_samples_hot_ms": [
-                0.04241599981469335
+                0.03633300002547912
             ],
             "insert_samples_cold_ms": [
-                0.31654199983677245
+                0.4270839999662712
             ],
             "insert_samples_hot_ms": [
-                0.19537500020305743
+                0.216958000237355
             ],
             "select_explain": [
-                "Aggregate  (cost=8.15..8.16 rows=1 width=8)",
+                "Aggregate  (cost=12.36..12.37 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.14..8.15 rows=1 width=0)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.14..12.33 rows=10 width=0)",
                 "        Output: id",
-                "        Index Cond: (bench_data.id = 8)"
+                "        Index Cond: ((bench_data.id >= '8'::smallint) AND (bench_data.id <= '16'::smallint))"
             ]
         },
         "without_indexes": {
             "table_bytes": 49152,
             "index_bytes": 0,
-            "select_cold_ms": 0.05162500019650906,
-            "select_hot_ms": 0.04200000012133387,
+            "select_cold_ms": 0.05308400022840942,
+            "select_hot_ms": 0.03466699990894995,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.3034579999621201,
-            "insert_hot_ms": 0.1633749998291023,
+            "insert_cold_ms": 0.32220800039794995,
+            "insert_hot_ms": 0.17116700018959818,
             "select_samples_cold_ms": [
-                0.05162500019650906
+                0.05308400022840942
             ],
             "select_samples_hot_ms": [
-                0.04200000012133387
+                0.03466699990894995
             ],
             "insert_samples_cold_ms": [
-                0.3034579999621201
+                0.32220800039794995
             ],
             "insert_samples_hot_ms": [
-                0.1633749998291023
+                0.17116700018959818
             ],
             "select_explain": [
-                "Aggregate  (cost=1.20..1.21 rows=1 width=8)",
+                "Aggregate  (cost=1.26..1.27 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..1.20 rows=1 width=0)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..1.24 rows=10 width=0)",
                 "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 8)"
+                "        Filter: ((bench_data_noidx.id >= '8'::smallint) AND (bench_data_noidx.id <= '16'::smallint))"
             ]
         },
         "tuple": [
@@ -696,14 +696,14 @@
             16,
             1,
             33.33333333333333,
-            0.0631249999969441,
-            0.04241599981469335,
-            0.31654199983677245,
-            0.19537500020305743,
-            0.05162500019650906,
-            0.04200000012133387,
-            0.3034579999621201,
-            0.1633749998291023,
+            0.057249999827035936,
+            0.03633300002547912,
+            0.4270839999662712,
+            0.216958000237355,
+            0.05308400022840942,
+            0.03466699990894995,
+            0.32220800039794995,
+            0.17116700018959818,
             49152,
             16384,
             49152,
@@ -718,56 +718,56 @@
             "storage_index_pct": 66.66666666666666,
             "table_bytes": 49152,
             "index_bytes": 32768,
-            "select_cold_ms": 0.05037499977333937,
-            "select_hot_ms": 0.041959000100177946,
-            "insert_cold_ms": 0.31108300026971847,
-            "insert_hot_ms": 0.16241699995589443,
+            "select_cold_ms": 0.06012499989083153,
+            "select_hot_ms": 0.03758299999390147,
+            "insert_cold_ms": 0.37229200006549945,
+            "insert_hot_ms": 0.19862499993905658,
             "select_samples_cold_ms": [
-                0.05037499977333937
+                0.06012499989083153
             ],
             "select_samples_hot_ms": [
-                0.041959000100177946
+                0.03758299999390147
             ],
             "insert_samples_cold_ms": [
-                0.31108300026971847
+                0.37229200006549945
             ],
             "insert_samples_hot_ms": [
-                0.16241699995589443
+                0.19862499993905658
             ],
             "select_explain": [
-                "Aggregate  (cost=8.15..8.16 rows=1 width=8)",
+                "Aggregate  (cost=12.36..12.37 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.14..8.15 rows=1 width=0)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.14..12.33 rows=10 width=0)",
                 "        Output: id",
-                "        Index Cond: (bench_data.id = 8)"
+                "        Index Cond: ((bench_data.id >= '8'::smallint) AND (bench_data.id <= '16'::smallint))"
             ]
         },
         "without_indexes": {
             "table_bytes": 49152,
             "index_bytes": 0,
-            "select_cold_ms": 0.07066699981805868,
-            "select_hot_ms": 0.044749999688065145,
+            "select_cold_ms": 0.05370799999582232,
+            "select_hot_ms": 0.035041999581153505,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.3482090000943572,
-            "insert_hot_ms": 0.18095799987349892,
+            "insert_cold_ms": 0.32458300029247766,
+            "insert_hot_ms": 0.1645419997657882,
             "select_samples_cold_ms": [
-                0.07066699981805868
+                0.05370799999582232
             ],
             "select_samples_hot_ms": [
-                0.044749999688065145
+                0.035041999581153505
             ],
             "insert_samples_cold_ms": [
-                0.3482090000943572
+                0.32458300029247766
             ],
             "insert_samples_hot_ms": [
-                0.18095799987349892
+                0.1645419997657882
             ],
             "select_explain": [
-                "Aggregate  (cost=1.20..1.21 rows=1 width=8)",
+                "Aggregate  (cost=1.26..1.27 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..1.20 rows=1 width=0)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..1.24 rows=10 width=0)",
                 "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 8)"
+                "        Filter: ((bench_data_noidx.id >= '8'::smallint) AND (bench_data_noidx.id <= '16'::smallint))"
             ]
         },
         "tuple": [
@@ -775,14 +775,14 @@
             16,
             2,
             66.66666666666666,
-            0.05037499977333937,
-            0.041959000100177946,
-            0.31108300026971847,
-            0.16241699995589443,
-            0.07066699981805868,
-            0.044749999688065145,
-            0.3482090000943572,
-            0.18095799987349892,
+            0.06012499989083153,
+            0.03758299999390147,
+            0.37229200006549945,
+            0.19862499993905658,
+            0.05370799999582232,
+            0.035041999581153505,
+            0.32458300029247766,
+            0.1645419997657882,
             49152,
             32768,
             49152,
@@ -797,56 +797,56 @@
             "storage_index_pct": 33.33333333333333,
             "table_bytes": 49152,
             "index_bytes": 16384,
-            "select_cold_ms": 0.054291000196826644,
-            "select_hot_ms": 0.0446659996669041,
-            "insert_cold_ms": 0.3064170000470767,
-            "insert_hot_ms": 0.19254200014984235,
+            "select_cold_ms": 0.059375000091677066,
+            "select_hot_ms": 0.03733299990926753,
+            "insert_cold_ms": 0.37949999978081905,
+            "insert_hot_ms": 0.21250000008876668,
             "select_samples_cold_ms": [
-                0.054291000196826644
+                0.059375000091677066
             ],
             "select_samples_hot_ms": [
-                0.0446659996669041
+                0.03733299990926753
             ],
             "insert_samples_cold_ms": [
-                0.3064170000470767
+                0.37949999978081905
             ],
             "insert_samples_hot_ms": [
-                0.19254200014984235
+                0.21250000008876668
             ],
             "select_explain": [
-                "Aggregate  (cost=8.16..8.17 rows=1 width=8)",
+                "Aggregate  (cost=8.36..8.37 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.14..8.15 rows=1 width=0)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.14..8.34 rows=10 width=0)",
                 "        Output: id",
-                "        Index Cond: (bench_data.id = 16)"
+                "        Index Cond: ((bench_data.id >= '16'::smallint) AND (bench_data.id <= '25'::smallint))"
             ]
         },
         "without_indexes": {
             "table_bytes": 49152,
             "index_bytes": 0,
-            "select_cold_ms": 0.05066699986855383,
-            "select_hot_ms": 0.04149999995206599,
+            "select_cold_ms": 0.05450000026030466,
+            "select_hot_ms": 0.03554200020516873,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.3153339998789306,
-            "insert_hot_ms": 0.17712499993649544,
+            "insert_cold_ms": 0.3997079998043773,
+            "insert_hot_ms": 0.18404200000077253,
             "select_samples_cold_ms": [
-                0.05066699986855383
+                0.05450000026030466
             ],
             "select_samples_hot_ms": [
-                0.04149999995206599
+                0.03554200020516873
             ],
             "insert_samples_cold_ms": [
-                0.3153339998789306
+                0.3997079998043773
             ],
             "insert_samples_hot_ms": [
-                0.17712499993649544
+                0.18404200000077253
             ],
             "select_explain": [
-                "Aggregate  (cost=1.40..1.41 rows=1 width=8)",
+                "Aggregate  (cost=1.50..1.51 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..1.40 rows=1 width=0)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..1.48 rows=10 width=0)",
                 "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 16)"
+                "        Filter: ((bench_data_noidx.id >= '16'::smallint) AND (bench_data_noidx.id <= '25'::smallint))"
             ]
         },
         "tuple": [
@@ -854,14 +854,14 @@
             32,
             1,
             33.33333333333333,
-            0.054291000196826644,
-            0.0446659996669041,
-            0.3064170000470767,
-            0.19254200014984235,
-            0.05066699986855383,
-            0.04149999995206599,
-            0.3153339998789306,
-            0.17712499993649544,
+            0.059375000091677066,
+            0.03733299990926753,
+            0.37949999978081905,
+            0.21250000008876668,
+            0.05450000026030466,
+            0.03554200020516873,
+            0.3997079998043773,
+            0.18404200000077253,
             49152,
             16384,
             49152,
@@ -876,56 +876,56 @@
             "storage_index_pct": 66.66666666666666,
             "table_bytes": 49152,
             "index_bytes": 32768,
-            "select_cold_ms": 0.05479099991134717,
-            "select_hot_ms": 0.041292000332759926,
-            "insert_cold_ms": 0.31862500009083305,
-            "insert_hot_ms": 0.18187500018029823,
+            "select_cold_ms": 0.06704199995510862,
+            "select_hot_ms": 0.03666600014184951,
+            "insert_cold_ms": 0.367333000212966,
+            "insert_hot_ms": 0.17041599994627177,
             "select_samples_cold_ms": [
-                0.05479099991134717
+                0.06704199995510862
             ],
             "select_samples_hot_ms": [
-                0.041292000332759926
+                0.03666600014184951
             ],
             "insert_samples_cold_ms": [
-                0.31862500009083305
+                0.367333000212966
             ],
             "insert_samples_hot_ms": [
-                0.18187500018029823
+                0.17041599994627177
             ],
             "select_explain": [
-                "Aggregate  (cost=8.16..8.17 rows=1 width=8)",
+                "Aggregate  (cost=8.36..8.37 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.14..8.15 rows=1 width=0)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.14..8.34 rows=10 width=0)",
                 "        Output: id",
-                "        Index Cond: (bench_data.id = 16)"
+                "        Index Cond: ((bench_data.id >= '16'::smallint) AND (bench_data.id <= '25'::smallint))"
             ]
         },
         "without_indexes": {
             "table_bytes": 49152,
             "index_bytes": 0,
-            "select_cold_ms": 0.04737500012197415,
-            "select_hot_ms": 0.04108299981453456,
+            "select_cold_ms": 0.05474999989019125,
+            "select_hot_ms": 0.06379100022968487,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.34537499959697016,
-            "insert_hot_ms": 0.24470900007145246,
+            "insert_cold_ms": 0.3225420000489976,
+            "insert_hot_ms": 0.17612500005270704,
             "select_samples_cold_ms": [
-                0.04737500012197415
+                0.05474999989019125
             ],
             "select_samples_hot_ms": [
-                0.04108299981453456
+                0.06379100022968487
             ],
             "insert_samples_cold_ms": [
-                0.34537499959697016
+                0.3225420000489976
             ],
             "insert_samples_hot_ms": [
-                0.24470900007145246
+                0.17612500005270704
             ],
             "select_explain": [
-                "Aggregate  (cost=1.40..1.41 rows=1 width=8)",
+                "Aggregate  (cost=1.50..1.51 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..1.40 rows=1 width=0)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..1.48 rows=10 width=0)",
                 "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 16)"
+                "        Filter: ((bench_data_noidx.id >= '16'::smallint) AND (bench_data_noidx.id <= '25'::smallint))"
             ]
         },
         "tuple": [
@@ -933,14 +933,14 @@
             32,
             2,
             66.66666666666666,
-            0.05479099991134717,
-            0.041292000332759926,
-            0.31862500009083305,
-            0.18187500018029823,
-            0.04737500012197415,
-            0.04108299981453456,
-            0.34537499959697016,
-            0.24470900007145246,
+            0.06704199995510862,
+            0.03666600014184951,
+            0.367333000212966,
+            0.17041599994627177,
+            0.05474999989019125,
+            0.06379100022968487,
+            0.3225420000489976,
+            0.17612500005270704,
             49152,
             32768,
             49152,
@@ -955,56 +955,57 @@
             "storage_index_pct": 28.57142857142857,
             "table_bytes": 57344,
             "index_bytes": 16384,
-            "select_cold_ms": 0.048999999762600055,
-            "select_hot_ms": 0.041541999962646514,
-            "insert_cold_ms": 0.311125000280299,
-            "insert_hot_ms": 0.1620830003048468,
+            "select_cold_ms": 0.05966700018689153,
+            "select_hot_ms": 0.03841700026896433,
+            "insert_cold_ms": 0.34508299995650304,
+            "insert_hot_ms": 0.19941600021411432,
             "select_samples_cold_ms": [
-                0.048999999762600055
+                0.05966700018689153
             ],
             "select_samples_hot_ms": [
-                0.041541999962646514
+                0.03841700026896433
             ],
             "insert_samples_cold_ms": [
-                0.311125000280299
+                0.34508299995650304
             ],
             "insert_samples_hot_ms": [
-                0.1620830003048468
+                0.19941600021411432
             ],
             "select_explain": [
-                "Aggregate  (cost=8.16..8.17 rows=1 width=8)",
+                "Aggregate  (cost=6.42..6.43 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.14..8.16 rows=1 width=0)",
-                "        Output: id",
-                "        Index Cond: (bench_data.id = 32)"
+                "  ->  Bitmap Heap Scan on public.bench_data  (cost=4.24..6.39 rows=10 width=0)",
+                "        Recheck Cond: ((bench_data.id >= '32'::smallint) AND (bench_data.id <= '41'::smallint))",
+                "        ->  Bitmap Index Scan on bench_data_pkey  (cost=0.00..4.24 rows=10 width=0)",
+                "              Index Cond: ((bench_data.id >= '32'::smallint) AND (bench_data.id <= '41'::smallint))"
             ]
         },
         "without_indexes": {
             "table_bytes": 57344,
             "index_bytes": 0,
-            "select_cold_ms": 0.07575000017823186,
-            "select_hot_ms": 0.051125000027241185,
+            "select_cold_ms": 0.06270799985941267,
+            "select_hot_ms": 0.037708000036218436,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.35658400020111003,
-            "insert_hot_ms": 0.22770800023863558,
+            "insert_cold_ms": 0.3222079999432026,
+            "insert_hot_ms": 0.1764170001479215,
             "select_samples_cold_ms": [
-                0.07575000017823186
+                0.06270799985941267
             ],
             "select_samples_hot_ms": [
-                0.051125000027241185
+                0.037708000036218436
             ],
             "insert_samples_cold_ms": [
-                0.35658400020111003
+                0.3222079999432026
             ],
             "insert_samples_hot_ms": [
-                0.22770800023863558
+                0.1764170001479215
             ],
             "select_explain": [
-                "Aggregate  (cost=2.80..2.81 rows=1 width=8)",
+                "Aggregate  (cost=2.98..2.99 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..2.80 rows=1 width=0)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..2.96 rows=10 width=0)",
                 "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 32)"
+                "        Filter: ((bench_data_noidx.id >= '32'::smallint) AND (bench_data_noidx.id <= '41'::smallint))"
             ]
         },
         "tuple": [
@@ -1012,14 +1013,14 @@
             64,
             1,
             28.57142857142857,
-            0.048999999762600055,
-            0.041541999962646514,
-            0.311125000280299,
-            0.1620830003048468,
-            0.07575000017823186,
-            0.051125000027241185,
-            0.35658400020111003,
-            0.22770800023863558,
+            0.05966700018689153,
+            0.03841700026896433,
+            0.34508299995650304,
+            0.19941600021411432,
+            0.06270799985941267,
+            0.037708000036218436,
+            0.3222079999432026,
+            0.1764170001479215,
             57344,
             16384,
             57344,
@@ -1034,56 +1035,57 @@
             "storage_index_pct": 57.14285714285714,
             "table_bytes": 57344,
             "index_bytes": 32768,
-            "select_cold_ms": 0.05791600005977671,
-            "select_hot_ms": 0.042749999920488335,
-            "insert_cold_ms": 0.3204580002602597,
-            "insert_hot_ms": 0.21779200005767052,
+            "select_cold_ms": 0.06416699989131303,
+            "select_hot_ms": 0.036791999718843726,
+            "insert_cold_ms": 0.36920799993822584,
+            "insert_hot_ms": 0.19087499958914123,
             "select_samples_cold_ms": [
-                0.05791600005977671
+                0.06416699989131303
             ],
             "select_samples_hot_ms": [
-                0.042749999920488335
+                0.036791999718843726
             ],
             "insert_samples_cold_ms": [
-                0.3204580002602597
+                0.36920799993822584
             ],
             "insert_samples_hot_ms": [
-                0.21779200005767052
+                0.19087499958914123
             ],
             "select_explain": [
-                "Aggregate  (cost=8.16..8.17 rows=1 width=8)",
+                "Aggregate  (cost=6.42..6.43 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.14..8.16 rows=1 width=0)",
-                "        Output: id",
-                "        Index Cond: (bench_data.id = 32)"
+                "  ->  Bitmap Heap Scan on public.bench_data  (cost=4.24..6.39 rows=10 width=0)",
+                "        Recheck Cond: ((bench_data.id >= '32'::smallint) AND (bench_data.id <= '41'::smallint))",
+                "        ->  Bitmap Index Scan on bench_data_pkey  (cost=0.00..4.24 rows=10 width=0)",
+                "              Index Cond: ((bench_data.id >= '32'::smallint) AND (bench_data.id <= '41'::smallint))"
             ]
         },
         "without_indexes": {
             "table_bytes": 57344,
             "index_bytes": 0,
-            "select_cold_ms": 0.04625000019586878,
-            "select_hot_ms": 0.04137499990974902,
+            "select_cold_ms": 0.056832999689504504,
+            "select_hot_ms": 0.03737499991984805,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.334374999965803,
-            "insert_hot_ms": 0.18545800003266777,
+            "insert_cold_ms": 0.34304199971302296,
+            "insert_hot_ms": 0.18645899990588077,
             "select_samples_cold_ms": [
-                0.04625000019586878
+                0.056832999689504504
             ],
             "select_samples_hot_ms": [
-                0.04137499990974902
+                0.03737499991984805
             ],
             "insert_samples_cold_ms": [
-                0.334374999965803
+                0.34304199971302296
             ],
             "insert_samples_hot_ms": [
-                0.18545800003266777
+                0.18645899990588077
             ],
             "select_explain": [
-                "Aggregate  (cost=2.80..2.81 rows=1 width=8)",
+                "Aggregate  (cost=2.98..2.99 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..2.80 rows=1 width=0)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..2.96 rows=10 width=0)",
                 "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 32)"
+                "        Filter: ((bench_data_noidx.id >= '32'::smallint) AND (bench_data_noidx.id <= '41'::smallint))"
             ]
         },
         "tuple": [
@@ -1091,14 +1093,14 @@
             64,
             2,
             57.14285714285714,
-            0.05791600005977671,
-            0.042749999920488335,
-            0.3204580002602597,
-            0.21779200005767052,
-            0.04625000019586878,
-            0.04137499990974902,
-            0.334374999965803,
-            0.18545800003266777,
+            0.06416699989131303,
+            0.036791999718843726,
+            0.36920799993822584,
+            0.19087499958914123,
+            0.056832999689504504,
+            0.03737499991984805,
+            0.34304199971302296,
+            0.18645899990588077,
             57344,
             32768,
             57344,
@@ -1113,56 +1115,56 @@
             "storage_index_pct": 22.22222222222222,
             "table_bytes": 73728,
             "index_bytes": 16384,
-            "select_cold_ms": 0.05254100005913642,
-            "select_hot_ms": 0.046332999772857875,
-            "insert_cold_ms": 0.3264590000071621,
-            "insert_hot_ms": 0.1640840000618482,
+            "select_cold_ms": 0.06191600004967768,
+            "select_hot_ms": 0.03866599990942632,
+            "insert_cold_ms": 0.38229100027820095,
+            "insert_hot_ms": 0.1880410000012489,
             "select_samples_cold_ms": [
-                0.05254100005913642
+                0.06191600004967768
             ],
             "select_samples_hot_ms": [
-                0.046332999772857875
+                0.03866599990942632
             ],
             "insert_samples_cold_ms": [
-                0.3264590000071621
+                0.38229100027820095
             ],
             "insert_samples_hot_ms": [
-                0.1640840000618482
+                0.1880410000012489
             ],
             "select_explain": [
-                "Aggregate  (cost=8.16..8.17 rows=1 width=8)",
+                "Aggregate  (cost=8.37..8.38 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.14..8.16 rows=1 width=0)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.14..8.34 rows=10 width=0)",
                 "        Output: id",
-                "        Index Cond: (bench_data.id = 64)"
+                "        Index Cond: ((bench_data.id >= '64'::smallint) AND (bench_data.id <= '73'::smallint))"
             ]
         },
         "without_indexes": {
             "table_bytes": 73728,
             "index_bytes": 0,
-            "select_cold_ms": 0.05199999986871262,
-            "select_hot_ms": 0.052709000101458514,
+            "select_cold_ms": 0.05741599989050883,
+            "select_hot_ms": 0.04516699982559658,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.32941700010269415,
-            "insert_hot_ms": 0.16825000011522206,
+            "insert_cold_ms": 0.3129169999738224,
+            "insert_hot_ms": 0.17616600007386296,
             "select_samples_cold_ms": [
-                0.05199999986871262
+                0.05741599989050883
             ],
             "select_samples_hot_ms": [
-                0.052709000101458514
+                0.04516699982559658
             ],
             "insert_samples_cold_ms": [
-                0.32941700010269415
+                0.3129169999738224
             ],
             "insert_samples_hot_ms": [
-                0.16825000011522206
+                0.17616600007386296
             ],
             "select_explain": [
-                "Aggregate  (cost=5.60..5.61 rows=1 width=8)",
+                "Aggregate  (cost=5.95..5.96 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..5.60 rows=1 width=0)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..5.92 rows=10 width=0)",
                 "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 64)"
+                "        Filter: ((bench_data_noidx.id >= '64'::smallint) AND (bench_data_noidx.id <= '73'::smallint))"
             ]
         },
         "tuple": [
@@ -1170,14 +1172,14 @@
             128,
             1,
             22.22222222222222,
-            0.05254100005913642,
-            0.046332999772857875,
-            0.3264590000071621,
-            0.1640840000618482,
-            0.05199999986871262,
-            0.052709000101458514,
-            0.32941700010269415,
-            0.16825000011522206,
+            0.06191600004967768,
+            0.03866599990942632,
+            0.38229100027820095,
+            0.1880410000012489,
+            0.05741599989050883,
+            0.04516699982559658,
+            0.3129169999738224,
+            0.17616600007386296,
             73728,
             16384,
             73728,
@@ -1192,56 +1194,56 @@
             "storage_index_pct": 44.44444444444444,
             "table_bytes": 73728,
             "index_bytes": 32768,
-            "select_cold_ms": 0.06658299980699667,
-            "select_hot_ms": 0.04149999995206599,
-            "insert_cold_ms": 0.3329999999550637,
-            "insert_hot_ms": 0.18062499975712853,
+            "select_cold_ms": 0.05912500000704313,
+            "select_hot_ms": 0.03575000027922215,
+            "insert_cold_ms": 0.3949580000153219,
+            "insert_hot_ms": 0.20466600017243763,
             "select_samples_cold_ms": [
-                0.06658299980699667
+                0.05912500000704313
             ],
             "select_samples_hot_ms": [
-                0.04149999995206599
+                0.03575000027922215
             ],
             "insert_samples_cold_ms": [
-                0.3329999999550637
+                0.3949580000153219
             ],
             "insert_samples_hot_ms": [
-                0.18062499975712853
+                0.20466600017243763
             ],
             "select_explain": [
-                "Aggregate  (cost=8.16..8.17 rows=1 width=8)",
+                "Aggregate  (cost=8.37..8.38 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.14..8.16 rows=1 width=0)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.14..8.34 rows=10 width=0)",
                 "        Output: id",
-                "        Index Cond: (bench_data.id = 64)"
+                "        Index Cond: ((bench_data.id >= '64'::smallint) AND (bench_data.id <= '73'::smallint))"
             ]
         },
         "without_indexes": {
             "table_bytes": 73728,
             "index_bytes": 0,
-            "select_cold_ms": 0.05129200008013868,
-            "select_hot_ms": 0.04450000005817856,
+            "select_cold_ms": 0.05766699996456737,
+            "select_hot_ms": 0.03912500005753827,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.31749999970998033,
-            "insert_hot_ms": 0.16683400008332683,
+            "insert_cold_ms": 0.31458400007977616,
+            "insert_hot_ms": 0.17449999995733378,
             "select_samples_cold_ms": [
-                0.05129200008013868
+                0.05766699996456737
             ],
             "select_samples_hot_ms": [
-                0.04450000005817856
+                0.03912500005753827
             ],
             "insert_samples_cold_ms": [
-                0.31749999970998033
+                0.31458400007977616
             ],
             "insert_samples_hot_ms": [
-                0.16683400008332683
+                0.17449999995733378
             ],
             "select_explain": [
-                "Aggregate  (cost=5.60..5.61 rows=1 width=8)",
+                "Aggregate  (cost=5.95..5.96 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..5.60 rows=1 width=0)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..5.92 rows=10 width=0)",
                 "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 64)"
+                "        Filter: ((bench_data_noidx.id >= '64'::smallint) AND (bench_data_noidx.id <= '73'::smallint))"
             ]
         },
         "tuple": [
@@ -1249,14 +1251,14 @@
             128,
             2,
             44.44444444444444,
-            0.06658299980699667,
-            0.04149999995206599,
-            0.3329999999550637,
-            0.18062499975712853,
-            0.05129200008013868,
-            0.04450000005817856,
-            0.31749999970998033,
-            0.16683400008332683,
+            0.05912500000704313,
+            0.03575000027922215,
+            0.3949580000153219,
+            0.20466600017243763,
+            0.05766699996456737,
+            0.03912500005753827,
+            0.31458400007977616,
+            0.17449999995733378,
             73728,
             32768,
             73728,
@@ -1271,56 +1273,56 @@
             "storage_index_pct": 15.384615384615385,
             "table_bytes": 106496,
             "index_bytes": 16384,
-            "select_cold_ms": 0.2931669996542041,
-            "select_hot_ms": 0.19704199985426385,
-            "insert_cold_ms": 0.3721660000337579,
-            "insert_hot_ms": 0.1929169998220459,
+            "select_cold_ms": 0.060709000081260456,
+            "select_hot_ms": 0.03633300002547912,
+            "insert_cold_ms": 0.3389580001567083,
+            "insert_hot_ms": 0.16829199967105524,
             "select_samples_cold_ms": [
-                0.2931669996542041
+                0.060709000081260456
             ],
             "select_samples_hot_ms": [
-                0.19704199985426385
+                0.03633300002547912
             ],
             "insert_samples_cold_ms": [
-                0.3721660000337579
+                0.3389580001567083
             ],
             "insert_samples_hot_ms": [
-                0.1929169998220459
+                0.16829199967105524
             ],
             "select_explain": [
-                "Aggregate  (cost=8.16..8.17 rows=1 width=8)",
+                "Aggregate  (cost=8.37..8.38 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.14..8.16 rows=1 width=0)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.14..8.34 rows=10 width=0)",
                 "        Output: id",
-                "        Index Cond: (bench_data.id = 128)"
+                "        Index Cond: ((bench_data.id >= '128'::smallint) AND (bench_data.id <= '137'::smallint))"
             ]
         },
         "without_indexes": {
             "table_bytes": 106496,
             "index_bytes": 0,
-            "select_cold_ms": 0.06308299998636357,
-            "select_hot_ms": 0.049792000027082395,
+            "select_cold_ms": 0.09858299972620443,
+            "select_hot_ms": 0.06512499976452091,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.3318750000289583,
-            "insert_hot_ms": 0.17699999989417847,
+            "insert_cold_ms": 0.44645799971476663,
+            "insert_hot_ms": 0.23016700015432434,
             "select_samples_cold_ms": [
-                0.06308299998636357
+                0.09858299972620443
             ],
             "select_samples_hot_ms": [
-                0.049792000027082395
+                0.06512499976452091
             ],
             "insert_samples_cold_ms": [
-                0.3318750000289583
+                0.44645799971476663
             ],
             "insert_samples_hot_ms": [
-                0.17699999989417847
+                0.23016700015432434
             ],
             "select_explain": [
-                "Aggregate  (cost=11.20..11.21 rows=1 width=8)",
+                "Aggregate  (cost=11.87..11.88 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..11.20 rows=1 width=0)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..11.84 rows=10 width=0)",
                 "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 128)"
+                "        Filter: ((bench_data_noidx.id >= '128'::smallint) AND (bench_data_noidx.id <= '137'::smallint))"
             ]
         },
         "tuple": [
@@ -1328,14 +1330,14 @@
             256,
             1,
             15.384615384615385,
-            0.2931669996542041,
-            0.19704199985426385,
-            0.3721660000337579,
-            0.1929169998220459,
-            0.06308299998636357,
-            0.049792000027082395,
-            0.3318750000289583,
-            0.17699999989417847,
+            0.060709000081260456,
+            0.03633300002547912,
+            0.3389580001567083,
+            0.16829199967105524,
+            0.09858299972620443,
+            0.06512499976452091,
+            0.44645799971476663,
+            0.23016700015432434,
             106496,
             16384,
             106496,
@@ -1350,56 +1352,56 @@
             "storage_index_pct": 30.76923076923077,
             "table_bytes": 106496,
             "index_bytes": 32768,
-            "select_cold_ms": 0.05545800013351254,
-            "select_hot_ms": 0.04516599983617198,
-            "insert_cold_ms": 0.3363339997122239,
-            "insert_hot_ms": 0.16787499998827116,
+            "select_cold_ms": 0.06170800043037161,
+            "select_hot_ms": 0.03666700013127411,
+            "insert_cold_ms": 0.3595419998418947,
+            "insert_hot_ms": 0.17058299999916926,
             "select_samples_cold_ms": [
-                0.05545800013351254
+                0.06170800043037161
             ],
             "select_samples_hot_ms": [
-                0.04516599983617198
+                0.03666700013127411
             ],
             "insert_samples_cold_ms": [
-                0.3363339997122239
+                0.3595419998418947
             ],
             "insert_samples_hot_ms": [
-                0.16787499998827116
+                0.17058299999916926
             ],
             "select_explain": [
-                "Aggregate  (cost=8.16..8.17 rows=1 width=8)",
+                "Aggregate  (cost=8.37..8.38 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.14..8.16 rows=1 width=0)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.14..8.34 rows=10 width=0)",
                 "        Output: id",
-                "        Index Cond: (bench_data.id = 128)"
+                "        Index Cond: ((bench_data.id >= '128'::smallint) AND (bench_data.id <= '137'::smallint))"
             ]
         },
         "without_indexes": {
             "table_bytes": 106496,
             "index_bytes": 0,
-            "select_cold_ms": 0.05654199958371464,
-            "select_hot_ms": 0.04904200022792793,
+            "select_cold_ms": 0.07245899996632943,
+            "select_hot_ms": 0.053374999879451934,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.3044579998459085,
-            "insert_hot_ms": 0.17387499974574894,
+            "insert_cold_ms": 0.3142919999845617,
+            "insert_hot_ms": 0.1790419996723358,
             "select_samples_cold_ms": [
-                0.05654199958371464
+                0.07245899996632943
             ],
             "select_samples_hot_ms": [
-                0.04904200022792793
+                0.053374999879451934
             ],
             "insert_samples_cold_ms": [
-                0.3044579998459085
+                0.3142919999845617
             ],
             "insert_samples_hot_ms": [
-                0.17387499974574894
+                0.1790419996723358
             ],
             "select_explain": [
-                "Aggregate  (cost=11.20..11.21 rows=1 width=8)",
+                "Aggregate  (cost=11.87..11.88 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..11.20 rows=1 width=0)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..11.84 rows=10 width=0)",
                 "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 128)"
+                "        Filter: ((bench_data_noidx.id >= '128'::smallint) AND (bench_data_noidx.id <= '137'::smallint))"
             ]
         },
         "tuple": [
@@ -1407,14 +1409,14 @@
             256,
             2,
             30.76923076923077,
-            0.05545800013351254,
-            0.04516599983617198,
-            0.3363339997122239,
-            0.16787499998827116,
-            0.05654199958371464,
-            0.04904200022792793,
-            0.3044579998459085,
-            0.17387499974574894,
+            0.06170800043037161,
+            0.03666700013127411,
+            0.3595419998418947,
+            0.17058299999916926,
+            0.07245899996632943,
+            0.053374999879451934,
+            0.3142919999845617,
+            0.1790419996723358,
             106496,
             32768,
             106496,
@@ -1429,56 +1431,56 @@
             "storage_index_pct": 19.047619047619047,
             "table_bytes": 172032,
             "index_bytes": 32768,
-            "select_cold_ms": 0.05983300025036442,
-            "select_hot_ms": 0.04591699962475104,
-            "insert_cold_ms": 0.3532499999892025,
-            "insert_hot_ms": 0.1706660000309057,
+            "select_cold_ms": 0.06166699995446834,
+            "select_hot_ms": 0.0362920000043232,
+            "insert_cold_ms": 0.34841699971366324,
+            "insert_hot_ms": 0.17341700004180893,
             "select_samples_cold_ms": [
-                0.05983300025036442
+                0.06166699995446834
             ],
             "select_samples_hot_ms": [
-                0.04591699962475104
+                0.0362920000043232
             ],
             "insert_samples_cold_ms": [
-                0.3532499999892025
+                0.34841699971366324
             ],
             "insert_samples_hot_ms": [
-                0.1706660000309057
+                0.17341700004180893
             ],
             "select_explain": [
-                "Aggregate  (cost=8.29..8.30 rows=1 width=8)",
+                "Aggregate  (cost=8.50..8.51 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.27..8.29 rows=1 width=0)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.27..8.47 rows=10 width=0)",
                 "        Output: id",
-                "        Index Cond: (bench_data.id = 256)"
+                "        Index Cond: ((bench_data.id >= '256'::smallint) AND (bench_data.id <= '265'::smallint))"
             ]
         },
         "without_indexes": {
             "table_bytes": 172032,
             "index_bytes": 0,
-            "select_cold_ms": 0.07241599996632431,
-            "select_hot_ms": 0.06291699992289068,
+            "select_cold_ms": 0.07233300038933521,
+            "select_hot_ms": 0.06766700016669347,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.3550829997038818,
-            "insert_hot_ms": 0.18612500025483314,
+            "insert_cold_ms": 0.3302500003883324,
+            "insert_hot_ms": 0.2159590003429912,
             "select_samples_cold_ms": [
-                0.07241599996632431
+                0.07233300038933521
             ],
             "select_samples_hot_ms": [
-                0.06291699992289068
+                0.06766700016669347
             ],
             "insert_samples_cold_ms": [
-                0.3550829997038818
+                0.3302500003883324
             ],
             "insert_samples_hot_ms": [
-                0.18612500025483314
+                0.2159590003429912
             ],
             "select_explain": [
-                "Aggregate  (cost=22.40..22.41 rows=1 width=8)",
+                "Aggregate  (cost=23.70..23.71 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..22.40 rows=1 width=0)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..23.68 rows=10 width=0)",
                 "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 256)"
+                "        Filter: ((bench_data_noidx.id >= '256'::smallint) AND (bench_data_noidx.id <= '265'::smallint))"
             ]
         },
         "tuple": [
@@ -1486,14 +1488,14 @@
             512,
             1,
             19.047619047619047,
-            0.05983300025036442,
-            0.04591699962475104,
-            0.3532499999892025,
-            0.1706660000309057,
-            0.07241599996632431,
-            0.06291699992289068,
-            0.3550829997038818,
-            0.18612500025483314,
+            0.06166699995446834,
+            0.0362920000043232,
+            0.34841699971366324,
+            0.17341700004180893,
+            0.07233300038933521,
+            0.06766700016669347,
+            0.3302500003883324,
+            0.2159590003429912,
             172032,
             32768,
             172032,
@@ -1508,56 +1510,56 @@
             "storage_index_pct": 38.095238095238095,
             "table_bytes": 172032,
             "index_bytes": 65536,
-            "select_cold_ms": 0.048999999762600055,
-            "select_hot_ms": 0.040625000110594556,
-            "insert_cold_ms": 0.34904200037999544,
-            "insert_hot_ms": 0.1777500001480803,
+            "select_cold_ms": 0.062166000134311616,
+            "select_hot_ms": 0.035707999813894276,
+            "insert_cold_ms": 0.36579199968400644,
+            "insert_hot_ms": 0.19599999995989492,
             "select_samples_cold_ms": [
-                0.048999999762600055
+                0.062166000134311616
             ],
             "select_samples_hot_ms": [
-                0.040625000110594556
+                0.035707999813894276
             ],
             "insert_samples_cold_ms": [
-                0.34904200037999544
+                0.36579199968400644
             ],
             "insert_samples_hot_ms": [
-                0.1777500001480803
+                0.19599999995989492
             ],
             "select_explain": [
-                "Aggregate  (cost=8.29..8.30 rows=1 width=8)",
+                "Aggregate  (cost=8.50..8.51 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.27..8.29 rows=1 width=0)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.27..8.47 rows=10 width=0)",
                 "        Output: id",
-                "        Index Cond: (bench_data.id = 256)"
+                "        Index Cond: ((bench_data.id >= '256'::smallint) AND (bench_data.id <= '265'::smallint))"
             ]
         },
         "without_indexes": {
             "table_bytes": 172032,
             "index_bytes": 0,
-            "select_cold_ms": 0.07320800023080665,
-            "select_hot_ms": 0.06008299988025101,
+            "select_cold_ms": 0.07558300012533437,
+            "select_hot_ms": 0.06212500011315569,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.4007080001429131,
-            "insert_hot_ms": 0.20041600009790272,
+            "insert_cold_ms": 0.3415829996811226,
+            "insert_hot_ms": 0.1926250001815788,
             "select_samples_cold_ms": [
-                0.07320800023080665
+                0.07558300012533437
             ],
             "select_samples_hot_ms": [
-                0.06008299988025101
+                0.06212500011315569
             ],
             "insert_samples_cold_ms": [
-                0.4007080001429131
+                0.3415829996811226
             ],
             "insert_samples_hot_ms": [
-                0.20041600009790272
+                0.1926250001815788
             ],
             "select_explain": [
-                "Aggregate  (cost=22.40..22.41 rows=1 width=8)",
+                "Aggregate  (cost=23.70..23.71 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..22.40 rows=1 width=0)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..23.68 rows=10 width=0)",
                 "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 256)"
+                "        Filter: ((bench_data_noidx.id >= '256'::smallint) AND (bench_data_noidx.id <= '265'::smallint))"
             ]
         },
         "tuple": [
@@ -1565,14 +1567,14 @@
             512,
             2,
             38.095238095238095,
-            0.048999999762600055,
-            0.040625000110594556,
-            0.34904200037999544,
-            0.1777500001480803,
-            0.07320800023080665,
-            0.06008299988025101,
-            0.4007080001429131,
-            0.20041600009790272,
+            0.062166000134311616,
+            0.035707999813894276,
+            0.36579199968400644,
+            0.19599999995989492,
+            0.07558300012533437,
+            0.06212500011315569,
+            0.3415829996811226,
+            0.1926250001815788,
             172032,
             65536,
             172032,
@@ -1587,56 +1589,56 @@
             "storage_index_pct": 13.513513513513514,
             "table_bytes": 303104,
             "index_bytes": 40960,
-            "select_cold_ms": 0.058291000186727615,
-            "select_hot_ms": 0.040750000152911525,
-            "insert_cold_ms": 0.4010840002592886,
-            "insert_hot_ms": 0.24462500005029142,
+            "select_cold_ms": 0.07866699979786063,
+            "select_hot_ms": 0.045666999994864454,
+            "insert_cold_ms": 0.3316249999443244,
+            "insert_hot_ms": 0.18862499973693048,
             "select_samples_cold_ms": [
-                0.058291000186727615
+                0.07866699979786063
             ],
             "select_samples_hot_ms": [
-                0.040750000152911525
+                0.045666999994864454
             ],
             "insert_samples_cold_ms": [
-                0.4010840002592886
+                0.3316249999443244
             ],
             "insert_samples_hot_ms": [
-                0.24462500005029142
+                0.18862499973693048
             ],
             "select_explain": [
-                "Aggregate  (cost=8.29..8.30 rows=1 width=8)",
+                "Aggregate  (cost=8.50..8.51 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.28..8.29 rows=1 width=0)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.28..8.47 rows=10 width=0)",
                 "        Output: id",
-                "        Index Cond: (bench_data.id = 512)"
+                "        Index Cond: ((bench_data.id >= '512'::smallint) AND (bench_data.id <= '521'::smallint))"
             ]
         },
         "without_indexes": {
             "table_bytes": 303104,
             "index_bytes": 0,
-            "select_cold_ms": 0.08424999987255433,
-            "select_hot_ms": 0.07624999989275238,
+            "select_cold_ms": 0.09212500026478665,
+            "select_hot_ms": 0.08083399961833493,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.35416699984125444,
-            "insert_hot_ms": 0.20612499974959064,
+            "insert_cold_ms": 0.3667920000225422,
+            "insert_hot_ms": 0.21125000012034434,
             "select_samples_cold_ms": [
-                0.08424999987255433
+                0.09212500026478665
             ],
             "select_samples_hot_ms": [
-                0.07624999989275238
+                0.08083399961833493
             ],
             "insert_samples_cold_ms": [
-                0.35416699984125444
+                0.3667920000225422
             ],
             "insert_samples_hot_ms": [
-                0.20612499974959064
+                0.21125000012034434
             ],
             "select_explain": [
-                "Aggregate  (cost=44.80..44.81 rows=1 width=8)",
+                "Aggregate  (cost=47.38..47.39 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..44.80 rows=1 width=0)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..47.36 rows=10 width=0)",
                 "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 512)"
+                "        Filter: ((bench_data_noidx.id >= '512'::smallint) AND (bench_data_noidx.id <= '521'::smallint))"
             ]
         },
         "tuple": [
@@ -1644,14 +1646,14 @@
             1024,
             1,
             13.513513513513514,
-            0.058291000186727615,
-            0.040750000152911525,
-            0.4010840002592886,
-            0.24462500005029142,
-            0.08424999987255433,
-            0.07624999989275238,
-            0.35416699984125444,
-            0.20612499974959064,
+            0.07866699979786063,
+            0.045666999994864454,
+            0.3316249999443244,
+            0.18862499973693048,
+            0.09212500026478665,
+            0.08083399961833493,
+            0.3667920000225422,
+            0.21125000012034434,
             303104,
             40960,
             303104,
@@ -1666,56 +1668,56 @@
             "storage_index_pct": 27.027027027027028,
             "table_bytes": 303104,
             "index_bytes": 81920,
-            "select_cold_ms": 0.04695899997386732,
-            "select_hot_ms": 0.04058400008943863,
-            "insert_cold_ms": 0.34474999984013266,
-            "insert_hot_ms": 0.17154199986180174,
+            "select_cold_ms": 0.05758399993283092,
+            "select_hot_ms": 0.03454099987720838,
+            "insert_cold_ms": 0.34704199970292393,
+            "insert_hot_ms": 0.1727500002743909,
             "select_samples_cold_ms": [
-                0.04695899997386732
+                0.05758399993283092
             ],
             "select_samples_hot_ms": [
-                0.04058400008943863
+                0.03454099987720838
             ],
             "insert_samples_cold_ms": [
-                0.34474999984013266
+                0.34704199970292393
             ],
             "insert_samples_hot_ms": [
-                0.17154199986180174
+                0.1727500002743909
             ],
             "select_explain": [
-                "Aggregate  (cost=8.29..8.30 rows=1 width=8)",
+                "Aggregate  (cost=8.50..8.51 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.28..8.29 rows=1 width=0)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.28..8.47 rows=10 width=0)",
                 "        Output: id",
-                "        Index Cond: (bench_data.id = 512)"
+                "        Index Cond: ((bench_data.id >= '512'::smallint) AND (bench_data.id <= '521'::smallint))"
             ]
         },
         "without_indexes": {
             "table_bytes": 303104,
             "index_bytes": 0,
-            "select_cold_ms": 0.1223750000463042,
-            "select_hot_ms": 0.09291699961977429,
+            "select_cold_ms": 0.09970900009648176,
+            "select_hot_ms": 0.0865419997353456,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.421249999817519,
-            "insert_hot_ms": 0.21320899986676523,
+            "insert_cold_ms": 0.4413339997881849,
+            "insert_hot_ms": 0.225499999942258,
             "select_samples_cold_ms": [
-                0.1223750000463042
+                0.09970900009648176
             ],
             "select_samples_hot_ms": [
-                0.09291699961977429
+                0.0865419997353456
             ],
             "insert_samples_cold_ms": [
-                0.421249999817519
+                0.4413339997881849
             ],
             "insert_samples_hot_ms": [
-                0.21320899986676523
+                0.225499999942258
             ],
             "select_explain": [
-                "Aggregate  (cost=44.80..44.81 rows=1 width=8)",
+                "Aggregate  (cost=47.38..47.39 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..44.80 rows=1 width=0)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..47.36 rows=10 width=0)",
                 "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 512)"
+                "        Filter: ((bench_data_noidx.id >= '512'::smallint) AND (bench_data_noidx.id <= '521'::smallint))"
             ]
         },
         "tuple": [
@@ -1723,14 +1725,14 @@
             1024,
             2,
             27.027027027027028,
-            0.04695899997386732,
-            0.04058400008943863,
-            0.34474999984013266,
-            0.17154199986180174,
-            0.1223750000463042,
-            0.09291699961977429,
-            0.421249999817519,
-            0.21320899986676523,
+            0.05758399993283092,
+            0.03454099987720838,
+            0.34704199970292393,
+            0.1727500002743909,
+            0.09970900009648176,
+            0.0865419997353456,
+            0.4413339997881849,
+            0.225499999942258,
             303104,
             81920,
             303104,
@@ -1742,77 +1744,77 @@
         "rows": 2048,
         "M": 1,
         "with_indexes": {
-            "storage_index_pct": 11.76470588235294,
-            "table_bytes": 557056,
+            "storage_index_pct": 11.594202898550725,
+            "table_bytes": 565248,
             "index_bytes": 65536,
-            "select_cold_ms": 0.0994170000012673,
-            "select_hot_ms": 0.0838329997350229,
-            "insert_cold_ms": 0.49766699976316886,
-            "insert_hot_ms": 0.23779100001775078,
+            "select_cold_ms": 0.3875840002365294,
+            "select_hot_ms": 0.15558399991277838,
+            "insert_cold_ms": 0.5322090000845492,
+            "insert_hot_ms": 0.3135409997412353,
             "select_samples_cold_ms": [
-                0.0994170000012673
+                0.3875840002365294
             ],
             "select_samples_hot_ms": [
-                0.0838329997350229
+                0.15558399991277838
             ],
             "insert_samples_cold_ms": [
-                0.49766699976316886
+                0.5322090000845492
             ],
             "insert_samples_hot_ms": [
-                0.23779100001775078
+                0.3135409997412353
             ],
             "select_explain": [
-                "Aggregate  (cost=8.30..8.31 rows=1 width=8)",
+                "Aggregate  (cost=8.50..8.51 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.28..8.29 rows=1 width=0)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.28..8.48 rows=10 width=0)",
                 "        Output: id",
-                "        Index Cond: (bench_data.id = 1024)"
+                "        Index Cond: ((bench_data.id >= '1024'::smallint) AND (bench_data.id <= '1033'::smallint))"
             ]
         },
         "without_indexes": {
-            "table_bytes": 557056,
+            "table_bytes": 565248,
             "index_bytes": 0,
-            "select_cold_ms": 0.13716600005864166,
-            "select_hot_ms": 0.12037499982398003,
+            "select_cold_ms": 0.15649999977540574,
+            "select_hot_ms": 0.12216699997225078,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.5506669999704172,
-            "insert_hot_ms": 0.3104580000581336,
+            "insert_cold_ms": 0.5312079997565888,
+            "insert_hot_ms": 0.3063340000153403,
             "select_samples_cold_ms": [
-                0.13716600005864166
+                0.15649999977540574
             ],
             "select_samples_hot_ms": [
-                0.12037499982398003
+                0.12216699997225078
             ],
             "insert_samples_cold_ms": [
-                0.5506669999704172
+                0.5312079997565888
             ],
             "insert_samples_hot_ms": [
-                0.3104580000581336
+                0.3063340000153403
             ],
             "select_explain": [
-                "Aggregate  (cost=88.60..88.61 rows=1 width=8)",
+                "Aggregate  (cost=94.75..94.76 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..88.60 rows=1 width=0)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..94.72 rows=10 width=0)",
                 "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 1024)"
+                "        Filter: ((bench_data_noidx.id >= '1024'::smallint) AND (bench_data_noidx.id <= '1033'::smallint))"
             ]
         },
         "tuple": [
             11,
             2048,
             1,
-            11.76470588235294,
-            0.0994170000012673,
-            0.0838329997350229,
-            0.49766699976316886,
-            0.23779100001775078,
-            0.13716600005864166,
-            0.12037499982398003,
-            0.5506669999704172,
-            0.3104580000581336,
-            557056,
+            11.594202898550725,
+            0.3875840002365294,
+            0.15558399991277838,
+            0.5322090000845492,
+            0.3135409997412353,
+            0.15649999977540574,
+            0.12216699997225078,
+            0.5312079997565888,
+            0.3063340000153403,
+            565248,
             65536,
-            557056,
+            565248,
             0
         ]
     },
@@ -1821,77 +1823,77 @@
         "rows": 2048,
         "M": 2,
         "with_indexes": {
-            "storage_index_pct": 22.058823529411764,
-            "table_bytes": 557056,
+            "storage_index_pct": 21.73913043478261,
+            "table_bytes": 565248,
             "index_bytes": 122880,
-            "select_cold_ms": 0.06479199964815052,
-            "select_hot_ms": 0.04295799999454175,
-            "insert_cold_ms": 0.4404160004014557,
-            "insert_hot_ms": 0.18254199994771625,
+            "select_cold_ms": 0.09729100020194892,
+            "select_hot_ms": 0.0709590003680205,
+            "insert_cold_ms": 0.5094159996588132,
+            "insert_hot_ms": 0.25324999978693086,
             "select_samples_cold_ms": [
-                0.06479199964815052
+                0.09729100020194892
             ],
             "select_samples_hot_ms": [
-                0.04295799999454175
+                0.0709590003680205
             ],
             "insert_samples_cold_ms": [
-                0.4404160004014557
+                0.5094159996588132
             ],
             "insert_samples_hot_ms": [
-                0.18254199994771625
+                0.25324999978693086
             ],
             "select_explain": [
-                "Aggregate  (cost=8.30..8.31 rows=1 width=8)",
+                "Aggregate  (cost=8.50..8.51 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.28..8.29 rows=1 width=0)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.28..8.48 rows=10 width=0)",
                 "        Output: id",
-                "        Index Cond: (bench_data.id = 1024)"
+                "        Index Cond: ((bench_data.id >= '1024'::smallint) AND (bench_data.id <= '1033'::smallint))"
             ]
         },
         "without_indexes": {
-            "table_bytes": 557056,
+            "table_bytes": 565248,
             "index_bytes": 0,
-            "select_cold_ms": 0.12720900031126803,
-            "select_hot_ms": 0.11408299997128779,
+            "select_cold_ms": 0.13675000036528218,
+            "select_hot_ms": 0.1314999999522115,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.4857090002587938,
-            "insert_hot_ms": 0.3042500002266024,
+            "insert_cold_ms": 0.48116700008904445,
+            "insert_hot_ms": 0.2639999997882114,
             "select_samples_cold_ms": [
-                0.12720900031126803
+                0.13675000036528218
             ],
             "select_samples_hot_ms": [
-                0.11408299997128779
+                0.1314999999522115
             ],
             "insert_samples_cold_ms": [
-                0.4857090002587938
+                0.48116700008904445
             ],
             "insert_samples_hot_ms": [
-                0.3042500002266024
+                0.2639999997882114
             ],
             "select_explain": [
-                "Aggregate  (cost=88.60..88.61 rows=1 width=8)",
+                "Aggregate  (cost=94.75..94.76 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..88.60 rows=1 width=0)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..94.72 rows=10 width=0)",
                 "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 1024)"
+                "        Filter: ((bench_data_noidx.id >= '1024'::smallint) AND (bench_data_noidx.id <= '1033'::smallint))"
             ]
         },
         "tuple": [
             11,
             2048,
             2,
-            22.058823529411764,
-            0.06479199964815052,
-            0.04295799999454175,
-            0.4404160004014557,
-            0.18254199994771625,
-            0.12720900031126803,
-            0.11408299997128779,
-            0.4857090002587938,
-            0.3042500002266024,
-            557056,
+            21.73913043478261,
+            0.09729100020194892,
+            0.0709590003680205,
+            0.5094159996588132,
+            0.25324999978693086,
+            0.13675000036528218,
+            0.1314999999522115,
+            0.48116700008904445,
+            0.2639999997882114,
+            565248,
             122880,
-            557056,
+            565248,
             0
         ]
     },
@@ -1900,77 +1902,77 @@
         "rows": 4096,
         "M": 1,
         "with_indexes": {
-            "storage_index_pct": 10.76923076923077,
-            "table_bytes": 1064960,
+            "storage_index_pct": 10.526315789473683,
+            "table_bytes": 1089536,
             "index_bytes": 114688,
-            "select_cold_ms": 0.08416599985139328,
-            "select_hot_ms": 0.07579099974464043,
-            "insert_cold_ms": 0.4745000001094013,
-            "insert_hot_ms": 0.25716700019984273,
+            "select_cold_ms": 0.0910420003492618,
+            "select_hot_ms": 0.061499999901570845,
+            "insert_cold_ms": 0.49775000024965266,
+            "insert_hot_ms": 0.24808300031509134,
             "select_samples_cold_ms": [
-                0.08416599985139328
+                0.0910420003492618
             ],
             "select_samples_hot_ms": [
-                0.07579099974464043
+                0.061499999901570845
             ],
             "insert_samples_cold_ms": [
-                0.4745000001094013
+                0.49775000024965266
             ],
             "insert_samples_hot_ms": [
-                0.25716700019984273
+                0.24808300031509134
             ],
             "select_explain": [
-                "Aggregate  (cost=8.30..8.31 rows=1 width=8)",
+                "Aggregate  (cost=8.50..8.51 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.28..8.30 rows=1 width=0)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.28..8.48 rows=10 width=0)",
                 "        Output: id",
-                "        Index Cond: (bench_data.id = 2048)"
+                "        Index Cond: ((bench_data.id >= '2048'::smallint) AND (bench_data.id <= '2057'::smallint))"
             ]
         },
         "without_indexes": {
-            "table_bytes": 1064960,
+            "table_bytes": 1089536,
             "index_bytes": 0,
-            "select_cold_ms": 0.23824999971111538,
-            "select_hot_ms": 0.24533299983886536,
+            "select_cold_ms": 0.25087499989240314,
+            "select_hot_ms": 0.23250000003827154,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.6811250000282598,
-            "insert_hot_ms": 0.42325000003984314,
+            "insert_cold_ms": 0.7579170001008606,
+            "insert_hot_ms": 0.40670799990039086,
             "select_samples_cold_ms": [
-                0.23824999971111538
+                0.25087499989240314
             ],
             "select_samples_hot_ms": [
-                0.24533299983886536
+                0.23250000003827154
             ],
             "insert_samples_cold_ms": [
-                0.6811250000282598
+                0.7579170001008606
             ],
             "insert_samples_hot_ms": [
-                0.42325000003984314
+                0.40670799990039086
             ],
             "select_explain": [
-                "Aggregate  (cost=176.20..176.21 rows=1 width=8)",
+                "Aggregate  (cost=189.47..189.47 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..176.20 rows=1 width=0)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..189.44 rows=10 width=0)",
                 "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 2048)"
+                "        Filter: ((bench_data_noidx.id >= '2048'::smallint) AND (bench_data_noidx.id <= '2057'::smallint))"
             ]
         },
         "tuple": [
             12,
             4096,
             1,
-            10.76923076923077,
-            0.08416599985139328,
-            0.07579099974464043,
-            0.4745000001094013,
-            0.25716700019984273,
-            0.23824999971111538,
-            0.24533299983886536,
-            0.6811250000282598,
-            0.42325000003984314,
-            1064960,
+            10.526315789473683,
+            0.0910420003492618,
+            0.061499999901570845,
+            0.49775000024965266,
+            0.24808300031509134,
+            0.25087499989240314,
+            0.23250000003827154,
+            0.7579170001008606,
+            0.40670799990039086,
+            1089536,
             114688,
-            1064960,
+            1089536,
             0
         ]
     },
@@ -1979,77 +1981,77 @@
         "rows": 4096,
         "M": 2,
         "with_indexes": {
-            "storage_index_pct": 17.692307692307693,
-            "table_bytes": 1064960,
+            "storage_index_pct": 17.293233082706767,
+            "table_bytes": 1089536,
             "index_bytes": 188416,
-            "select_cold_ms": 0.08166699990397319,
-            "select_hot_ms": 0.0691669997650024,
-            "insert_cold_ms": 0.47404199995071394,
-            "insert_hot_ms": 0.2658339999470627,
+            "select_cold_ms": 0.09133399998972891,
+            "select_hot_ms": 0.06287499991231016,
+            "insert_cold_ms": 0.49804199989011977,
+            "insert_hot_ms": 0.25358299990330124,
             "select_samples_cold_ms": [
-                0.08166699990397319
+                0.09133399998972891
             ],
             "select_samples_hot_ms": [
-                0.0691669997650024
+                0.06287499991231016
             ],
             "insert_samples_cold_ms": [
-                0.47404199995071394
+                0.49804199989011977
             ],
             "insert_samples_hot_ms": [
-                0.2658339999470627
+                0.25358299990330124
             ],
             "select_explain": [
-                "Aggregate  (cost=8.30..8.31 rows=1 width=8)",
+                "Aggregate  (cost=8.50..8.51 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.28..8.30 rows=1 width=0)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.28..8.48 rows=10 width=0)",
                 "        Output: id",
-                "        Index Cond: (bench_data.id = 2048)"
+                "        Index Cond: ((bench_data.id >= '2048'::smallint) AND (bench_data.id <= '2057'::smallint))"
             ]
         },
         "without_indexes": {
-            "table_bytes": 1064960,
+            "table_bytes": 1089536,
             "index_bytes": 0,
-            "select_cold_ms": 0.24191699958464596,
-            "select_hot_ms": 0.23233299998537404,
+            "select_cold_ms": 0.29108399985489086,
+            "select_hot_ms": 0.23966699973243522,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.7963749999362335,
-            "insert_hot_ms": 0.41804200009210035,
+            "insert_cold_ms": 0.7337500001085573,
+            "insert_hot_ms": 0.36220800029695965,
             "select_samples_cold_ms": [
-                0.24191699958464596
+                0.29108399985489086
             ],
             "select_samples_hot_ms": [
-                0.23233299998537404
+                0.23966699973243522
             ],
             "insert_samples_cold_ms": [
-                0.7963749999362335
+                0.7337500001085573
             ],
             "insert_samples_hot_ms": [
-                0.41804200009210035
+                0.36220800029695965
             ],
             "select_explain": [
-                "Aggregate  (cost=176.20..176.21 rows=1 width=8)",
+                "Aggregate  (cost=189.47..189.47 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..176.20 rows=1 width=0)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..189.44 rows=10 width=0)",
                 "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 2048)"
+                "        Filter: ((bench_data_noidx.id >= '2048'::smallint) AND (bench_data_noidx.id <= '2057'::smallint))"
             ]
         },
         "tuple": [
             12,
             4096,
             2,
-            17.692307692307693,
-            0.08166699990397319,
-            0.0691669997650024,
-            0.47404199995071394,
-            0.2658339999470627,
-            0.24191699958464596,
-            0.23233299998537404,
-            0.7963749999362335,
-            0.41804200009210035,
-            1064960,
+            17.293233082706767,
+            0.09133399998972891,
+            0.06287499991231016,
+            0.49804199989011977,
+            0.25358299990330124,
+            0.29108399985489086,
+            0.23966699973243522,
+            0.7337500001085573,
+            0.36220800029695965,
+            1089536,
             188416,
-            1064960,
+            1089536,
             0
         ]
     },
@@ -2058,77 +2060,77 @@
         "rows": 8192,
         "M": 1,
         "with_indexes": {
-            "storage_index_pct": 9.84251968503937,
-            "table_bytes": 2080768,
+            "storage_index_pct": 9.578544061302683,
+            "table_bytes": 2138112,
             "index_bytes": 204800,
-            "select_cold_ms": 0.09300000010625808,
-            "select_hot_ms": 0.0804170003902982,
-            "insert_cold_ms": 0.5026670000916056,
-            "insert_hot_ms": 0.259584000104951,
+            "select_cold_ms": 0.1409159999639087,
+            "select_hot_ms": 0.154707999627135,
+            "insert_cold_ms": 0.58895800020764,
+            "insert_hot_ms": 0.38795799991930835,
             "select_samples_cold_ms": [
-                0.09300000010625808
+                0.1409159999639087
             ],
             "select_samples_hot_ms": [
-                0.0804170003902982
+                0.154707999627135
             ],
             "insert_samples_cold_ms": [
-                0.5026670000916056
+                0.58895800020764
             ],
             "insert_samples_hot_ms": [
-                0.259584000104951
+                0.38795799991930835
             ],
             "select_explain": [
-                "Aggregate  (cost=8.30..8.31 rows=1 width=8)",
+                "Aggregate  (cost=8.51..8.52 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.28..8.30 rows=1 width=0)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.28..8.48 rows=10 width=0)",
                 "        Output: id",
-                "        Index Cond: (bench_data.id = 4096)"
+                "        Index Cond: ((bench_data.id >= '4096'::smallint) AND (bench_data.id <= '4105'::smallint))"
             ]
         },
         "without_indexes": {
-            "table_bytes": 2080768,
+            "table_bytes": 2138112,
             "index_bytes": 0,
-            "select_cold_ms": 0.3934169999411097,
-            "select_hot_ms": 0.37825000026714406,
+            "select_cold_ms": 0.428999999712687,
+            "select_hot_ms": 0.4104579998056579,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 1.126457999816921,
-            "insert_hot_ms": 0.6035829997017572,
+            "insert_cold_ms": 1.2158749996160623,
+            "insert_hot_ms": 0.7008329998825502,
             "select_samples_cold_ms": [
-                0.3934169999411097
+                0.428999999712687
             ],
             "select_samples_hot_ms": [
-                0.37825000026714406
+                0.4104579998056579
             ],
             "insert_samples_cold_ms": [
-                1.126457999816921
+                1.2158749996160623
             ],
             "insert_samples_hot_ms": [
-                0.6035829997017572
+                0.7008329998825502
             ],
             "select_explain": [
-                "Aggregate  (cost=351.40..351.41 rows=1 width=8)",
+                "Aggregate  (cost=378.90..378.91 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..351.40 rows=1 width=0)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..378.88 rows=10 width=0)",
                 "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 4096)"
+                "        Filter: ((bench_data_noidx.id >= '4096'::smallint) AND (bench_data_noidx.id <= '4105'::smallint))"
             ]
         },
         "tuple": [
             13,
             8192,
             1,
-            9.84251968503937,
-            0.09300000010625808,
-            0.0804170003902982,
-            0.5026670000916056,
-            0.259584000104951,
-            0.3934169999411097,
-            0.37825000026714406,
-            1.126457999816921,
-            0.6035829997017572,
-            2080768,
+            9.578544061302683,
+            0.1409159999639087,
+            0.154707999627135,
+            0.58895800020764,
+            0.38795799991930835,
+            0.428999999712687,
+            0.4104579998056579,
+            1.2158749996160623,
+            0.7008329998825502,
+            2138112,
             204800,
-            2080768,
+            2138112,
             0
         ]
     },
@@ -2137,472 +2139,472 @@
         "rows": 8192,
         "M": 2,
         "with_indexes": {
-            "storage_index_pct": 14.566929133858267,
-            "table_bytes": 2080768,
+            "storage_index_pct": 14.17624521072797,
+            "table_bytes": 2138112,
             "index_bytes": 303104,
-            "select_cold_ms": 0.08466700001008576,
-            "select_hot_ms": 0.07333300027312362,
-            "insert_cold_ms": 0.54516699992746,
-            "insert_hot_ms": 0.24949999988166383,
+            "select_cold_ms": 0.094833999810362,
+            "select_hot_ms": 0.06499999972220394,
+            "insert_cold_ms": 0.5354579998311237,
+            "insert_hot_ms": 0.23833400018702378,
             "select_samples_cold_ms": [
-                0.08466700001008576
+                0.094833999810362
             ],
             "select_samples_hot_ms": [
-                0.07333300027312362
+                0.06499999972220394
             ],
             "insert_samples_cold_ms": [
-                0.54516699992746
+                0.5354579998311237
             ],
             "insert_samples_hot_ms": [
-                0.24949999988166383
+                0.23833400018702378
             ],
             "select_explain": [
-                "Aggregate  (cost=8.30..8.31 rows=1 width=8)",
+                "Aggregate  (cost=8.51..8.52 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.28..8.30 rows=1 width=0)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.28..8.48 rows=10 width=0)",
                 "        Output: id",
-                "        Index Cond: (bench_data.id = 4096)"
+                "        Index Cond: ((bench_data.id >= '4096'::smallint) AND (bench_data.id <= '4105'::smallint))"
             ]
         },
         "without_indexes": {
-            "table_bytes": 2080768,
+            "table_bytes": 2138112,
             "index_bytes": 0,
-            "select_cold_ms": 0.5431250001493027,
-            "select_hot_ms": 0.4589159998431569,
+            "select_cold_ms": 0.42904200017801486,
+            "select_hot_ms": 0.39733400035402155,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 1.0580419998404977,
-            "insert_hot_ms": 0.5772919998889847,
+            "insert_cold_ms": 1.1256249999860302,
+            "insert_hot_ms": 0.5847080001331051,
             "select_samples_cold_ms": [
-                0.5431250001493027
+                0.42904200017801486
             ],
             "select_samples_hot_ms": [
-                0.4589159998431569
+                0.39733400035402155
             ],
             "insert_samples_cold_ms": [
-                1.0580419998404977
+                1.1256249999860302
             ],
             "insert_samples_hot_ms": [
-                0.5772919998889847
+                0.5847080001331051
             ],
             "select_explain": [
-                "Aggregate  (cost=351.40..351.41 rows=1 width=8)",
+                "Aggregate  (cost=378.90..378.91 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..351.40 rows=1 width=0)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..378.88 rows=10 width=0)",
                 "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 4096)"
+                "        Filter: ((bench_data_noidx.id >= '4096'::smallint) AND (bench_data_noidx.id <= '4105'::smallint))"
             ]
         },
         "tuple": [
             13,
             8192,
             2,
-            14.566929133858267,
-            0.08466700001008576,
-            0.07333300027312362,
-            0.54516699992746,
-            0.24949999988166383,
-            0.5431250001493027,
-            0.4589159998431569,
-            1.0580419998404977,
-            0.5772919998889847,
-            2080768,
+            14.17624521072797,
+            0.094833999810362,
+            0.06499999972220394,
+            0.5354579998311237,
+            0.23833400018702378,
+            0.42904200017801486,
+            0.39733400035402155,
+            1.1256249999860302,
+            0.5847080001331051,
+            2138112,
             303104,
-            2080768,
+            2138112,
             0
         ]
     },
     {
         "N": 14,
         "rows": 16384,
-        "M": 1,
-        "with_indexes": {
-            "storage_index_pct": 9.362549800796813,
-            "table_bytes": 4112384,
-            "index_bytes": 385024,
-            "select_cold_ms": 0.10470899997017113,
-            "select_hot_ms": 0.0877089996720315,
-            "insert_cold_ms": 0.5270840001685428,
-            "insert_hot_ms": 0.24895799970181542,
-            "select_samples_cold_ms": [
-                0.10470899997017113
-            ],
-            "select_samples_hot_ms": [
-                0.0877089996720315
-            ],
-            "insert_samples_cold_ms": [
-                0.5270840001685428
-            ],
-            "insert_samples_hot_ms": [
-                0.24895799970181542
-            ],
-            "select_explain": [
-                "Aggregate  (cost=8.30..8.31 rows=1 width=8)",
-                "  Output: count(*)",
-                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.29..8.30 rows=1 width=0)",
-                "        Output: id",
-                "        Index Cond: (bench_data.id = 8192)"
-            ]
-        },
-        "without_indexes": {
-            "table_bytes": 4112384,
-            "index_bytes": 0,
-            "select_cold_ms": 0.7499999996980478,
-            "select_hot_ms": 0.6675409999843396,
-            "storage_index_pct": 0.0,
-            "insert_cold_ms": 1.749957999891194,
-            "insert_hot_ms": 0.9257920000891318,
-            "select_samples_cold_ms": [
-                0.7499999996980478
-            ],
-            "select_samples_hot_ms": [
-                0.6675409999843396
-            ],
-            "insert_samples_cold_ms": [
-                1.749957999891194
-            ],
-            "insert_samples_hot_ms": [
-                0.9257920000891318
-            ],
-            "select_explain": [
-                "Aggregate  (cost=701.80..701.81 rows=1 width=8)",
-                "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..701.80 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 8192)"
-            ]
-        },
-        "tuple": [
-            14,
-            16384,
-            1,
-            9.362549800796813,
-            0.10470899997017113,
-            0.0877089996720315,
-            0.5270840001685428,
-            0.24895799970181542,
-            0.7499999996980478,
-            0.6675409999843396,
-            1.749957999891194,
-            0.9257920000891318,
-            4112384,
-            385024,
-            4112384,
-            0
-        ]
-    },
-    {
-        "N": 14,
-        "rows": 16384,
-        "M": 2,
-        "with_indexes": {
-            "storage_index_pct": 13.147410358565736,
-            "table_bytes": 4112384,
-            "index_bytes": 540672,
-            "select_cold_ms": 0.09691600007499801,
-            "select_hot_ms": 0.0849160001052951,
-            "insert_cold_ms": 0.581333000354789,
-            "insert_hot_ms": 0.28979100034121075,
-            "select_samples_cold_ms": [
-                0.09691600007499801
-            ],
-            "select_samples_hot_ms": [
-                0.0849160001052951
-            ],
-            "insert_samples_cold_ms": [
-                0.581333000354789
-            ],
-            "insert_samples_hot_ms": [
-                0.28979100034121075
-            ],
-            "select_explain": [
-                "Aggregate  (cost=8.30..8.31 rows=1 width=8)",
-                "  Output: count(*)",
-                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.29..8.30 rows=1 width=0)",
-                "        Output: id",
-                "        Index Cond: (bench_data.id = 8192)"
-            ]
-        },
-        "without_indexes": {
-            "table_bytes": 4112384,
-            "index_bytes": 0,
-            "select_cold_ms": 0.7310840001082397,
-            "select_hot_ms": 0.6730409995725495,
-            "storage_index_pct": 0.0,
-            "insert_cold_ms": 1.7061670000657614,
-            "insert_hot_ms": 0.9663750001891458,
-            "select_samples_cold_ms": [
-                0.7310840001082397
-            ],
-            "select_samples_hot_ms": [
-                0.6730409995725495
-            ],
-            "insert_samples_cold_ms": [
-                1.7061670000657614
-            ],
-            "insert_samples_hot_ms": [
-                0.9663750001891458
-            ],
-            "select_explain": [
-                "Aggregate  (cost=701.80..701.81 rows=1 width=8)",
-                "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..701.80 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 8192)"
-            ]
-        },
-        "tuple": [
-            14,
-            16384,
-            2,
-            13.147410358565736,
-            0.09691600007499801,
-            0.0849160001052951,
-            0.581333000354789,
-            0.28979100034121075,
-            0.7310840001082397,
-            0.6730409995725495,
-            1.7061670000657614,
-            0.9663750001891458,
-            4112384,
-            540672,
-            4112384,
-            0
-        ]
-    },
-    {
-        "N": 15,
-        "rows": 32768,
-        "M": 1,
-        "with_indexes": {
-            "storage_index_pct": 9.218436873747494,
-            "table_bytes": 8175616,
-            "index_bytes": 753664,
-            "select_cold_ms": 0.09758300029716338,
-            "select_hot_ms": 0.08316599996760488,
-            "insert_cold_ms": 1.3031250000494765,
-            "insert_hot_ms": 0.3809579998232948,
-            "select_samples_cold_ms": [
-                0.09758300029716338
-            ],
-            "select_samples_hot_ms": [
-                0.08316599996760488
-            ],
-            "insert_samples_cold_ms": [
-                1.3031250000494765
-            ],
-            "insert_samples_hot_ms": [
-                0.3809579998232948
-            ],
-            "select_explain": [
-                "Aggregate  (cost=8.31..8.32 rows=1 width=8)",
-                "  Output: count(*)",
-                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.29..8.30 rows=1 width=0)",
-                "        Output: id",
-                "        Index Cond: (bench_data.id = 16384)"
-            ]
-        },
-        "without_indexes": {
-            "table_bytes": 8175616,
-            "index_bytes": 0,
-            "select_cold_ms": 1.4085830002841249,
-            "select_hot_ms": 1.2839579999308626,
-            "storage_index_pct": 0.0,
-            "insert_cold_ms": 3.099833000305807,
-            "insert_hot_ms": 1.8783330001497234,
-            "select_samples_cold_ms": [
-                1.4085830002841249
-            ],
-            "select_samples_hot_ms": [
-                1.2839579999308626
-            ],
-            "insert_samples_cold_ms": [
-                3.099833000305807
-            ],
-            "insert_samples_hot_ms": [
-                1.8783330001497234
-            ],
-            "select_explain": [
-                "Aggregate  (cost=1402.60..1402.61 rows=1 width=8)",
-                "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..1402.60 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 16384)"
-            ]
-        },
-        "tuple": [
-            15,
-            32768,
-            1,
-            9.218436873747494,
-            0.09758300029716338,
-            0.08316599996760488,
-            1.3031250000494765,
-            0.3809579998232948,
-            1.4085830002841249,
-            1.2839579999308626,
-            3.099833000305807,
-            1.8783330001497234,
-            8175616,
-            753664,
-            8175616,
-            0
-        ]
-    },
-    {
-        "N": 15,
-        "rows": 32768,
-        "M": 2,
-        "with_indexes": {
-            "storage_index_pct": 12.424849699398797,
-            "table_bytes": 8175616,
-            "index_bytes": 1015808,
-            "select_cold_ms": 0.09316700015915558,
-            "select_hot_ms": 0.08362499966096948,
-            "insert_cold_ms": 0.5839999998897838,
-            "insert_hot_ms": 0.35862499998984276,
-            "select_samples_cold_ms": [
-                0.09316700015915558
-            ],
-            "select_samples_hot_ms": [
-                0.08362499966096948
-            ],
-            "insert_samples_cold_ms": [
-                0.5839999998897838
-            ],
-            "insert_samples_hot_ms": [
-                0.35862499998984276
-            ],
-            "select_explain": [
-                "Aggregate  (cost=8.31..8.32 rows=1 width=8)",
-                "  Output: count(*)",
-                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.29..8.30 rows=1 width=0)",
-                "        Output: id",
-                "        Index Cond: (bench_data.id = 16384)"
-            ]
-        },
-        "without_indexes": {
-            "table_bytes": 8175616,
-            "index_bytes": 0,
-            "select_cold_ms": 1.386082999943028,
-            "select_hot_ms": 1.2810839998564916,
-            "storage_index_pct": 0.0,
-            "insert_cold_ms": 2.996125000208849,
-            "insert_hot_ms": 1.8202920000476297,
-            "select_samples_cold_ms": [
-                1.386082999943028
-            ],
-            "select_samples_hot_ms": [
-                1.2810839998564916
-            ],
-            "insert_samples_cold_ms": [
-                2.996125000208849
-            ],
-            "insert_samples_hot_ms": [
-                1.8202920000476297
-            ],
-            "select_explain": [
-                "Aggregate  (cost=1402.60..1402.61 rows=1 width=8)",
-                "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..1402.60 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 16384)"
-            ]
-        },
-        "tuple": [
-            15,
-            32768,
-            2,
-            12.424849699398797,
-            0.09316700015915558,
-            0.08362499966096948,
-            0.5839999998897838,
-            0.35862499998984276,
-            1.386082999943028,
-            1.2810839998564916,
-            2.996125000208849,
-            1.8202920000476297,
-            8175616,
-            1015808,
-            8175616,
-            0
-        ]
-    },
-    {
-        "N": 16,
-        "rows": 65536,
         "M": 1,
         "with_indexes": {
             "storage_index_pct": 9.090909090909092,
-            "table_bytes": 16310272,
-            "index_bytes": 1482752,
-            "select_cold_ms": 0.09612500025468762,
-            "select_hot_ms": 0.0977089998741576,
-            "insert_cold_ms": 0.5966249996163242,
-            "insert_hot_ms": 0.42341700009274064,
+            "table_bytes": 4235264,
+            "index_bytes": 385024,
+            "select_cold_ms": 0.09141700002146536,
+            "select_hot_ms": 0.06437499996536644,
+            "insert_cold_ms": 0.513708000198676,
+            "insert_hot_ms": 0.25029200014614617,
             "select_samples_cold_ms": [
-                0.09612500025468762
+                0.09141700002146536
             ],
             "select_samples_hot_ms": [
-                0.0977089998741576
+                0.06437499996536644
             ],
             "insert_samples_cold_ms": [
-                0.5966249996163242
+                0.513708000198676
             ],
             "insert_samples_hot_ms": [
-                0.42341700009274064
+                0.25029200014614617
             ],
             "select_explain": [
-                "Aggregate  (cost=8.31..8.32 rows=1 width=8)",
+                "Aggregate  (cost=8.51..8.52 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.29..8.31 rows=1 width=0)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.29..8.48 rows=10 width=0)",
                 "        Output: id",
-                "        Index Cond: (bench_data.id = 32768)"
+                "        Index Cond: ((bench_data.id >= '8192'::smallint) AND (bench_data.id <= '8201'::smallint))"
             ]
         },
         "without_indexes": {
-            "table_bytes": 16310272,
+            "table_bytes": 4235264,
             "index_bytes": 0,
-            "select_cold_ms": 3.4860840000874305,
-            "select_hot_ms": 2.9985420001139573,
+            "select_cold_ms": 0.9181670002362807,
+            "select_hot_ms": 0.6935420001354942,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 5.484791000071709,
-            "insert_hot_ms": 4.09608300014952,
+            "insert_cold_ms": 1.644040999963181,
+            "insert_hot_ms": 0.9689169996818237,
             "select_samples_cold_ms": [
-                3.4860840000874305
+                0.9181670002362807
             ],
             "select_samples_hot_ms": [
-                2.9985420001139573
+                0.6935420001354942
             ],
             "insert_samples_cold_ms": [
-                5.484791000071709
+                1.644040999963181
             ],
             "insert_samples_hot_ms": [
-                4.09608300014952
+                0.9689169996818237
             ],
             "select_explain": [
-                "Aggregate  (cost=2805.20..2805.21 rows=1 width=8)",
+                "Aggregate  (cost=757.78..757.79 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..2805.20 rows=1 width=0)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..757.76 rows=10 width=0)",
                 "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 32768)"
+                "        Filter: ((bench_data_noidx.id >= '8192'::smallint) AND (bench_data_noidx.id <= '8201'::smallint))"
+            ]
+        },
+        "tuple": [
+            14,
+            16384,
+            1,
+            9.090909090909092,
+            0.09141700002146536,
+            0.06437499996536644,
+            0.513708000198676,
+            0.25029200014614617,
+            0.9181670002362807,
+            0.6935420001354942,
+            1.644040999963181,
+            0.9689169996818237,
+            4235264,
+            385024,
+            4235264,
+            0
+        ]
+    },
+    {
+        "N": 14,
+        "rows": 16384,
+        "M": 2,
+        "with_indexes": {
+            "storage_index_pct": 12.76595744680851,
+            "table_bytes": 4235264,
+            "index_bytes": 540672,
+            "select_cold_ms": 0.10154199981116108,
+            "select_hot_ms": 0.07466599981853506,
+            "insert_cold_ms": 0.5759579998994013,
+            "insert_hot_ms": 0.25374999995619874,
+            "select_samples_cold_ms": [
+                0.10154199981116108
+            ],
+            "select_samples_hot_ms": [
+                0.07466599981853506
+            ],
+            "insert_samples_cold_ms": [
+                0.5759579998994013
+            ],
+            "insert_samples_hot_ms": [
+                0.25374999995619874
+            ],
+            "select_explain": [
+                "Aggregate  (cost=8.51..8.52 rows=1 width=8)",
+                "  Output: count(*)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.29..8.48 rows=10 width=0)",
+                "        Output: id",
+                "        Index Cond: ((bench_data.id >= '8192'::smallint) AND (bench_data.id <= '8201'::smallint))"
+            ]
+        },
+        "without_indexes": {
+            "table_bytes": 4235264,
+            "index_bytes": 0,
+            "select_cold_ms": 0.9088750002774759,
+            "select_hot_ms": 0.7252499999594875,
+            "storage_index_pct": 0.0,
+            "insert_cold_ms": 1.6969579996839457,
+            "insert_hot_ms": 0.9857079999164853,
+            "select_samples_cold_ms": [
+                0.9088750002774759
+            ],
+            "select_samples_hot_ms": [
+                0.7252499999594875
+            ],
+            "insert_samples_cold_ms": [
+                1.6969579996839457
+            ],
+            "insert_samples_hot_ms": [
+                0.9857079999164853
+            ],
+            "select_explain": [
+                "Aggregate  (cost=757.78..757.79 rows=1 width=8)",
+                "  Output: count(*)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..757.76 rows=10 width=0)",
+                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
+                "        Filter: ((bench_data_noidx.id >= '8192'::smallint) AND (bench_data_noidx.id <= '8201'::smallint))"
+            ]
+        },
+        "tuple": [
+            14,
+            16384,
+            2,
+            12.76595744680851,
+            0.10154199981116108,
+            0.07466599981853506,
+            0.5759579998994013,
+            0.25374999995619874,
+            0.9088750002774759,
+            0.7252499999594875,
+            1.6969579996839457,
+            0.9857079999164853,
+            4235264,
+            540672,
+            4235264,
+            0
+        ]
+    },
+    {
+        "N": 15,
+        "rows": 32768,
+        "M": 1,
+        "with_indexes": {
+            "storage_index_pct": 8.940719144800777,
+            "table_bytes": 8429568,
+            "index_bytes": 753664,
+            "select_cold_ms": 0.10741699998106924,
+            "select_hot_ms": 0.06908399973326596,
+            "insert_cold_ms": 0.615291000030993,
+            "insert_hot_ms": 0.33970799995586276,
+            "select_samples_cold_ms": [
+                0.10741699998106924
+            ],
+            "select_samples_hot_ms": [
+                0.06908399973326596
+            ],
+            "insert_samples_cold_ms": [
+                0.615291000030993
+            ],
+            "insert_samples_hot_ms": [
+                0.33970799995586276
+            ],
+            "select_explain": [
+                "Aggregate  (cost=8.51..8.52 rows=1 width=8)",
+                "  Output: count(*)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.29..8.49 rows=10 width=0)",
+                "        Output: id",
+                "        Index Cond: ((bench_data.id >= '16384'::smallint) AND (bench_data.id <= '16393'::smallint))"
+            ]
+        },
+        "without_indexes": {
+            "table_bytes": 8429568,
+            "index_bytes": 0,
+            "select_cold_ms": 1.431582999884995,
+            "select_hot_ms": 1.3646659999722033,
+            "storage_index_pct": 0.0,
+            "insert_cold_ms": 2.4127920000864833,
+            "insert_hot_ms": 1.9157910001013079,
+            "select_samples_cold_ms": [
+                1.431582999884995
+            ],
+            "select_samples_hot_ms": [
+                1.3646659999722033
+            ],
+            "insert_samples_cold_ms": [
+                2.4127920000864833
+            ],
+            "insert_samples_hot_ms": [
+                1.9157910001013079
+            ],
+            "select_explain": [
+                "Aggregate  (cost=1515.55..1515.56 rows=1 width=8)",
+                "  Output: count(*)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..1515.52 rows=10 width=0)",
+                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
+                "        Filter: ((bench_data_noidx.id >= '16384'::smallint) AND (bench_data_noidx.id <= '16393'::smallint))"
+            ]
+        },
+        "tuple": [
+            15,
+            32768,
+            1,
+            8.940719144800777,
+            0.10741699998106924,
+            0.06908399973326596,
+            0.615291000030993,
+            0.33970799995586276,
+            1.431582999884995,
+            1.3646659999722033,
+            2.4127920000864833,
+            1.9157910001013079,
+            8429568,
+            753664,
+            8429568,
+            0
+        ]
+    },
+    {
+        "N": 15,
+        "rows": 32768,
+        "M": 2,
+        "with_indexes": {
+            "storage_index_pct": 12.050534499514091,
+            "table_bytes": 8429568,
+            "index_bytes": 1015808,
+            "select_cold_ms": 0.12470900037442334,
+            "select_hot_ms": 0.07887499987191404,
+            "insert_cold_ms": 0.7220420002340688,
+            "insert_hot_ms": 0.38312500009851647,
+            "select_samples_cold_ms": [
+                0.12470900037442334
+            ],
+            "select_samples_hot_ms": [
+                0.07887499987191404
+            ],
+            "insert_samples_cold_ms": [
+                0.7220420002340688
+            ],
+            "insert_samples_hot_ms": [
+                0.38312500009851647
+            ],
+            "select_explain": [
+                "Aggregate  (cost=8.51..8.52 rows=1 width=8)",
+                "  Output: count(*)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.29..8.49 rows=10 width=0)",
+                "        Output: id",
+                "        Index Cond: ((bench_data.id >= '16384'::smallint) AND (bench_data.id <= '16393'::smallint))"
+            ]
+        },
+        "without_indexes": {
+            "table_bytes": 8429568,
+            "index_bytes": 0,
+            "select_cold_ms": 2.595333000044775,
+            "select_hot_ms": 1.8371250002928718,
+            "storage_index_pct": 0.0,
+            "insert_cold_ms": 3.826292000212561,
+            "insert_hot_ms": 2.528583000184881,
+            "select_samples_cold_ms": [
+                2.595333000044775
+            ],
+            "select_samples_hot_ms": [
+                1.8371250002928718
+            ],
+            "insert_samples_cold_ms": [
+                3.826292000212561
+            ],
+            "insert_samples_hot_ms": [
+                2.528583000184881
+            ],
+            "select_explain": [
+                "Aggregate  (cost=1515.55..1515.56 rows=1 width=8)",
+                "  Output: count(*)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..1515.52 rows=10 width=0)",
+                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
+                "        Filter: ((bench_data_noidx.id >= '16384'::smallint) AND (bench_data_noidx.id <= '16393'::smallint))"
+            ]
+        },
+        "tuple": [
+            15,
+            32768,
+            2,
+            12.050534499514091,
+            0.12470900037442334,
+            0.07887499987191404,
+            0.7220420002340688,
+            0.38312500009851647,
+            2.595333000044775,
+            1.8371250002928718,
+            3.826292000212561,
+            2.528583000184881,
+            8429568,
+            1015808,
+            8429568,
+            0
+        ]
+    },
+    {
+        "N": 16,
+        "rows": 65536,
+        "M": 1,
+        "with_indexes": {
+            "storage_index_pct": 8.81636629322942,
+            "table_bytes": 16818176,
+            "index_bytes": 1482752,
+            "select_cold_ms": 0.11087499979112181,
+            "select_hot_ms": 0.0915000000532018,
+            "insert_cold_ms": 0.9389159999955154,
+            "insert_hot_ms": 0.5327920002855535,
+            "select_samples_cold_ms": [
+                0.11087499979112181
+            ],
+            "select_samples_hot_ms": [
+                0.0915000000532018
+            ],
+            "insert_samples_cold_ms": [
+                0.9389159999955154
+            ],
+            "insert_samples_hot_ms": [
+                0.5327920002855535
+            ],
+            "select_explain": [
+                "Aggregate  (cost=8.51..8.52 rows=1 width=8)",
+                "  Output: count(*)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.29..8.49 rows=10 width=0)",
+                "        Output: id",
+                "        Index Cond: ((bench_data.id >= 32768) AND (bench_data.id <= 32777))"
+            ]
+        },
+        "without_indexes": {
+            "table_bytes": 16818176,
+            "index_bytes": 0,
+            "select_cold_ms": 4.2934590001095785,
+            "select_hot_ms": 4.578209000101197,
+            "storage_index_pct": 0.0,
+            "insert_cold_ms": 5.423499999778869,
+            "insert_hot_ms": 4.531874999884167,
+            "select_samples_cold_ms": [
+                4.2934590001095785
+            ],
+            "select_samples_hot_ms": [
+                4.578209000101197
+            ],
+            "insert_samples_cold_ms": [
+                5.423499999778869
+            ],
+            "insert_samples_hot_ms": [
+                4.531874999884167
+            ],
+            "select_explain": [
+                "Aggregate  (cost=3031.07..3031.08 rows=1 width=8)",
+                "  Output: count(*)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..3031.04 rows=10 width=0)",
+                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
+                "        Filter: ((bench_data_noidx.id >= 32768) AND (bench_data_noidx.id <= 32777))"
             ]
         },
         "tuple": [
             16,
             65536,
             1,
-            9.090909090909092,
-            0.09612500025468762,
-            0.0977089998741576,
-            0.5966249996163242,
-            0.42341700009274064,
-            3.4860840000874305,
-            2.9985420001139573,
-            5.484791000071709,
-            4.09608300014952,
-            16310272,
+            8.81636629322942,
+            0.11087499979112181,
+            0.0915000000532018,
+            0.9389159999955154,
+            0.5327920002855535,
+            4.2934590001095785,
+            4.578209000101197,
+            5.423499999778869,
+            4.531874999884167,
+            16818176,
             1482752,
-            16310272,
+            16818176,
             0
         ]
     },
@@ -2611,77 +2613,77 @@
         "rows": 65536,
         "M": 2,
         "with_indexes": {
-            "storage_index_pct": 12.004018081366148,
-            "table_bytes": 16310272,
+            "storage_index_pct": 11.64150024354603,
+            "table_bytes": 16818176,
             "index_bytes": 1957888,
-            "select_cold_ms": 0.09012500004246249,
-            "select_hot_ms": 0.058958000408892985,
-            "insert_cold_ms": 0.5921249999119027,
-            "insert_hot_ms": 0.26145800029553357,
+            "select_cold_ms": 0.12258399965503486,
+            "select_hot_ms": 0.0989580003079027,
+            "insert_cold_ms": 0.6458330003624724,
+            "insert_hot_ms": 0.23912500000733417,
             "select_samples_cold_ms": [
-                0.09012500004246249
+                0.12258399965503486
             ],
             "select_samples_hot_ms": [
-                0.058958000408892985
+                0.0989580003079027
             ],
             "insert_samples_cold_ms": [
-                0.5921249999119027
+                0.6458330003624724
             ],
             "insert_samples_hot_ms": [
-                0.26145800029553357
+                0.23912500000733417
             ],
             "select_explain": [
-                "Aggregate  (cost=8.31..8.32 rows=1 width=8)",
+                "Aggregate  (cost=8.51..8.52 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.29..8.31 rows=1 width=0)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.29..8.49 rows=10 width=0)",
                 "        Output: id",
-                "        Index Cond: (bench_data.id = 32768)"
+                "        Index Cond: ((bench_data.id >= 32768) AND (bench_data.id <= 32777))"
             ]
         },
         "without_indexes": {
-            "table_bytes": 16310272,
+            "table_bytes": 16818176,
             "index_bytes": 0,
-            "select_cold_ms": 3.2452919999741425,
-            "select_hot_ms": 3.10254200030613,
+            "select_cold_ms": 3.499708000163082,
+            "select_hot_ms": 3.4026250000351865,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 5.437208999865106,
-            "insert_hot_ms": 3.583249999792315,
+            "insert_cold_ms": 5.318541999713489,
+            "insert_hot_ms": 4.1135419996862765,
             "select_samples_cold_ms": [
-                3.2452919999741425
+                3.499708000163082
             ],
             "select_samples_hot_ms": [
-                3.10254200030613
+                3.4026250000351865
             ],
             "insert_samples_cold_ms": [
-                5.437208999865106
+                5.318541999713489
             ],
             "insert_samples_hot_ms": [
-                3.583249999792315
+                4.1135419996862765
             ],
             "select_explain": [
-                "Aggregate  (cost=2805.20..2805.21 rows=1 width=8)",
+                "Aggregate  (cost=3031.07..3031.08 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..2805.20 rows=1 width=0)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..3031.04 rows=10 width=0)",
                 "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 32768)"
+                "        Filter: ((bench_data_noidx.id >= 32768) AND (bench_data_noidx.id <= 32777))"
             ]
         },
         "tuple": [
             16,
             65536,
             2,
-            12.004018081366148,
-            0.09012500004246249,
-            0.058958000408892985,
-            0.5921249999119027,
-            0.26145800029553357,
-            3.2452919999741425,
-            3.10254200030613,
-            5.437208999865106,
-            3.583249999792315,
-            16310272,
+            11.64150024354603,
+            0.12258399965503486,
+            0.0989580003079027,
+            0.6458330003624724,
+            0.23912500000733417,
+            3.499708000163082,
+            3.4026250000351865,
+            5.318541999713489,
+            4.1135419996862765,
+            16818176,
             1957888,
-            16310272,
+            16818176,
             0
         ]
     },
@@ -2690,77 +2692,82 @@
         "rows": 131072,
         "M": 1,
         "with_indexes": {
-            "storage_index_pct": 9.077193864722153,
-            "table_bytes": 32579584,
+            "storage_index_pct": 8.800585080448561,
+            "table_bytes": 33603584,
             "index_bytes": 2957312,
-            "select_cold_ms": 0.10708299987527425,
-            "select_hot_ms": 0.09191700019073323,
-            "insert_cold_ms": 0.9463750002396409,
-            "insert_hot_ms": 0.25970800015784334,
+            "select_cold_ms": 0.11958300001424504,
+            "select_hot_ms": 0.1687499998297426,
+            "insert_cold_ms": 0.8554589999221207,
+            "insert_hot_ms": 0.2567090000411554,
             "select_samples_cold_ms": [
-                0.10708299987527425
+                0.11958300001424504
             ],
             "select_samples_hot_ms": [
-                0.09191700019073323
+                0.1687499998297426
             ],
             "insert_samples_cold_ms": [
-                0.9463750002396409
+                0.8554589999221207
             ],
             "insert_samples_hot_ms": [
-                0.25970800015784334
+                0.2567090000411554
             ],
             "select_explain": [
-                "Aggregate  (cost=8.31..8.32 rows=1 width=8)",
+                "Aggregate  (cost=8.50..8.51 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.29..8.31 rows=1 width=0)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.29..8.47 rows=9 width=0)",
                 "        Output: id",
-                "        Index Cond: (bench_data.id = 65536)"
+                "        Index Cond: ((bench_data.id >= 65536) AND (bench_data.id <= 65545))"
             ]
         },
         "without_indexes": {
-            "table_bytes": 32579584,
+            "table_bytes": 33603584,
             "index_bytes": 0,
-            "select_cold_ms": 8.060291999754554,
-            "select_hot_ms": 7.489874999919266,
+            "select_cold_ms": 7.3265830001219,
+            "select_hot_ms": 6.425791999845387,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 11.770250000154192,
-            "insert_hot_ms": 9.084207999876526,
+            "insert_cold_ms": 10.384790999978577,
+            "insert_hot_ms": 8.997709000141185,
             "select_samples_cold_ms": [
-                8.060291999754554
+                7.3265830001219
             ],
             "select_samples_hot_ms": [
-                7.489874999919266
+                6.425791999845387
             ],
             "insert_samples_cold_ms": [
-                11.770250000154192
+                10.384790999978577
             ],
             "insert_samples_hot_ms": [
-                9.084207999876526
+                8.997709000141185
             ],
             "select_explain": [
-                "Aggregate  (cost=5610.40..5610.41 rows=1 width=8)",
+                "Finalize Aggregate  (cost=5915.43..5915.44 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..5610.40 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 65536)"
+                "  ->  Gather  (cost=5915.21..5915.42 rows=2 width=8)",
+                "        Output: (PARTIAL count(*))",
+                "        Workers Planned: 2",
+                "        ->  Partial Aggregate  (cost=4915.21..4915.22 rows=1 width=8)",
+                "              Output: PARTIAL count(*)",
+                "              ->  Parallel Seq Scan on public.bench_data_noidx  (cost=0.00..4915.20 rows=4 width=0)",
+                "                    Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
+                "                    Filter: ((bench_data_noidx.id >= 65536) AND (bench_data_noidx.id <= 65545))"
             ]
         },
         "tuple": [
             17,
             131072,
             1,
-            9.077193864722153,
-            0.10708299987527425,
-            0.09191700019073323,
-            0.9463750002396409,
-            0.25970800015784334,
-            8.060291999754554,
-            7.489874999919266,
-            11.770250000154192,
-            9.084207999876526,
-            32579584,
+            8.800585080448561,
+            0.11958300001424504,
+            0.1687499998297426,
+            0.8554589999221207,
+            0.2567090000411554,
+            7.3265830001219,
+            6.425791999845387,
+            10.384790999978577,
+            8.997709000141185,
+            33603584,
             2957312,
-            32579584,
+            33603584,
             0
         ]
     },
@@ -2769,77 +2776,82 @@
         "rows": 131072,
         "M": 2,
         "with_indexes": {
-            "storage_index_pct": 11.918531556449585,
-            "table_bytes": 32579584,
+            "storage_index_pct": 11.555338859093126,
+            "table_bytes": 33603584,
             "index_bytes": 3883008,
-            "select_cold_ms": 0.09658299995862762,
-            "select_hot_ms": 0.08454199996776879,
-            "insert_cold_ms": 0.6210000001374283,
-            "insert_hot_ms": 0.251500000103988,
+            "select_cold_ms": 0.13208299969846848,
+            "select_hot_ms": 0.09245799992640968,
+            "insert_cold_ms": 0.6679999996777042,
+            "insert_hot_ms": 0.25395900001967675,
             "select_samples_cold_ms": [
-                0.09658299995862762
+                0.13208299969846848
             ],
             "select_samples_hot_ms": [
-                0.08454199996776879
+                0.09245799992640968
             ],
             "insert_samples_cold_ms": [
-                0.6210000001374283
+                0.6679999996777042
             ],
             "insert_samples_hot_ms": [
-                0.251500000103988
+                0.25395900001967675
             ],
             "select_explain": [
-                "Aggregate  (cost=8.31..8.32 rows=1 width=8)",
+                "Aggregate  (cost=8.52..8.53 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.29..8.31 rows=1 width=0)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.29..8.49 rows=10 width=0)",
                 "        Output: id",
-                "        Index Cond: (bench_data.id = 65536)"
+                "        Index Cond: ((bench_data.id >= 65536) AND (bench_data.id <= 65545))"
             ]
         },
         "without_indexes": {
-            "table_bytes": 32579584,
+            "table_bytes": 33603584,
             "index_bytes": 0,
-            "select_cold_ms": 8.818166999844834,
-            "select_hot_ms": 8.265791999747307,
+            "select_cold_ms": 6.168291999983921,
+            "select_hot_ms": 5.934834000072442,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 10.291749999851163,
-            "insert_hot_ms": 8.94491700000799,
+            "insert_cold_ms": 20.843791000061174,
+            "insert_hot_ms": 10.317458999907103,
             "select_samples_cold_ms": [
-                8.818166999844834
+                6.168291999983921
             ],
             "select_samples_hot_ms": [
-                8.265791999747307
+                5.934834000072442
             ],
             "insert_samples_cold_ms": [
-                10.291749999851163
+                20.843791000061174
             ],
             "insert_samples_hot_ms": [
-                8.94491700000799
+                10.317458999907103
             ],
             "select_explain": [
-                "Aggregate  (cost=5610.40..5610.41 rows=1 width=8)",
+                "Finalize Aggregate  (cost=5915.43..5915.44 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..5610.40 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 65536)"
+                "  ->  Gather  (cost=5915.21..5915.42 rows=2 width=8)",
+                "        Output: (PARTIAL count(*))",
+                "        Workers Planned: 2",
+                "        ->  Partial Aggregate  (cost=4915.21..4915.22 rows=1 width=8)",
+                "              Output: PARTIAL count(*)",
+                "              ->  Parallel Seq Scan on public.bench_data_noidx  (cost=0.00..4915.20 rows=4 width=0)",
+                "                    Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
+                "                    Filter: ((bench_data_noidx.id >= 65536) AND (bench_data_noidx.id <= 65545))"
             ]
         },
         "tuple": [
             17,
             131072,
             2,
-            11.918531556449585,
-            0.09658299995862762,
-            0.08454199996776879,
-            0.6210000001374283,
-            0.251500000103988,
-            8.818166999844834,
-            8.265791999747307,
-            10.291749999851163,
-            8.94491700000799,
-            32579584,
+            11.555338859093126,
+            0.13208299969846848,
+            0.09245799992640968,
+            0.6679999996777042,
+            0.25395900001967675,
+            6.168291999983921,
+            5.934834000072442,
+            20.843791000061174,
+            10.317458999907103,
+            33603584,
             3883008,
-            32579584,
+            33603584,
             0
         ]
     },
@@ -2848,78 +2860,82 @@
         "rows": 262144,
         "M": 1,
         "with_indexes": {
-            "storage_index_pct": 9.081761006289309,
-            "table_bytes": 65126400,
+            "storage_index_pct": 8.80595194535919,
+            "table_bytes": 67166208,
             "index_bytes": 5914624,
-            "select_cold_ms": 0.10333299997000722,
-            "select_hot_ms": 0.08562499988329364,
-            "insert_cold_ms": 0.8380829999623529,
-            "insert_hot_ms": 0.27691700006471365,
+            "select_cold_ms": 0.11425000002418528,
+            "select_hot_ms": 0.07616700031576329,
+            "insert_cold_ms": 0.5395000002863526,
+            "insert_hot_ms": 0.2346670003134932,
             "select_samples_cold_ms": [
-                0.10333299997000722
+                0.11425000002418528
             ],
             "select_samples_hot_ms": [
-                0.08562499988329364
+                0.07616700031576329
             ],
             "insert_samples_cold_ms": [
-                0.8380829999623529
+                0.5395000002863526
             ],
             "insert_samples_hot_ms": [
-                0.27691700006471365
+                0.2346670003134932
             ],
             "select_explain": [
-                "Aggregate  (cost=8.44..8.45 rows=1 width=8)",
+                "Aggregate  (cost=8.64..8.65 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.42..8.44 rows=1 width=0)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.42..8.62 rows=10 width=0)",
                 "        Output: id",
-                "        Index Cond: (bench_data.id = 131072)"
+                "        Index Cond: ((bench_data.id >= 131072) AND (bench_data.id <= 131081))"
             ]
         },
         "without_indexes": {
-            "table_bytes": 65126400,
+            "table_bytes": 67166208,
             "index_bytes": 0,
-            "select_cold_ms": 10.185125000134576,
-            "select_hot_ms": 7.226083000205108,
+            "select_cold_ms": 11.51854199997615,
+            "select_hot_ms": 10.853165999833436,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 12.15787499995713,
-            "insert_hot_ms": 11.579375000110304,
+            "insert_cold_ms": 13.394790999882389,
+            "insert_hot_ms": 11.188124999989668,
             "select_samples_cold_ms": [
-                10.185125000134576
+                11.51854199997615
             ],
             "select_samples_hot_ms": [
-                7.226083000205108
+                10.853165999833436
             ],
             "insert_samples_cold_ms": [
-                12.15787499995713
+                13.394790999882389
             ],
             "insert_samples_hot_ms": [
-                11.579375000110304
+                11.188124999989668
             ],
             "select_explain": [
-                "Aggregate  (cost=10309.44..10309.45 rows=1 width=8)",
+                "Finalize Aggregate  (cost=10830.62..10830.64 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Gather  (cost=1000.00..10309.43 rows=1 width=0)",
+                "  ->  Gather  (cost=10830.41..10830.62 rows=2 width=8)",
+                "        Output: (PARTIAL count(*))",
                 "        Workers Planned: 2",
-                "        ->  Parallel Seq Scan on public.bench_data_noidx  (cost=0.00..9309.33 rows=1 width=0)",
-                "              Filter: (bench_data_noidx.id = 131072)"
+                "        ->  Partial Aggregate  (cost=9830.41..9830.42 rows=1 width=8)",
+                "              Output: PARTIAL count(*)",
+                "              ->  Parallel Seq Scan on public.bench_data_noidx  (cost=0.00..9830.40 rows=4 width=0)",
+                "                    Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
+                "                    Filter: ((bench_data_noidx.id >= 131072) AND (bench_data_noidx.id <= 131081))"
             ]
         },
         "tuple": [
             18,
             262144,
             1,
-            9.081761006289309,
-            0.10333299997000722,
-            0.08562499988329364,
-            0.8380829999623529,
-            0.27691700006471365,
-            10.185125000134576,
-            7.226083000205108,
-            12.15787499995713,
-            11.579375000110304,
-            65126400,
+            8.80595194535919,
+            0.11425000002418528,
+            0.07616700031576329,
+            0.5395000002863526,
+            0.2346670003134932,
+            11.51854199997615,
+            10.853165999833436,
+            13.394790999882389,
+            11.188124999989668,
+            67166208,
             5914624,
-            65126400,
+            67166208,
             0
         ]
     },
@@ -2928,78 +2944,82 @@
         "rows": 262144,
         "M": 2,
         "with_indexes": {
-            "storage_index_pct": 11.91194968553459,
-            "table_bytes": 65126400,
+            "storage_index_pct": 11.55018904744481,
+            "table_bytes": 67166208,
             "index_bytes": 7757824,
-            "select_cold_ms": 0.09620900027584867,
-            "select_hot_ms": 0.09004200001072604,
-            "insert_cold_ms": 1.0593330002848234,
-            "insert_hot_ms": 0.4847919999519945,
+            "select_cold_ms": 0.1351669998257421,
+            "select_hot_ms": 0.08812499982013833,
+            "insert_cold_ms": 0.5834999997205159,
+            "insert_hot_ms": 0.2654589998201118,
             "select_samples_cold_ms": [
-                0.09620900027584867
+                0.1351669998257421
             ],
             "select_samples_hot_ms": [
-                0.09004200001072604
+                0.08812499982013833
             ],
             "insert_samples_cold_ms": [
-                1.0593330002848234
+                0.5834999997205159
             ],
             "insert_samples_hot_ms": [
-                0.4847919999519945
+                0.2654589998201118
             ],
             "select_explain": [
-                "Aggregate  (cost=4.44..4.45 rows=1 width=8)",
+                "Aggregate  (cost=8.64..8.65 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.42..4.44 rows=1 width=0)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.42..8.62 rows=10 width=0)",
                 "        Output: id",
-                "        Index Cond: (bench_data.id = 131072)"
+                "        Index Cond: ((bench_data.id >= 131072) AND (bench_data.id <= 131081))"
             ]
         },
         "without_indexes": {
-            "table_bytes": 65126400,
+            "table_bytes": 67166208,
             "index_bytes": 0,
-            "select_cold_ms": 11.280499999884341,
-            "select_hot_ms": 11.171125000146276,
+            "select_cold_ms": 10.60212499987756,
+            "select_hot_ms": 10.514458999750786,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 12.16258399972503,
-            "insert_hot_ms": 11.602582999785227,
+            "insert_cold_ms": 13.711582999803795,
+            "insert_hot_ms": 11.5589999995791,
             "select_samples_cold_ms": [
-                11.280499999884341
+                10.60212499987756
             ],
             "select_samples_hot_ms": [
-                11.171125000146276
+                10.514458999750786
             ],
             "insert_samples_cold_ms": [
-                12.16258399972503
+                13.711582999803795
             ],
             "insert_samples_hot_ms": [
-                11.602582999785227
+                11.5589999995791
             ],
             "select_explain": [
-                "Aggregate  (cost=10309.44..10309.45 rows=1 width=8)",
+                "Finalize Aggregate  (cost=10830.62..10830.64 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Gather  (cost=1000.00..10309.43 rows=1 width=0)",
+                "  ->  Gather  (cost=10830.41..10830.62 rows=2 width=8)",
+                "        Output: (PARTIAL count(*))",
                 "        Workers Planned: 2",
-                "        ->  Parallel Seq Scan on public.bench_data_noidx  (cost=0.00..9309.33 rows=1 width=0)",
-                "              Filter: (bench_data_noidx.id = 131072)"
+                "        ->  Partial Aggregate  (cost=9830.41..9830.42 rows=1 width=8)",
+                "              Output: PARTIAL count(*)",
+                "              ->  Parallel Seq Scan on public.bench_data_noidx  (cost=0.00..9830.40 rows=4 width=0)",
+                "                    Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
+                "                    Filter: ((bench_data_noidx.id >= 131072) AND (bench_data_noidx.id <= 131081))"
             ]
         },
         "tuple": [
             18,
             262144,
             2,
-            11.91194968553459,
-            0.09620900027584867,
-            0.09004200001072604,
-            1.0593330002848234,
-            0.4847919999519945,
-            11.280499999884341,
-            11.171125000146276,
-            12.16258399972503,
-            11.602582999785227,
-            65126400,
+            11.55018904744481,
+            0.1351669998257421,
+            0.08812499982013833,
+            0.5834999997205159,
+            0.2654589998201118,
+            10.60212499987756,
+            10.514458999750786,
+            13.711582999803795,
+            11.5589999995791,
+            67166208,
             7757824,
-            65126400,
+            67166208,
             0
         ]
     }

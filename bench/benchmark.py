@@ -33,7 +33,7 @@ NOIDX_RANDOM_PAGE_COST = float(os.getenv("NOIDX_RANDOM_PAGE_COST", "1000000"))
 
 DDL_TABLE = """
 CREATE TABLE IF NOT EXISTS source_data (
-    id INT PRIMARY KEY,
+    id BIGSERIAL PRIMARY KEY,
     c01 INTEGER,
     c02 INTEGER,
     c03 INTEGER,
@@ -119,16 +119,16 @@ $$ LANGUAGE plpgsql;
 DROP_BENCH_TABLE = "DROP TABLE IF EXISTS bench_data;"
 
 CREATE_BENCH_TABLE = """
--- Copy structure and constraints (including PK) but not indexes beyond PK are created here; additional indexes added explicitly
+-- Copy column structure only; add PK explicitly to avoid inheriting source_data's sequence/defaults
 CREATE TABLE bench_data (
-    LIKE source_data INCLUDING INDEXES INCLUDING DEFAULTS INCLUDING GENERATED INCLUDING IDENTITY INCLUDING CONSTRAINTS INCLUDING STORAGE INCLUDING COMPRESSION
+    LIKE source_data INCLUDING STORAGE INCLUDING COMPRESSION
 );
 """
 
 CREATE_BENCH_TABLE_NOIDX = """
--- Create a copy of structure WITHOUT constraints/indexes to ensure a pure heap table for no-index measurements
+-- Create a copy of structure WITHOUT constraints/indexes/defaults to ensure a pure heap table for no-index measurements
 CREATE TABLE bench_data_noidx (
-    LIKE source_data INCLUDING DEFAULTS INCLUDING GENERATED INCLUDING IDENTITY INCLUDING STORAGE INCLUDING COMPRESSION
+    LIKE source_data INCLUDING STORAGE INCLUDING COMPRESSION
 );
 """
 
@@ -266,15 +266,12 @@ def measure_select_pk_range(cur, table: str, with_index: bool, return_explain: b
 
     if with_index:
         exec_sql(cur, "SET enable_seqscan TO off;")
-        exec_sql(cur, "SET enable_indexscan TO on; SET enable_bitmapscan TO on; SET enable_indexonlyscan TO on;")
     else:
-        exec_sql(cur, "SET enable_seqscan TO on;")
         exec_sql(cur, "SET enable_indexscan TO off; SET enable_bitmapscan TO off; SET enable_indexonlyscan TO off;")
-        #exec_sql(cur, f"SET random_page_cost TO {NOIDX_RANDOM_PAGE_COST};")
 
     # Build SQL and params to reuse for EXPLAIN and timing
-    sql = f"SELECT COUNT(*) FROM {table} WHERE id = {low}::int4;"
-    params = tuple()#(low, high)
+    sql = f"SELECT COUNT(*) FROM {table} WHERE id BETWEEN %s AND %s;"
+    params = (low, high)
 
     explain_text = None
     if return_explain:
@@ -360,6 +357,7 @@ def measure_insert_cold_hot(cur, rows: int, table: str) -> Tuple[float, float]:
 def _setup_bench_with_idx(cur, rows: int, m_idx: int):
     exec_sql(cur, "DROP TABLE IF EXISTS bench_data;")
     exec_sql(cur, CREATE_BENCH_TABLE)
+    exec_sql(cur, "DO $$ BEGIN IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conrelid = 'bench_data'::regclass AND contype = 'p') THEN ALTER TABLE bench_data ADD PRIMARY KEY (id); END IF; END $$;")
     exec_sql(cur, "TRUNCATE bench_data;")
     exec_sql(cur, "INSERT INTO bench_data SELECT * FROM source_data ORDER BY id LIMIT %s;", (rows,))
     exec_sql(cur, "VACUUM ANALYZE bench_data;")
