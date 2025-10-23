@@ -4,55 +4,52 @@
         "rows": 1,
         "M": 1,
         "with_indexes": {
-            "storage_index_pct": 0.0,
+            "storage_index_pct": 33.33333333333333,
             "table_bytes": 49152,
-            "index_bytes": 0,
-            "select_cold_ms": 31.839750000017375,
-            "select_hot_ms": 5.0132910000684205,
-            "insert_cold_ms": 0.39541699993606017,
-            "insert_hot_ms": 0.18637499988471973,
+            "index_bytes": 16384,
+            "select_cold_ms": 0.058583999816619325,
+            "select_hot_ms": 0.04325000008975621,
+            "insert_cold_ms": 0.8495840002069599,
+            "insert_hot_ms": 0.3154169999106671,
             "select_samples_cold_ms": [
-                31.839750000017375
+                0.058583999816619325
             ],
             "select_samples_hot_ms": [
-                5.0132910000684205
+                0.04325000008975621
             ],
             "insert_samples_cold_ms": [
-                0.39541699993606017
+                0.8495840002069599
             ],
             "insert_samples_hot_ms": [
-                0.18637499988471973
+                0.3154169999106671
             ],
             "select_explain": [
-                "Aggregate  (cost=10000000001.02..10000000001.03 rows=1 width=8)",
+                "Aggregate  (cost=8.14..8.15 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data  (cost=10000000000.00..10000000001.01 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data.id = 1)",
-                "JIT:",
-                "  Functions: 4",
-                "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.12..8.14 rows=1 width=0)",
+                "        Output: id",
+                "        Index Cond: (bench_data.id = 1)"
             ]
         },
         "without_indexes": {
             "table_bytes": 49152,
             "index_bytes": 0,
-            "select_cold_ms": 0.06787500001337321,
-            "select_hot_ms": 0.07350000009864743,
+            "select_cold_ms": 0.05383300003813929,
+            "select_hot_ms": 0.04333400011091726,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.2477919999819278,
-            "insert_hot_ms": 0.16904199992495705,
+            "insert_cold_ms": 0.5025420000492886,
+            "insert_hot_ms": 0.30125000012048986,
             "select_samples_cold_ms": [
-                0.06787500001337321
+                0.05383300003813929
             ],
             "select_samples_hot_ms": [
-                0.07350000009864743
+                0.04333400011091726
             ],
             "insert_samples_cold_ms": [
-                0.2477919999819278
+                0.5025420000492886
             ],
             "insert_samples_hot_ms": [
-                0.16904199992495705
+                0.30125000012048986
             ],
             "select_explain": [
                 "Aggregate  (cost=1.01..1.02 rows=1 width=8)",
@@ -66,17 +63,17 @@
             0,
             1,
             1,
-            0.0,
-            31.839750000017375,
-            5.0132910000684205,
-            0.39541699993606017,
-            0.18637499988471973,
-            0.06787500001337321,
-            0.07350000009864743,
-            0.2477919999819278,
-            0.16904199992495705,
+            33.33333333333333,
+            0.058583999816619325,
+            0.04325000008975621,
+            0.8495840002069599,
+            0.3154169999106671,
+            0.05383300003813929,
+            0.04333400011091726,
+            0.5025420000492886,
+            0.30125000012048986,
             49152,
-            0,
+            16384,
             49152,
             0
         ]
@@ -86,55 +83,52 @@
         "rows": 1,
         "M": 2,
         "with_indexes": {
-            "storage_index_pct": 33.33333333333333,
+            "storage_index_pct": 66.66666666666666,
             "table_bytes": 49152,
-            "index_bytes": 16384,
-            "select_cold_ms": 5.909499999916079,
-            "select_hot_ms": 5.237917000158632,
-            "insert_cold_ms": 0.2585839999937889,
-            "insert_hot_ms": 0.16533300004084595,
+            "index_bytes": 32768,
+            "select_cold_ms": 0.04729200009023771,
+            "select_hot_ms": 0.04183300006843638,
+            "insert_cold_ms": 0.4015419999632286,
+            "insert_hot_ms": 0.3055410002161807,
             "select_samples_cold_ms": [
-                5.909499999916079
+                0.04729200009023771
             ],
             "select_samples_hot_ms": [
-                5.237917000158632
+                0.04183300006843638
             ],
             "insert_samples_cold_ms": [
-                0.2585839999937889
+                0.4015419999632286
             ],
             "insert_samples_hot_ms": [
-                0.16533300004084595
+                0.3055410002161807
             ],
             "select_explain": [
-                "Aggregate  (cost=10000000001.02..10000000001.03 rows=1 width=8)",
+                "Aggregate  (cost=8.14..8.15 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data  (cost=10000000000.00..10000000001.01 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data.id = 1)",
-                "JIT:",
-                "  Functions: 4",
-                "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.12..8.14 rows=1 width=0)",
+                "        Output: id",
+                "        Index Cond: (bench_data.id = 1)"
             ]
         },
         "without_indexes": {
             "table_bytes": 49152,
             "index_bytes": 0,
-            "select_cold_ms": 0.04558399996312801,
-            "select_hot_ms": 0.04054200007885811,
+            "select_cold_ms": 0.0462910002170247,
+            "select_hot_ms": 0.04258299986759084,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.2199590001055185,
-            "insert_hot_ms": 0.18787500016514969,
+            "insert_cold_ms": 0.3963750000366417,
+            "insert_hot_ms": 0.2683749999050633,
             "select_samples_cold_ms": [
-                0.04558399996312801
+                0.0462910002170247
             ],
             "select_samples_hot_ms": [
-                0.04054200007885811
+                0.04258299986759084
             ],
             "insert_samples_cold_ms": [
-                0.2199590001055185
+                0.3963750000366417
             ],
             "insert_samples_hot_ms": [
-                0.18787500016514969
+                0.2683749999050633
             ],
             "select_explain": [
                 "Aggregate  (cost=1.01..1.02 rows=1 width=8)",
@@ -148,17 +142,17 @@
             0,
             1,
             2,
-            33.33333333333333,
-            5.909499999916079,
-            5.237917000158632,
-            0.2585839999937889,
-            0.16533300004084595,
-            0.04558399996312801,
-            0.04054200007885811,
-            0.2199590001055185,
-            0.18787500016514969,
+            66.66666666666666,
+            0.04729200009023771,
+            0.04183300006843638,
+            0.4015419999632286,
+            0.3055410002161807,
+            0.0462910002170247,
+            0.04258299986759084,
+            0.3963750000366417,
+            0.2683749999050633,
             49152,
-            16384,
+            32768,
             49152,
             0
         ]
@@ -168,55 +162,52 @@
         "rows": 2,
         "M": 1,
         "with_indexes": {
-            "storage_index_pct": 0.0,
+            "storage_index_pct": 33.33333333333333,
             "table_bytes": 49152,
-            "index_bytes": 0,
-            "select_cold_ms": 5.86275000000569,
-            "select_hot_ms": 4.996417000029396,
-            "insert_cold_ms": 0.2147079999303969,
-            "insert_hot_ms": 0.19379199989089102,
+            "index_bytes": 16384,
+            "select_cold_ms": 0.04562499998428393,
+            "select_hot_ms": 0.07337499982895679,
+            "insert_cold_ms": 0.33645899975454086,
+            "insert_hot_ms": 0.3867089999403106,
             "select_samples_cold_ms": [
-                5.86275000000569
+                0.04562499998428393
             ],
             "select_samples_hot_ms": [
-                4.996417000029396
+                0.07337499982895679
             ],
             "insert_samples_cold_ms": [
-                0.2147079999303969
+                0.33645899975454086
             ],
             "insert_samples_hot_ms": [
-                0.19379199989089102
+                0.3867089999403106
             ],
             "select_explain": [
-                "Aggregate  (cost=10000000001.03..10000000001.04 rows=1 width=8)",
+                "Aggregate  (cost=8.15..8.16 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data  (cost=10000000000.00..10000000001.02 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data.id = 1)",
-                "JIT:",
-                "  Functions: 4",
-                "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.13..8.14 rows=1 width=0)",
+                "        Output: id",
+                "        Index Cond: (bench_data.id = 1)"
             ]
         },
         "without_indexes": {
             "table_bytes": 49152,
             "index_bytes": 0,
-            "select_cold_ms": 0.051583999947979464,
-            "select_hot_ms": 0.07445899996127991,
+            "select_cold_ms": 0.04558299997370341,
+            "select_hot_ms": 0.07254100000864128,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.18912499990619835,
-            "insert_hot_ms": 0.18254199994771625,
+            "insert_cold_ms": 0.3745839999282907,
+            "insert_hot_ms": 0.3980410001531709,
             "select_samples_cold_ms": [
-                0.051583999947979464
+                0.04558299997370341
             ],
             "select_samples_hot_ms": [
-                0.07445899996127991
+                0.07254100000864128
             ],
             "insert_samples_cold_ms": [
-                0.18912499990619835
+                0.3745839999282907
             ],
             "insert_samples_hot_ms": [
-                0.18254199994771625
+                0.3980410001531709
             ],
             "select_explain": [
                 "Aggregate  (cost=1.03..1.04 rows=1 width=8)",
@@ -230,17 +221,17 @@
             1,
             2,
             1,
-            0.0,
-            5.86275000000569,
-            4.996417000029396,
-            0.2147079999303969,
-            0.19379199989089102,
-            0.051583999947979464,
-            0.07445899996127991,
-            0.18912499990619835,
-            0.18254199994771625,
+            33.33333333333333,
+            0.04562499998428393,
+            0.07337499982895679,
+            0.33645899975454086,
+            0.3867089999403106,
+            0.04558299997370341,
+            0.07254100000864128,
+            0.3745839999282907,
+            0.3980410001531709,
             49152,
-            0,
+            16384,
             49152,
             0
         ]
@@ -250,55 +241,52 @@
         "rows": 2,
         "M": 2,
         "with_indexes": {
-            "storage_index_pct": 33.33333333333333,
+            "storage_index_pct": 66.66666666666666,
             "table_bytes": 49152,
-            "index_bytes": 16384,
-            "select_cold_ms": 11.102582999910737,
-            "select_hot_ms": 5.993125000031796,
-            "insert_cold_ms": 0.24504199996044917,
-            "insert_hot_ms": 0.11212499998691783,
+            "index_bytes": 32768,
+            "select_cold_ms": 0.059624999721563654,
+            "select_hot_ms": 0.03400000014153193,
+            "insert_cold_ms": 0.3555839998625743,
+            "insert_hot_ms": 0.1981249997697887,
             "select_samples_cold_ms": [
-                11.102582999910737
+                0.059624999721563654
             ],
             "select_samples_hot_ms": [
-                5.993125000031796
+                0.03400000014153193
             ],
             "insert_samples_cold_ms": [
-                0.24504199996044917
+                0.3555839998625743
             ],
             "insert_samples_hot_ms": [
-                0.11212499998691783
+                0.1981249997697887
             ],
             "select_explain": [
-                "Aggregate  (cost=10000000001.03..10000000001.04 rows=1 width=8)",
+                "Aggregate  (cost=8.15..8.16 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data  (cost=10000000000.00..10000000001.02 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data.id = 1)",
-                "JIT:",
-                "  Functions: 4",
-                "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.13..8.14 rows=1 width=0)",
+                "        Output: id",
+                "        Index Cond: (bench_data.id = 1)"
             ]
         },
         "without_indexes": {
             "table_bytes": 49152,
             "index_bytes": 0,
-            "select_cold_ms": 0.05275000012261444,
-            "select_hot_ms": 0.0329169999986334,
+            "select_cold_ms": 0.05291700017551193,
+            "select_hot_ms": 0.03295899978184025,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.17445899993617786,
-            "insert_hot_ms": 0.09425000007468043,
+            "insert_cold_ms": 0.33308399997622473,
+            "insert_hot_ms": 0.17037499992511584,
             "select_samples_cold_ms": [
-                0.05275000012261444
+                0.05291700017551193
             ],
             "select_samples_hot_ms": [
-                0.0329169999986334
+                0.03295899978184025
             ],
             "insert_samples_cold_ms": [
-                0.17445899993617786
+                0.33308399997622473
             ],
             "insert_samples_hot_ms": [
-                0.09425000007468043
+                0.17037499992511584
             ],
             "select_explain": [
                 "Aggregate  (cost=1.03..1.04 rows=1 width=8)",
@@ -312,17 +300,17 @@
             1,
             2,
             2,
-            33.33333333333333,
-            11.102582999910737,
-            5.993125000031796,
-            0.24504199996044917,
-            0.11212499998691783,
-            0.05275000012261444,
-            0.0329169999986334,
-            0.17445899993617786,
-            0.09425000007468043,
+            66.66666666666666,
+            0.059624999721563654,
+            0.03400000014153193,
+            0.3555839998625743,
+            0.1981249997697887,
+            0.05291700017551193,
+            0.03295899978184025,
+            0.33308399997622473,
+            0.17037499992511584,
             49152,
-            16384,
+            32768,
             49152,
             0
         ]
@@ -332,55 +320,52 @@
         "rows": 4,
         "M": 1,
         "with_indexes": {
-            "storage_index_pct": 0.0,
+            "storage_index_pct": 33.33333333333333,
             "table_bytes": 49152,
-            "index_bytes": 0,
-            "select_cold_ms": 6.07516700006272,
-            "select_hot_ms": 5.3835830001389695,
-            "insert_cold_ms": 0.24504199996044917,
-            "insert_hot_ms": 0.12079099997208687,
+            "index_bytes": 16384,
+            "select_cold_ms": 0.053249999837134965,
+            "select_hot_ms": 0.035417000162851764,
+            "insert_cold_ms": 0.4544580001493159,
+            "insert_hot_ms": 0.23366699997495743,
             "select_samples_cold_ms": [
-                6.07516700006272
+                0.053249999837134965
             ],
             "select_samples_hot_ms": [
-                5.3835830001389695
+                0.035417000162851764
             ],
             "insert_samples_cold_ms": [
-                0.24504199996044917
+                0.4544580001493159
             ],
             "insert_samples_hot_ms": [
-                0.12079099997208687
+                0.23366699997495743
             ],
             "select_explain": [
-                "Aggregate  (cost=10000000001.05..10000000001.06 rows=1 width=8)",
+                "Aggregate  (cost=8.15..8.16 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data  (cost=10000000000.00..10000000001.05 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data.id = 1)",
-                "JIT:",
-                "  Functions: 4",
-                "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.13..8.15 rows=1 width=0)",
+                "        Output: id",
+                "        Index Cond: (bench_data.id = 1)"
             ]
         },
         "without_indexes": {
             "table_bytes": 49152,
             "index_bytes": 0,
-            "select_cold_ms": 0.057499999911669875,
-            "select_hot_ms": 0.03333299991936656,
+            "select_cold_ms": 0.049540999953023857,
+            "select_hot_ms": 0.0324170000567392,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.19604199997047544,
-            "insert_hot_ms": 0.09745900001689733,
+            "insert_cold_ms": 0.3293330000815331,
+            "insert_hot_ms": 0.1777910001692362,
             "select_samples_cold_ms": [
-                0.057499999911669875
+                0.049540999953023857
             ],
             "select_samples_hot_ms": [
-                0.03333299991936656
+                0.0324170000567392
             ],
             "insert_samples_cold_ms": [
-                0.19604199997047544
+                0.3293330000815331
             ],
             "insert_samples_hot_ms": [
-                0.09745900001689733
+                0.1777910001692362
             ],
             "select_explain": [
                 "Aggregate  (cost=1.05..1.06 rows=1 width=8)",
@@ -394,17 +379,17 @@
             2,
             4,
             1,
-            0.0,
-            6.07516700006272,
-            5.3835830001389695,
-            0.24504199996044917,
-            0.12079099997208687,
-            0.057499999911669875,
-            0.03333299991936656,
-            0.19604199997047544,
-            0.09745900001689733,
+            33.33333333333333,
+            0.053249999837134965,
+            0.035417000162851764,
+            0.4544580001493159,
+            0.23366699997495743,
+            0.049540999953023857,
+            0.0324170000567392,
+            0.3293330000815331,
+            0.1777910001692362,
             49152,
-            0,
+            16384,
             49152,
             0
         ]
@@ -414,55 +399,52 @@
         "rows": 4,
         "M": 2,
         "with_indexes": {
-            "storage_index_pct": 33.33333333333333,
+            "storage_index_pct": 66.66666666666666,
             "table_bytes": 49152,
-            "index_bytes": 16384,
-            "select_cold_ms": 6.381290999797784,
-            "select_hot_ms": 5.638084000111121,
-            "insert_cold_ms": 0.2957080000669521,
-            "insert_hot_ms": 0.12816699995710223,
+            "index_bytes": 32768,
+            "select_cold_ms": 0.05029200019635027,
+            "select_hot_ms": 0.03245800007789512,
+            "insert_cold_ms": 0.5280830000629066,
+            "insert_hot_ms": 0.1675829998930567,
             "select_samples_cold_ms": [
-                6.381290999797784
+                0.05029200019635027
             ],
             "select_samples_hot_ms": [
-                5.638084000111121
+                0.03245800007789512
             ],
             "insert_samples_cold_ms": [
-                0.2957080000669521
+                0.5280830000629066
             ],
             "insert_samples_hot_ms": [
-                0.12816699995710223
+                0.1675829998930567
             ],
             "select_explain": [
-                "Aggregate  (cost=10000000001.05..10000000001.06 rows=1 width=8)",
+                "Aggregate  (cost=8.15..8.16 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data  (cost=10000000000.00..10000000001.05 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data.id = 1)",
-                "JIT:",
-                "  Functions: 4",
-                "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.13..8.15 rows=1 width=0)",
+                "        Output: id",
+                "        Index Cond: (bench_data.id = 1)"
             ]
         },
         "without_indexes": {
             "table_bytes": 49152,
             "index_bytes": 0,
-            "select_cold_ms": 0.05224999995334656,
-            "select_hot_ms": 0.03312500007268682,
+            "select_cold_ms": 0.05995899982735864,
+            "select_hot_ms": 0.03229200001442223,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.2822500000547734,
-            "insert_hot_ms": 0.11500000005071342,
+            "insert_cold_ms": 0.46979199987617903,
+            "insert_hot_ms": 0.1664169999457954,
             "select_samples_cold_ms": [
-                0.05224999995334656
+                0.05995899982735864
             ],
             "select_samples_hot_ms": [
-                0.03312500007268682
+                0.03229200001442223
             ],
             "insert_samples_cold_ms": [
-                0.2822500000547734
+                0.46979199987617903
             ],
             "insert_samples_hot_ms": [
-                0.11500000005071342
+                0.1664169999457954
             ],
             "select_explain": [
                 "Aggregate  (cost=1.05..1.06 rows=1 width=8)",
@@ -476,17 +458,17 @@
             2,
             4,
             2,
-            33.33333333333333,
-            6.381290999797784,
-            5.638084000111121,
-            0.2957080000669521,
-            0.12816699995710223,
-            0.05224999995334656,
-            0.03312500007268682,
-            0.2822500000547734,
-            0.11500000005071342,
+            66.66666666666666,
+            0.05029200019635027,
+            0.03245800007789512,
+            0.5280830000629066,
+            0.1675829998930567,
+            0.05995899982735864,
+            0.03229200001442223,
+            0.46979199987617903,
+            0.1664169999457954,
             49152,
-            16384,
+            32768,
             49152,
             0
         ]
@@ -496,55 +478,52 @@
         "rows": 8,
         "M": 1,
         "with_indexes": {
-            "storage_index_pct": 0.0,
+            "storage_index_pct": 33.33333333333333,
             "table_bytes": 49152,
-            "index_bytes": 0,
-            "select_cold_ms": 7.07920800005013,
-            "select_hot_ms": 5.979291000130615,
-            "insert_cold_ms": 0.22104100003161875,
-            "insert_hot_ms": 0.11920800011466781,
+            "index_bytes": 16384,
+            "select_cold_ms": 0.05916700001762365,
+            "select_hot_ms": 0.033958000130951405,
+            "insert_cold_ms": 0.3586670000004233,
+            "insert_hot_ms": 0.24912500020946027,
             "select_samples_cold_ms": [
-                7.07920800005013
+                0.05916700001762365
             ],
             "select_samples_hot_ms": [
-                5.979291000130615
+                0.033958000130951405
             ],
             "insert_samples_cold_ms": [
-                0.22104100003161875
+                0.3586670000004233
             ],
             "insert_samples_hot_ms": [
-                0.11920800011466781
+                0.24912500020946027
             ],
             "select_explain": [
-                "Aggregate  (cost=10000000001.10..10000000001.11 rows=1 width=8)",
+                "Aggregate  (cost=8.15..8.16 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data  (cost=10000000000.00..10000000001.10 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data.id = 1)",
-                "JIT:",
-                "  Functions: 4",
-                "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.13..8.15 rows=1 width=0)",
+                "        Output: id",
+                "        Index Cond: (bench_data.id = 1)"
             ]
         },
         "without_indexes": {
             "table_bytes": 49152,
             "index_bytes": 0,
-            "select_cold_ms": 0.0513330001012946,
-            "select_hot_ms": 0.0345829998877889,
+            "select_cold_ms": 0.05358299995350535,
+            "select_hot_ms": 0.03445899983489653,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.20450000010896474,
-            "insert_hot_ms": 0.11866700015161769,
+            "insert_cold_ms": 0.33400000029359944,
+            "insert_hot_ms": 0.16854099976626458,
             "select_samples_cold_ms": [
-                0.0513330001012946
+                0.05358299995350535
             ],
             "select_samples_hot_ms": [
-                0.0345829998877889
+                0.03445899983489653
             ],
             "insert_samples_cold_ms": [
-                0.20450000010896474
+                0.33400000029359944
             ],
             "insert_samples_hot_ms": [
-                0.11866700015161769
+                0.16854099976626458
             ],
             "select_explain": [
                 "Aggregate  (cost=1.10..1.11 rows=1 width=8)",
@@ -558,17 +537,17 @@
             3,
             8,
             1,
-            0.0,
-            7.07920800005013,
-            5.979291000130615,
-            0.22104100003161875,
-            0.11920800011466781,
-            0.0513330001012946,
-            0.0345829998877889,
-            0.20450000010896474,
-            0.11866700015161769,
+            33.33333333333333,
+            0.05916700001762365,
+            0.033958000130951405,
+            0.3586670000004233,
+            0.24912500020946027,
+            0.05358299995350535,
+            0.03445899983489653,
+            0.33400000029359944,
+            0.16854099976626458,
             49152,
-            0,
+            16384,
             49152,
             0
         ]
@@ -578,547 +557,526 @@
         "rows": 8,
         "M": 2,
         "with_indexes": {
-            "storage_index_pct": 33.33333333333333,
+            "storage_index_pct": 66.66666666666666,
             "table_bytes": 49152,
-            "index_bytes": 16384,
-            "select_cold_ms": 6.306959000085044,
-            "select_hot_ms": 5.45295899996745,
-            "insert_cold_ms": 0.21041700006207975,
-            "insert_hot_ms": 0.09929099996952573,
-            "select_samples_cold_ms": [
-                6.306959000085044
-            ],
-            "select_samples_hot_ms": [
-                5.45295899996745
-            ],
-            "insert_samples_cold_ms": [
-                0.21041700006207975
-            ],
-            "insert_samples_hot_ms": [
-                0.09929099996952573
-            ],
-            "select_explain": [
-                "Aggregate  (cost=10000000001.10..10000000001.11 rows=1 width=8)",
-                "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data  (cost=10000000000.00..10000000001.10 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data.id = 1)",
-                "JIT:",
-                "  Functions: 4",
-                "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
-            ]
-        },
-        "without_indexes": {
-            "table_bytes": 49152,
-            "index_bytes": 0,
-            "select_cold_ms": 0.05050000004303001,
-            "select_hot_ms": 0.03420799998821167,
-            "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.20150000000285218,
-            "insert_hot_ms": 0.1009580000754795,
-            "select_samples_cold_ms": [
-                0.05050000004303001
-            ],
-            "select_samples_hot_ms": [
-                0.03420799998821167
-            ],
-            "insert_samples_cold_ms": [
-                0.20150000000285218
-            ],
-            "insert_samples_hot_ms": [
-                0.1009580000754795
-            ],
-            "select_explain": [
-                "Aggregate  (cost=1.10..1.11 rows=1 width=8)",
-                "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..1.10 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 1)"
-            ]
-        },
-        "tuple": [
-            3,
-            8,
-            2,
-            33.33333333333333,
-            6.306959000085044,
-            5.45295899996745,
-            0.21041700006207975,
-            0.09929099996952573,
-            0.05050000004303001,
-            0.03420799998821167,
-            0.20150000000285218,
-            0.1009580000754795,
-            49152,
-            16384,
-            49152,
-            0
-        ]
-    },
-    {
-        "N": 4,
-        "rows": 16,
-        "M": 1,
-        "with_indexes": {
-            "storage_index_pct": 0.0,
-            "table_bytes": 49152,
-            "index_bytes": 0,
-            "select_cold_ms": 6.210374999909618,
-            "select_hot_ms": 5.3222500000629225,
-            "insert_cold_ms": 0.2028750000135915,
-            "insert_hot_ms": 0.0989160000699485,
-            "select_samples_cold_ms": [
-                6.210374999909618
-            ],
-            "select_samples_hot_ms": [
-                5.3222500000629225
-            ],
-            "insert_samples_cold_ms": [
-                0.2028750000135915
-            ],
-            "insert_samples_hot_ms": [
-                0.0989160000699485
-            ],
-            "select_explain": [
-                "Aggregate  (cost=10000000001.20..10000000001.21 rows=1 width=8)",
-                "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data  (cost=10000000000.00..10000000001.20 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data.id = 8)",
-                "JIT:",
-                "  Functions: 4",
-                "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
-            ]
-        },
-        "without_indexes": {
-            "table_bytes": 49152,
-            "index_bytes": 0,
-            "select_cold_ms": 0.049208000064027146,
-            "select_hot_ms": 0.041084000031332835,
-            "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.17895799987854843,
-            "insert_hot_ms": 0.09816700003284495,
-            "select_samples_cold_ms": [
-                0.049208000064027146
-            ],
-            "select_samples_hot_ms": [
-                0.041084000031332835
-            ],
-            "insert_samples_cold_ms": [
-                0.17895799987854843
-            ],
-            "insert_samples_hot_ms": [
-                0.09816700003284495
-            ],
-            "select_explain": [
-                "Aggregate  (cost=1.20..1.21 rows=1 width=8)",
-                "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..1.20 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 8)"
-            ]
-        },
-        "tuple": [
-            4,
-            16,
-            1,
-            0.0,
-            6.210374999909618,
-            5.3222500000629225,
-            0.2028750000135915,
-            0.0989160000699485,
-            0.049208000064027146,
-            0.041084000031332835,
-            0.17895799987854843,
-            0.09816700003284495,
-            49152,
-            0,
-            49152,
-            0
-        ]
-    },
-    {
-        "N": 4,
-        "rows": 16,
-        "M": 2,
-        "with_indexes": {
-            "storage_index_pct": 33.33333333333333,
-            "table_bytes": 49152,
-            "index_bytes": 16384,
-            "select_cold_ms": 6.267041000000972,
-            "select_hot_ms": 5.564042000059999,
-            "insert_cold_ms": 0.20833400003539282,
-            "insert_hot_ms": 0.11045799988096405,
-            "select_samples_cold_ms": [
-                6.267041000000972
-            ],
-            "select_samples_hot_ms": [
-                5.564042000059999
-            ],
-            "insert_samples_cold_ms": [
-                0.20833400003539282
-            ],
-            "insert_samples_hot_ms": [
-                0.11045799988096405
-            ],
-            "select_explain": [
-                "Aggregate  (cost=10000000001.20..10000000001.21 rows=1 width=8)",
-                "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data  (cost=10000000000.00..10000000001.20 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data.id = 8)",
-                "JIT:",
-                "  Functions: 4",
-                "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
-            ]
-        },
-        "without_indexes": {
-            "table_bytes": 49152,
-            "index_bytes": 0,
-            "select_cold_ms": 0.047417000132554676,
-            "select_hot_ms": 0.04054200007885811,
-            "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.19112500012852252,
-            "insert_hot_ms": 0.09620799983167672,
-            "select_samples_cold_ms": [
-                0.047417000132554676
-            ],
-            "select_samples_hot_ms": [
-                0.04054200007885811
-            ],
-            "insert_samples_cold_ms": [
-                0.19112500012852252
-            ],
-            "insert_samples_hot_ms": [
-                0.09620799983167672
-            ],
-            "select_explain": [
-                "Aggregate  (cost=1.20..1.21 rows=1 width=8)",
-                "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..1.20 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 8)"
-            ]
-        },
-        "tuple": [
-            4,
-            16,
-            2,
-            33.33333333333333,
-            6.267041000000972,
-            5.564042000059999,
-            0.20833400003539282,
-            0.11045799988096405,
-            0.047417000132554676,
-            0.04054200007885811,
-            0.19112500012852252,
-            0.09620799983167672,
-            49152,
-            16384,
-            49152,
-            0
-        ]
-    },
-    {
-        "N": 5,
-        "rows": 32,
-        "M": 1,
-        "with_indexes": {
-            "storage_index_pct": 0.0,
-            "table_bytes": 49152,
-            "index_bytes": 0,
-            "select_cold_ms": 6.141500000012456,
-            "select_hot_ms": 5.647292000048765,
-            "insert_cold_ms": 0.18904200010183558,
-            "insert_hot_ms": 0.1126250001561857,
-            "select_samples_cold_ms": [
-                6.141500000012456
-            ],
-            "select_samples_hot_ms": [
-                5.647292000048765
-            ],
-            "insert_samples_cold_ms": [
-                0.18904200010183558
-            ],
-            "insert_samples_hot_ms": [
-                0.1126250001561857
-            ],
-            "select_explain": [
-                "Aggregate  (cost=10000000001.40..10000000001.41 rows=1 width=8)",
-                "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data  (cost=10000000000.00..10000000001.40 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data.id = 16)",
-                "JIT:",
-                "  Functions: 4",
-                "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
-            ]
-        },
-        "without_indexes": {
-            "table_bytes": 49152,
-            "index_bytes": 0,
-            "select_cold_ms": 0.04824999996344559,
-            "select_hot_ms": 0.04070799991495733,
-            "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.19745800000237068,
-            "insert_hot_ms": 0.12487499998314888,
-            "select_samples_cold_ms": [
-                0.04824999996344559
-            ],
-            "select_samples_hot_ms": [
-                0.04070799991495733
-            ],
-            "insert_samples_cold_ms": [
-                0.19745800000237068
-            ],
-            "insert_samples_hot_ms": [
-                0.12487499998314888
-            ],
-            "select_explain": [
-                "Aggregate  (cost=1.40..1.41 rows=1 width=8)",
-                "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..1.40 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 16)"
-            ]
-        },
-        "tuple": [
-            5,
-            32,
-            1,
-            0.0,
-            6.141500000012456,
-            5.647292000048765,
-            0.18904200010183558,
-            0.1126250001561857,
-            0.04824999996344559,
-            0.04070799991495733,
-            0.19745800000237068,
-            0.12487499998314888,
-            49152,
-            0,
-            49152,
-            0
-        ]
-    },
-    {
-        "N": 5,
-        "rows": 32,
-        "M": 2,
-        "with_indexes": {
-            "storage_index_pct": 33.33333333333333,
-            "table_bytes": 49152,
-            "index_bytes": 16384,
-            "select_cold_ms": 12.521833000164406,
-            "select_hot_ms": 15.543374999879234,
-            "insert_cold_ms": 0.5116250001719891,
-            "insert_hot_ms": 0.17933300000549934,
-            "select_samples_cold_ms": [
-                12.521833000164406
-            ],
-            "select_samples_hot_ms": [
-                15.543374999879234
-            ],
-            "insert_samples_cold_ms": [
-                0.5116250001719891
-            ],
-            "insert_samples_hot_ms": [
-                0.17933300000549934
-            ],
-            "select_explain": [
-                "Aggregate  (cost=10000000001.40..10000000001.41 rows=1 width=8)",
-                "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data  (cost=10000000000.00..10000000001.40 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data.id = 16)",
-                "JIT:",
-                "  Functions: 4",
-                "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
-            ]
-        },
-        "without_indexes": {
-            "table_bytes": 49152,
-            "index_bytes": 0,
-            "select_cold_ms": 0.06158400015010557,
-            "select_hot_ms": 0.04537500012702367,
-            "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.2135419999831356,
-            "insert_hot_ms": 0.11887499999829743,
-            "select_samples_cold_ms": [
-                0.06158400015010557
-            ],
-            "select_samples_hot_ms": [
-                0.04537500012702367
-            ],
-            "insert_samples_cold_ms": [
-                0.2135419999831356
-            ],
-            "insert_samples_hot_ms": [
-                0.11887499999829743
-            ],
-            "select_explain": [
-                "Aggregate  (cost=1.40..1.41 rows=1 width=8)",
-                "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..1.40 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 16)"
-            ]
-        },
-        "tuple": [
-            5,
-            32,
-            2,
-            33.33333333333333,
-            12.521833000164406,
-            15.543374999879234,
-            0.5116250001719891,
-            0.17933300000549934,
-            0.06158400015010557,
-            0.04537500012702367,
-            0.2135419999831356,
-            0.11887499999829743,
-            49152,
-            16384,
-            49152,
-            0
-        ]
-    },
-    {
-        "N": 6,
-        "rows": 64,
-        "M": 1,
-        "with_indexes": {
-            "storage_index_pct": 0.0,
-            "table_bytes": 57344,
-            "index_bytes": 0,
-            "select_cold_ms": 6.72066599986465,
-            "select_hot_ms": 6.195083999955386,
-            "insert_cold_ms": 0.22358299997904396,
-            "insert_hot_ms": 0.09983399991142505,
-            "select_samples_cold_ms": [
-                6.72066599986465
-            ],
-            "select_samples_hot_ms": [
-                6.195083999955386
-            ],
-            "insert_samples_cold_ms": [
-                0.22358299997904396
-            ],
-            "insert_samples_hot_ms": [
-                0.09983399991142505
-            ],
-            "select_explain": [
-                "Aggregate  (cost=10000000002.80..10000000002.81 rows=1 width=8)",
-                "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data  (cost=10000000000.00..10000000002.80 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data.id = 32)",
-                "JIT:",
-                "  Functions: 4",
-                "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
-            ]
-        },
-        "without_indexes": {
-            "table_bytes": 57344,
-            "index_bytes": 0,
-            "select_cold_ms": 0.05549999991671939,
-            "select_hot_ms": 0.04637500001081207,
-            "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.213875000099506,
-            "insert_hot_ms": 0.10079199978463294,
-            "select_samples_cold_ms": [
-                0.05549999991671939
-            ],
-            "select_samples_hot_ms": [
-                0.04637500001081207
-            ],
-            "insert_samples_cold_ms": [
-                0.213875000099506
-            ],
-            "insert_samples_hot_ms": [
-                0.10079199978463294
-            ],
-            "select_explain": [
-                "Aggregate  (cost=2.80..2.81 rows=1 width=8)",
-                "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..2.80 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 32)"
-            ]
-        },
-        "tuple": [
-            6,
-            64,
-            1,
-            0.0,
-            6.72066599986465,
-            6.195083999955386,
-            0.22358299997904396,
-            0.09983399991142505,
-            0.05549999991671939,
-            0.04637500001081207,
-            0.213875000099506,
-            0.10079199978463294,
-            57344,
-            0,
-            57344,
-            0
-        ]
-    },
-    {
-        "N": 6,
-        "rows": 64,
-        "M": 2,
-        "with_indexes": {
-            "storage_index_pct": 28.57142857142857,
-            "table_bytes": 57344,
-            "index_bytes": 16384,
-            "select_cold_ms": 6.084542000053261,
-            "select_hot_ms": 5.853125000157888,
-            "insert_cold_ms": 0.2241669999420992,
-            "insert_hot_ms": 0.10041600012300478,
-            "select_samples_cold_ms": [
-                6.084542000053261
-            ],
-            "select_samples_hot_ms": [
-                5.853125000157888
-            ],
-            "insert_samples_cold_ms": [
-                0.2241669999420992
-            ],
-            "insert_samples_hot_ms": [
-                0.10041600012300478
-            ],
-            "select_explain": [
-                "Aggregate  (cost=10000000002.80..10000000002.81 rows=1 width=8)",
-                "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data  (cost=10000000000.00..10000000002.80 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data.id = 32)",
-                "JIT:",
-                "  Functions: 4",
-                "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
-            ]
-        },
-        "without_indexes": {
-            "table_bytes": 57344,
-            "index_bytes": 0,
+            "index_bytes": 32768,
             "select_cold_ms": 0.049917000069399364,
-            "select_hot_ms": 0.04350000017439015,
-            "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.19095800007562502,
-            "insert_hot_ms": 0.11325000014039688,
+            "select_hot_ms": 0.032374999591411324,
+            "insert_cold_ms": 0.34158300013586995,
+            "insert_hot_ms": 0.16591599978710292,
             "select_samples_cold_ms": [
                 0.049917000069399364
             ],
             "select_samples_hot_ms": [
-                0.04350000017439015
+                0.032374999591411324
             ],
             "insert_samples_cold_ms": [
-                0.19095800007562502
+                0.34158300013586995
             ],
             "insert_samples_hot_ms": [
-                0.11325000014039688
+                0.16591599978710292
+            ],
+            "select_explain": [
+                "Aggregate  (cost=8.15..8.16 rows=1 width=8)",
+                "  Output: count(*)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.13..8.15 rows=1 width=0)",
+                "        Output: id",
+                "        Index Cond: (bench_data.id = 1)"
+            ]
+        },
+        "without_indexes": {
+            "table_bytes": 49152,
+            "index_bytes": 0,
+            "select_cold_ms": 0.04720800006907666,
+            "select_hot_ms": 0.031958000363374595,
+            "storage_index_pct": 0.0,
+            "insert_cold_ms": 0.3204580002602597,
+            "insert_hot_ms": 0.17691699986244203,
+            "select_samples_cold_ms": [
+                0.04720800006907666
+            ],
+            "select_samples_hot_ms": [
+                0.031958000363374595
+            ],
+            "insert_samples_cold_ms": [
+                0.3204580002602597
+            ],
+            "insert_samples_hot_ms": [
+                0.17691699986244203
+            ],
+            "select_explain": [
+                "Aggregate  (cost=1.10..1.11 rows=1 width=8)",
+                "  Output: count(*)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..1.10 rows=1 width=0)",
+                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
+                "        Filter: (bench_data_noidx.id = 1)"
+            ]
+        },
+        "tuple": [
+            3,
+            8,
+            2,
+            66.66666666666666,
+            0.049917000069399364,
+            0.032374999591411324,
+            0.34158300013586995,
+            0.16591599978710292,
+            0.04720800006907666,
+            0.031958000363374595,
+            0.3204580002602597,
+            0.17691699986244203,
+            49152,
+            32768,
+            49152,
+            0
+        ]
+    },
+    {
+        "N": 4,
+        "rows": 16,
+        "M": 1,
+        "with_indexes": {
+            "storage_index_pct": 33.33333333333333,
+            "table_bytes": 49152,
+            "index_bytes": 16384,
+            "select_cold_ms": 0.0631249999969441,
+            "select_hot_ms": 0.04241599981469335,
+            "insert_cold_ms": 0.31654199983677245,
+            "insert_hot_ms": 0.19537500020305743,
+            "select_samples_cold_ms": [
+                0.0631249999969441
+            ],
+            "select_samples_hot_ms": [
+                0.04241599981469335
+            ],
+            "insert_samples_cold_ms": [
+                0.31654199983677245
+            ],
+            "insert_samples_hot_ms": [
+                0.19537500020305743
+            ],
+            "select_explain": [
+                "Aggregate  (cost=8.15..8.16 rows=1 width=8)",
+                "  Output: count(*)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.14..8.15 rows=1 width=0)",
+                "        Output: id",
+                "        Index Cond: (bench_data.id = 8)"
+            ]
+        },
+        "without_indexes": {
+            "table_bytes": 49152,
+            "index_bytes": 0,
+            "select_cold_ms": 0.05162500019650906,
+            "select_hot_ms": 0.04200000012133387,
+            "storage_index_pct": 0.0,
+            "insert_cold_ms": 0.3034579999621201,
+            "insert_hot_ms": 0.1633749998291023,
+            "select_samples_cold_ms": [
+                0.05162500019650906
+            ],
+            "select_samples_hot_ms": [
+                0.04200000012133387
+            ],
+            "insert_samples_cold_ms": [
+                0.3034579999621201
+            ],
+            "insert_samples_hot_ms": [
+                0.1633749998291023
+            ],
+            "select_explain": [
+                "Aggregate  (cost=1.20..1.21 rows=1 width=8)",
+                "  Output: count(*)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..1.20 rows=1 width=0)",
+                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
+                "        Filter: (bench_data_noidx.id = 8)"
+            ]
+        },
+        "tuple": [
+            4,
+            16,
+            1,
+            33.33333333333333,
+            0.0631249999969441,
+            0.04241599981469335,
+            0.31654199983677245,
+            0.19537500020305743,
+            0.05162500019650906,
+            0.04200000012133387,
+            0.3034579999621201,
+            0.1633749998291023,
+            49152,
+            16384,
+            49152,
+            0
+        ]
+    },
+    {
+        "N": 4,
+        "rows": 16,
+        "M": 2,
+        "with_indexes": {
+            "storage_index_pct": 66.66666666666666,
+            "table_bytes": 49152,
+            "index_bytes": 32768,
+            "select_cold_ms": 0.05037499977333937,
+            "select_hot_ms": 0.041959000100177946,
+            "insert_cold_ms": 0.31108300026971847,
+            "insert_hot_ms": 0.16241699995589443,
+            "select_samples_cold_ms": [
+                0.05037499977333937
+            ],
+            "select_samples_hot_ms": [
+                0.041959000100177946
+            ],
+            "insert_samples_cold_ms": [
+                0.31108300026971847
+            ],
+            "insert_samples_hot_ms": [
+                0.16241699995589443
+            ],
+            "select_explain": [
+                "Aggregate  (cost=8.15..8.16 rows=1 width=8)",
+                "  Output: count(*)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.14..8.15 rows=1 width=0)",
+                "        Output: id",
+                "        Index Cond: (bench_data.id = 8)"
+            ]
+        },
+        "without_indexes": {
+            "table_bytes": 49152,
+            "index_bytes": 0,
+            "select_cold_ms": 0.07066699981805868,
+            "select_hot_ms": 0.044749999688065145,
+            "storage_index_pct": 0.0,
+            "insert_cold_ms": 0.3482090000943572,
+            "insert_hot_ms": 0.18095799987349892,
+            "select_samples_cold_ms": [
+                0.07066699981805868
+            ],
+            "select_samples_hot_ms": [
+                0.044749999688065145
+            ],
+            "insert_samples_cold_ms": [
+                0.3482090000943572
+            ],
+            "insert_samples_hot_ms": [
+                0.18095799987349892
+            ],
+            "select_explain": [
+                "Aggregate  (cost=1.20..1.21 rows=1 width=8)",
+                "  Output: count(*)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..1.20 rows=1 width=0)",
+                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
+                "        Filter: (bench_data_noidx.id = 8)"
+            ]
+        },
+        "tuple": [
+            4,
+            16,
+            2,
+            66.66666666666666,
+            0.05037499977333937,
+            0.041959000100177946,
+            0.31108300026971847,
+            0.16241699995589443,
+            0.07066699981805868,
+            0.044749999688065145,
+            0.3482090000943572,
+            0.18095799987349892,
+            49152,
+            32768,
+            49152,
+            0
+        ]
+    },
+    {
+        "N": 5,
+        "rows": 32,
+        "M": 1,
+        "with_indexes": {
+            "storage_index_pct": 33.33333333333333,
+            "table_bytes": 49152,
+            "index_bytes": 16384,
+            "select_cold_ms": 0.054291000196826644,
+            "select_hot_ms": 0.0446659996669041,
+            "insert_cold_ms": 0.3064170000470767,
+            "insert_hot_ms": 0.19254200014984235,
+            "select_samples_cold_ms": [
+                0.054291000196826644
+            ],
+            "select_samples_hot_ms": [
+                0.0446659996669041
+            ],
+            "insert_samples_cold_ms": [
+                0.3064170000470767
+            ],
+            "insert_samples_hot_ms": [
+                0.19254200014984235
+            ],
+            "select_explain": [
+                "Aggregate  (cost=8.16..8.17 rows=1 width=8)",
+                "  Output: count(*)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.14..8.15 rows=1 width=0)",
+                "        Output: id",
+                "        Index Cond: (bench_data.id = 16)"
+            ]
+        },
+        "without_indexes": {
+            "table_bytes": 49152,
+            "index_bytes": 0,
+            "select_cold_ms": 0.05066699986855383,
+            "select_hot_ms": 0.04149999995206599,
+            "storage_index_pct": 0.0,
+            "insert_cold_ms": 0.3153339998789306,
+            "insert_hot_ms": 0.17712499993649544,
+            "select_samples_cold_ms": [
+                0.05066699986855383
+            ],
+            "select_samples_hot_ms": [
+                0.04149999995206599
+            ],
+            "insert_samples_cold_ms": [
+                0.3153339998789306
+            ],
+            "insert_samples_hot_ms": [
+                0.17712499993649544
+            ],
+            "select_explain": [
+                "Aggregate  (cost=1.40..1.41 rows=1 width=8)",
+                "  Output: count(*)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..1.40 rows=1 width=0)",
+                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
+                "        Filter: (bench_data_noidx.id = 16)"
+            ]
+        },
+        "tuple": [
+            5,
+            32,
+            1,
+            33.33333333333333,
+            0.054291000196826644,
+            0.0446659996669041,
+            0.3064170000470767,
+            0.19254200014984235,
+            0.05066699986855383,
+            0.04149999995206599,
+            0.3153339998789306,
+            0.17712499993649544,
+            49152,
+            16384,
+            49152,
+            0
+        ]
+    },
+    {
+        "N": 5,
+        "rows": 32,
+        "M": 2,
+        "with_indexes": {
+            "storage_index_pct": 66.66666666666666,
+            "table_bytes": 49152,
+            "index_bytes": 32768,
+            "select_cold_ms": 0.05479099991134717,
+            "select_hot_ms": 0.041292000332759926,
+            "insert_cold_ms": 0.31862500009083305,
+            "insert_hot_ms": 0.18187500018029823,
+            "select_samples_cold_ms": [
+                0.05479099991134717
+            ],
+            "select_samples_hot_ms": [
+                0.041292000332759926
+            ],
+            "insert_samples_cold_ms": [
+                0.31862500009083305
+            ],
+            "insert_samples_hot_ms": [
+                0.18187500018029823
+            ],
+            "select_explain": [
+                "Aggregate  (cost=8.16..8.17 rows=1 width=8)",
+                "  Output: count(*)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.14..8.15 rows=1 width=0)",
+                "        Output: id",
+                "        Index Cond: (bench_data.id = 16)"
+            ]
+        },
+        "without_indexes": {
+            "table_bytes": 49152,
+            "index_bytes": 0,
+            "select_cold_ms": 0.04737500012197415,
+            "select_hot_ms": 0.04108299981453456,
+            "storage_index_pct": 0.0,
+            "insert_cold_ms": 0.34537499959697016,
+            "insert_hot_ms": 0.24470900007145246,
+            "select_samples_cold_ms": [
+                0.04737500012197415
+            ],
+            "select_samples_hot_ms": [
+                0.04108299981453456
+            ],
+            "insert_samples_cold_ms": [
+                0.34537499959697016
+            ],
+            "insert_samples_hot_ms": [
+                0.24470900007145246
+            ],
+            "select_explain": [
+                "Aggregate  (cost=1.40..1.41 rows=1 width=8)",
+                "  Output: count(*)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..1.40 rows=1 width=0)",
+                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
+                "        Filter: (bench_data_noidx.id = 16)"
+            ]
+        },
+        "tuple": [
+            5,
+            32,
+            2,
+            66.66666666666666,
+            0.05479099991134717,
+            0.041292000332759926,
+            0.31862500009083305,
+            0.18187500018029823,
+            0.04737500012197415,
+            0.04108299981453456,
+            0.34537499959697016,
+            0.24470900007145246,
+            49152,
+            32768,
+            49152,
+            0
+        ]
+    },
+    {
+        "N": 6,
+        "rows": 64,
+        "M": 1,
+        "with_indexes": {
+            "storage_index_pct": 28.57142857142857,
+            "table_bytes": 57344,
+            "index_bytes": 16384,
+            "select_cold_ms": 0.048999999762600055,
+            "select_hot_ms": 0.041541999962646514,
+            "insert_cold_ms": 0.311125000280299,
+            "insert_hot_ms": 0.1620830003048468,
+            "select_samples_cold_ms": [
+                0.048999999762600055
+            ],
+            "select_samples_hot_ms": [
+                0.041541999962646514
+            ],
+            "insert_samples_cold_ms": [
+                0.311125000280299
+            ],
+            "insert_samples_hot_ms": [
+                0.1620830003048468
+            ],
+            "select_explain": [
+                "Aggregate  (cost=8.16..8.17 rows=1 width=8)",
+                "  Output: count(*)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.14..8.16 rows=1 width=0)",
+                "        Output: id",
+                "        Index Cond: (bench_data.id = 32)"
+            ]
+        },
+        "without_indexes": {
+            "table_bytes": 57344,
+            "index_bytes": 0,
+            "select_cold_ms": 0.07575000017823186,
+            "select_hot_ms": 0.051125000027241185,
+            "storage_index_pct": 0.0,
+            "insert_cold_ms": 0.35658400020111003,
+            "insert_hot_ms": 0.22770800023863558,
+            "select_samples_cold_ms": [
+                0.07575000017823186
+            ],
+            "select_samples_hot_ms": [
+                0.051125000027241185
+            ],
+            "insert_samples_cold_ms": [
+                0.35658400020111003
+            ],
+            "insert_samples_hot_ms": [
+                0.22770800023863558
+            ],
+            "select_explain": [
+                "Aggregate  (cost=2.80..2.81 rows=1 width=8)",
+                "  Output: count(*)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..2.80 rows=1 width=0)",
+                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
+                "        Filter: (bench_data_noidx.id = 32)"
+            ]
+        },
+        "tuple": [
+            6,
+            64,
+            1,
+            28.57142857142857,
+            0.048999999762600055,
+            0.041541999962646514,
+            0.311125000280299,
+            0.1620830003048468,
+            0.07575000017823186,
+            0.051125000027241185,
+            0.35658400020111003,
+            0.22770800023863558,
+            57344,
+            16384,
+            57344,
+            0
+        ]
+    },
+    {
+        "N": 6,
+        "rows": 64,
+        "M": 2,
+        "with_indexes": {
+            "storage_index_pct": 57.14285714285714,
+            "table_bytes": 57344,
+            "index_bytes": 32768,
+            "select_cold_ms": 0.05791600005977671,
+            "select_hot_ms": 0.042749999920488335,
+            "insert_cold_ms": 0.3204580002602597,
+            "insert_hot_ms": 0.21779200005767052,
+            "select_samples_cold_ms": [
+                0.05791600005977671
+            ],
+            "select_samples_hot_ms": [
+                0.042749999920488335
+            ],
+            "insert_samples_cold_ms": [
+                0.3204580002602597
+            ],
+            "insert_samples_hot_ms": [
+                0.21779200005767052
+            ],
+            "select_explain": [
+                "Aggregate  (cost=8.16..8.17 rows=1 width=8)",
+                "  Output: count(*)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.14..8.16 rows=1 width=0)",
+                "        Output: id",
+                "        Index Cond: (bench_data.id = 32)"
+            ]
+        },
+        "without_indexes": {
+            "table_bytes": 57344,
+            "index_bytes": 0,
+            "select_cold_ms": 0.04625000019586878,
+            "select_hot_ms": 0.04137499990974902,
+            "storage_index_pct": 0.0,
+            "insert_cold_ms": 0.334374999965803,
+            "insert_hot_ms": 0.18545800003266777,
+            "select_samples_cold_ms": [
+                0.04625000019586878
+            ],
+            "select_samples_hot_ms": [
+                0.04137499990974902
+            ],
+            "insert_samples_cold_ms": [
+                0.334374999965803
+            ],
+            "insert_samples_hot_ms": [
+                0.18545800003266777
             ],
             "select_explain": [
                 "Aggregate  (cost=2.80..2.81 rows=1 width=8)",
@@ -1132,17 +1090,17 @@
             6,
             64,
             2,
-            28.57142857142857,
-            6.084542000053261,
-            5.853125000157888,
-            0.2241669999420992,
-            0.10041600012300478,
-            0.049917000069399364,
-            0.04350000017439015,
-            0.19095800007562502,
-            0.11325000014039688,
+            57.14285714285714,
+            0.05791600005977671,
+            0.042749999920488335,
+            0.3204580002602597,
+            0.21779200005767052,
+            0.04625000019586878,
+            0.04137499990974902,
+            0.334374999965803,
+            0.18545800003266777,
             57344,
-            16384,
+            32768,
             57344,
             0
         ]
@@ -1151,138 +1109,132 @@
         "N": 7,
         "rows": 128,
         "M": 1,
-        "with_indexes": {
-            "storage_index_pct": 0.0,
-            "table_bytes": 73728,
-            "index_bytes": 0,
-            "select_cold_ms": 6.225999999969645,
-            "select_hot_ms": 5.617916999881345,
-            "insert_cold_ms": 0.22337499990499055,
-            "insert_hot_ms": 0.10404099998595484,
-            "select_samples_cold_ms": [
-                6.225999999969645
-            ],
-            "select_samples_hot_ms": [
-                5.617916999881345
-            ],
-            "insert_samples_cold_ms": [
-                0.22337499990499055
-            ],
-            "insert_samples_hot_ms": [
-                0.10404099998595484
-            ],
-            "select_explain": [
-                "Aggregate  (cost=10000000005.60..10000000005.61 rows=1 width=8)",
-                "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data  (cost=10000000000.00..10000000005.60 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data.id = 64)",
-                "JIT:",
-                "  Functions: 4",
-                "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
-            ]
-        },
-        "without_indexes": {
-            "table_bytes": 73728,
-            "index_bytes": 0,
-            "select_cold_ms": 0.07079200008774933,
-            "select_hot_ms": 0.06470899984378775,
-            "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.19637500008684583,
-            "insert_hot_ms": 0.1022910000756383,
-            "select_samples_cold_ms": [
-                0.07079200008774933
-            ],
-            "select_samples_hot_ms": [
-                0.06470899984378775
-            ],
-            "insert_samples_cold_ms": [
-                0.19637500008684583
-            ],
-            "insert_samples_hot_ms": [
-                0.1022910000756383
-            ],
-            "select_explain": [
-                "Aggregate  (cost=5.60..5.61 rows=1 width=8)",
-                "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..5.60 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 64)"
-            ]
-        },
-        "tuple": [
-            7,
-            128,
-            1,
-            0.0,
-            6.225999999969645,
-            5.617916999881345,
-            0.22337499990499055,
-            0.10404099998595484,
-            0.07079200008774933,
-            0.06470899984378775,
-            0.19637500008684583,
-            0.1022910000756383,
-            73728,
-            0,
-            73728,
-            0
-        ]
-    },
-    {
-        "N": 7,
-        "rows": 128,
-        "M": 2,
         "with_indexes": {
             "storage_index_pct": 22.22222222222222,
             "table_bytes": 73728,
             "index_bytes": 16384,
-            "select_cold_ms": 6.169416000147976,
-            "select_hot_ms": 5.795708000050581,
-            "insert_cold_ms": 0.2172500001051958,
-            "insert_hot_ms": 0.1328750001903245,
+            "select_cold_ms": 0.05254100005913642,
+            "select_hot_ms": 0.046332999772857875,
+            "insert_cold_ms": 0.3264590000071621,
+            "insert_hot_ms": 0.1640840000618482,
             "select_samples_cold_ms": [
-                6.169416000147976
+                0.05254100005913642
             ],
             "select_samples_hot_ms": [
-                5.795708000050581
+                0.046332999772857875
             ],
             "insert_samples_cold_ms": [
-                0.2172500001051958
+                0.3264590000071621
             ],
             "insert_samples_hot_ms": [
-                0.1328750001903245
+                0.1640840000618482
             ],
             "select_explain": [
-                "Aggregate  (cost=10000000005.60..10000000005.61 rows=1 width=8)",
+                "Aggregate  (cost=8.16..8.17 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data  (cost=10000000000.00..10000000005.60 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data.id = 64)",
-                "JIT:",
-                "  Functions: 4",
-                "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.14..8.16 rows=1 width=0)",
+                "        Output: id",
+                "        Index Cond: (bench_data.id = 64)"
             ]
         },
         "without_indexes": {
             "table_bytes": 73728,
             "index_bytes": 0,
-            "select_cold_ms": 0.05558300017582951,
-            "select_hot_ms": 0.046041000132390764,
+            "select_cold_ms": 0.05199999986871262,
+            "select_hot_ms": 0.052709000101458514,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.200875000018641,
-            "insert_hot_ms": 0.11237500007155177,
+            "insert_cold_ms": 0.32941700010269415,
+            "insert_hot_ms": 0.16825000011522206,
             "select_samples_cold_ms": [
-                0.05558300017582951
+                0.05199999986871262
             ],
             "select_samples_hot_ms": [
-                0.046041000132390764
+                0.052709000101458514
             ],
             "insert_samples_cold_ms": [
-                0.200875000018641
+                0.32941700010269415
             ],
             "insert_samples_hot_ms": [
-                0.11237500007155177
+                0.16825000011522206
+            ],
+            "select_explain": [
+                "Aggregate  (cost=5.60..5.61 rows=1 width=8)",
+                "  Output: count(*)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..5.60 rows=1 width=0)",
+                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
+                "        Filter: (bench_data_noidx.id = 64)"
+            ]
+        },
+        "tuple": [
+            7,
+            128,
+            1,
+            22.22222222222222,
+            0.05254100005913642,
+            0.046332999772857875,
+            0.3264590000071621,
+            0.1640840000618482,
+            0.05199999986871262,
+            0.052709000101458514,
+            0.32941700010269415,
+            0.16825000011522206,
+            73728,
+            16384,
+            73728,
+            0
+        ]
+    },
+    {
+        "N": 7,
+        "rows": 128,
+        "M": 2,
+        "with_indexes": {
+            "storage_index_pct": 44.44444444444444,
+            "table_bytes": 73728,
+            "index_bytes": 32768,
+            "select_cold_ms": 0.06658299980699667,
+            "select_hot_ms": 0.04149999995206599,
+            "insert_cold_ms": 0.3329999999550637,
+            "insert_hot_ms": 0.18062499975712853,
+            "select_samples_cold_ms": [
+                0.06658299980699667
+            ],
+            "select_samples_hot_ms": [
+                0.04149999995206599
+            ],
+            "insert_samples_cold_ms": [
+                0.3329999999550637
+            ],
+            "insert_samples_hot_ms": [
+                0.18062499975712853
+            ],
+            "select_explain": [
+                "Aggregate  (cost=8.16..8.17 rows=1 width=8)",
+                "  Output: count(*)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.14..8.16 rows=1 width=0)",
+                "        Output: id",
+                "        Index Cond: (bench_data.id = 64)"
+            ]
+        },
+        "without_indexes": {
+            "table_bytes": 73728,
+            "index_bytes": 0,
+            "select_cold_ms": 0.05129200008013868,
+            "select_hot_ms": 0.04450000005817856,
+            "storage_index_pct": 0.0,
+            "insert_cold_ms": 0.31749999970998033,
+            "insert_hot_ms": 0.16683400008332683,
+            "select_samples_cold_ms": [
+                0.05129200008013868
+            ],
+            "select_samples_hot_ms": [
+                0.04450000005817856
+            ],
+            "insert_samples_cold_ms": [
+                0.31749999970998033
+            ],
+            "insert_samples_hot_ms": [
+                0.16683400008332683
             ],
             "select_explain": [
                 "Aggregate  (cost=5.60..5.61 rows=1 width=8)",
@@ -1296,17 +1248,17 @@
             7,
             128,
             2,
-            22.22222222222222,
-            6.169416000147976,
-            5.795708000050581,
-            0.2172500001051958,
-            0.1328750001903245,
-            0.05558300017582951,
-            0.046041000132390764,
-            0.200875000018641,
-            0.11237500007155177,
+            44.44444444444444,
+            0.06658299980699667,
+            0.04149999995206599,
+            0.3329999999550637,
+            0.18062499975712853,
+            0.05129200008013868,
+            0.04450000005817856,
+            0.31749999970998033,
+            0.16683400008332683,
             73728,
-            16384,
+            32768,
             73728,
             0
         ]
@@ -1315,138 +1267,132 @@
         "N": 8,
         "rows": 256,
         "M": 1,
-        "with_indexes": {
-            "storage_index_pct": 0.0,
-            "table_bytes": 106496,
-            "index_bytes": 0,
-            "select_cold_ms": 6.251582999993843,
-            "select_hot_ms": 5.7574160000513075,
-            "insert_cold_ms": 0.21799999990435026,
-            "insert_hot_ms": 0.1252089998615702,
-            "select_samples_cold_ms": [
-                6.251582999993843
-            ],
-            "select_samples_hot_ms": [
-                5.7574160000513075
-            ],
-            "insert_samples_cold_ms": [
-                0.21799999990435026
-            ],
-            "insert_samples_hot_ms": [
-                0.1252089998615702
-            ],
-            "select_explain": [
-                "Aggregate  (cost=10000000011.20..10000000011.21 rows=1 width=8)",
-                "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data  (cost=10000000000.00..10000000011.20 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data.id = 128)",
-                "JIT:",
-                "  Functions: 4",
-                "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
-            ]
-        },
-        "without_indexes": {
-            "table_bytes": 106496,
-            "index_bytes": 0,
-            "select_cold_ms": 0.06916699999237608,
-            "select_hot_ms": 0.05287499993755773,
-            "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.20133300017732836,
-            "insert_hot_ms": 0.09950000003300374,
-            "select_samples_cold_ms": [
-                0.06916699999237608
-            ],
-            "select_samples_hot_ms": [
-                0.05287499993755773
-            ],
-            "insert_samples_cold_ms": [
-                0.20133300017732836
-            ],
-            "insert_samples_hot_ms": [
-                0.09950000003300374
-            ],
-            "select_explain": [
-                "Aggregate  (cost=11.20..11.21 rows=1 width=8)",
-                "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..11.20 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 128)"
-            ]
-        },
-        "tuple": [
-            8,
-            256,
-            1,
-            0.0,
-            6.251582999993843,
-            5.7574160000513075,
-            0.21799999990435026,
-            0.1252089998615702,
-            0.06916699999237608,
-            0.05287499993755773,
-            0.20133300017732836,
-            0.09950000003300374,
-            106496,
-            0,
-            106496,
-            0
-        ]
-    },
-    {
-        "N": 8,
-        "rows": 256,
-        "M": 2,
         "with_indexes": {
             "storage_index_pct": 15.384615384615385,
             "table_bytes": 106496,
             "index_bytes": 16384,
-            "select_cold_ms": 6.804790999922261,
-            "select_hot_ms": 5.858999999873049,
-            "insert_cold_ms": 0.24987500000861473,
-            "insert_hot_ms": 0.11375000008229108,
+            "select_cold_ms": 0.2931669996542041,
+            "select_hot_ms": 0.19704199985426385,
+            "insert_cold_ms": 0.3721660000337579,
+            "insert_hot_ms": 0.1929169998220459,
             "select_samples_cold_ms": [
-                6.804790999922261
+                0.2931669996542041
             ],
             "select_samples_hot_ms": [
-                5.858999999873049
+                0.19704199985426385
             ],
             "insert_samples_cold_ms": [
-                0.24987500000861473
+                0.3721660000337579
             ],
             "insert_samples_hot_ms": [
-                0.11375000008229108
+                0.1929169998220459
             ],
             "select_explain": [
-                "Aggregate  (cost=10000000011.20..10000000011.21 rows=1 width=8)",
+                "Aggregate  (cost=8.16..8.17 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data  (cost=10000000000.00..10000000011.20 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data.id = 128)",
-                "JIT:",
-                "  Functions: 4",
-                "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.14..8.16 rows=1 width=0)",
+                "        Output: id",
+                "        Index Cond: (bench_data.id = 128)"
             ]
         },
         "without_indexes": {
             "table_bytes": 106496,
             "index_bytes": 0,
-            "select_cold_ms": 0.07120899999790709,
-            "select_hot_ms": 0.06645899998147797,
+            "select_cold_ms": 0.06308299998636357,
+            "select_hot_ms": 0.049792000027082395,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.21054099988759845,
-            "insert_hot_ms": 0.10320899991711485,
+            "insert_cold_ms": 0.3318750000289583,
+            "insert_hot_ms": 0.17699999989417847,
             "select_samples_cold_ms": [
-                0.07120899999790709
+                0.06308299998636357
             ],
             "select_samples_hot_ms": [
-                0.06645899998147797
+                0.049792000027082395
             ],
             "insert_samples_cold_ms": [
-                0.21054099988759845
+                0.3318750000289583
             ],
             "insert_samples_hot_ms": [
-                0.10320899991711485
+                0.17699999989417847
+            ],
+            "select_explain": [
+                "Aggregate  (cost=11.20..11.21 rows=1 width=8)",
+                "  Output: count(*)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..11.20 rows=1 width=0)",
+                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
+                "        Filter: (bench_data_noidx.id = 128)"
+            ]
+        },
+        "tuple": [
+            8,
+            256,
+            1,
+            15.384615384615385,
+            0.2931669996542041,
+            0.19704199985426385,
+            0.3721660000337579,
+            0.1929169998220459,
+            0.06308299998636357,
+            0.049792000027082395,
+            0.3318750000289583,
+            0.17699999989417847,
+            106496,
+            16384,
+            106496,
+            0
+        ]
+    },
+    {
+        "N": 8,
+        "rows": 256,
+        "M": 2,
+        "with_indexes": {
+            "storage_index_pct": 30.76923076923077,
+            "table_bytes": 106496,
+            "index_bytes": 32768,
+            "select_cold_ms": 0.05545800013351254,
+            "select_hot_ms": 0.04516599983617198,
+            "insert_cold_ms": 0.3363339997122239,
+            "insert_hot_ms": 0.16787499998827116,
+            "select_samples_cold_ms": [
+                0.05545800013351254
+            ],
+            "select_samples_hot_ms": [
+                0.04516599983617198
+            ],
+            "insert_samples_cold_ms": [
+                0.3363339997122239
+            ],
+            "insert_samples_hot_ms": [
+                0.16787499998827116
+            ],
+            "select_explain": [
+                "Aggregate  (cost=8.16..8.17 rows=1 width=8)",
+                "  Output: count(*)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.14..8.16 rows=1 width=0)",
+                "        Output: id",
+                "        Index Cond: (bench_data.id = 128)"
+            ]
+        },
+        "without_indexes": {
+            "table_bytes": 106496,
+            "index_bytes": 0,
+            "select_cold_ms": 0.05654199958371464,
+            "select_hot_ms": 0.04904200022792793,
+            "storage_index_pct": 0.0,
+            "insert_cold_ms": 0.3044579998459085,
+            "insert_hot_ms": 0.17387499974574894,
+            "select_samples_cold_ms": [
+                0.05654199958371464
+            ],
+            "select_samples_hot_ms": [
+                0.04904200022792793
+            ],
+            "insert_samples_cold_ms": [
+                0.3044579998459085
+            ],
+            "insert_samples_hot_ms": [
+                0.17387499974574894
             ],
             "select_explain": [
                 "Aggregate  (cost=11.20..11.21 rows=1 width=8)",
@@ -1460,17 +1406,17 @@
             8,
             256,
             2,
-            15.384615384615385,
-            6.804790999922261,
-            5.858999999873049,
-            0.24987500000861473,
-            0.11375000008229108,
-            0.07120899999790709,
-            0.06645899998147797,
-            0.21054099988759845,
-            0.10320899991711485,
+            30.76923076923077,
+            0.05545800013351254,
+            0.04516599983617198,
+            0.3363339997122239,
+            0.16787499998827116,
+            0.05654199958371464,
+            0.04904200022792793,
+            0.3044579998459085,
+            0.17387499974574894,
             106496,
-            16384,
+            32768,
             106496,
             0
         ]
@@ -1480,55 +1426,52 @@
         "rows": 512,
         "M": 1,
         "with_indexes": {
-            "storage_index_pct": 0.0,
+            "storage_index_pct": 19.047619047619047,
             "table_bytes": 172032,
-            "index_bytes": 0,
-            "select_cold_ms": 6.100709000065763,
-            "select_hot_ms": 5.072124999969674,
-            "insert_cold_ms": 0.2130420000412414,
-            "insert_hot_ms": 0.10304200009159104,
+            "index_bytes": 32768,
+            "select_cold_ms": 0.05983300025036442,
+            "select_hot_ms": 0.04591699962475104,
+            "insert_cold_ms": 0.3532499999892025,
+            "insert_hot_ms": 0.1706660000309057,
             "select_samples_cold_ms": [
-                6.100709000065763
+                0.05983300025036442
             ],
             "select_samples_hot_ms": [
-                5.072124999969674
+                0.04591699962475104
             ],
             "insert_samples_cold_ms": [
-                0.2130420000412414
+                0.3532499999892025
             ],
             "insert_samples_hot_ms": [
-                0.10304200009159104
+                0.1706660000309057
             ],
             "select_explain": [
-                "Aggregate  (cost=10000000022.40..10000000022.41 rows=1 width=8)",
+                "Aggregate  (cost=8.29..8.30 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data  (cost=10000000000.00..10000000022.40 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data.id = 256)",
-                "JIT:",
-                "  Functions: 4",
-                "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.27..8.29 rows=1 width=0)",
+                "        Output: id",
+                "        Index Cond: (bench_data.id = 256)"
             ]
         },
         "without_indexes": {
             "table_bytes": 172032,
             "index_bytes": 0,
-            "select_cold_ms": 0.07095799992384855,
-            "select_hot_ms": 0.059833000022990745,
+            "select_cold_ms": 0.07241599996632431,
+            "select_hot_ms": 0.06291699992289068,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.21095800002512988,
-            "insert_hot_ms": 0.12279200018383563,
+            "insert_cold_ms": 0.3550829997038818,
+            "insert_hot_ms": 0.18612500025483314,
             "select_samples_cold_ms": [
-                0.07095799992384855
+                0.07241599996632431
             ],
             "select_samples_hot_ms": [
-                0.059833000022990745
+                0.06291699992289068
             ],
             "insert_samples_cold_ms": [
-                0.21095800002512988
+                0.3550829997038818
             ],
             "insert_samples_hot_ms": [
-                0.12279200018383563
+                0.18612500025483314
             ],
             "select_explain": [
                 "Aggregate  (cost=22.40..22.41 rows=1 width=8)",
@@ -1542,97 +1485,15 @@
             9,
             512,
             1,
-            0.0,
-            6.100709000065763,
-            5.072124999969674,
-            0.2130420000412414,
-            0.10304200009159104,
-            0.07095799992384855,
-            0.059833000022990745,
-            0.21095800002512988,
-            0.12279200018383563,
-            172032,
-            0,
-            172032,
-            0
-        ]
-    },
-    {
-        "N": 9,
-        "rows": 512,
-        "M": 2,
-        "with_indexes": {
-            "storage_index_pct": 19.047619047619047,
-            "table_bytes": 172032,
-            "index_bytes": 32768,
-            "select_cold_ms": 5.986791999930574,
-            "select_hot_ms": 5.059792000110974,
-            "insert_cold_ms": 0.22629199997936666,
-            "insert_hot_ms": 0.09925000017574348,
-            "select_samples_cold_ms": [
-                5.986791999930574
-            ],
-            "select_samples_hot_ms": [
-                5.059792000110974
-            ],
-            "insert_samples_cold_ms": [
-                0.22629199997936666
-            ],
-            "insert_samples_hot_ms": [
-                0.09925000017574348
-            ],
-            "select_explain": [
-                "Aggregate  (cost=10000000022.40..10000000022.41 rows=1 width=8)",
-                "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data  (cost=10000000000.00..10000000022.40 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data.id = 256)",
-                "JIT:",
-                "  Functions: 4",
-                "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
-            ]
-        },
-        "without_indexes": {
-            "table_bytes": 172032,
-            "index_bytes": 0,
-            "select_cold_ms": 0.07641699994564988,
-            "select_hot_ms": 0.0602499999331485,
-            "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.19775000009758514,
-            "insert_hot_ms": 0.09829100008573732,
-            "select_samples_cold_ms": [
-                0.07641699994564988
-            ],
-            "select_samples_hot_ms": [
-                0.0602499999331485
-            ],
-            "insert_samples_cold_ms": [
-                0.19775000009758514
-            ],
-            "insert_samples_hot_ms": [
-                0.09829100008573732
-            ],
-            "select_explain": [
-                "Aggregate  (cost=22.40..22.41 rows=1 width=8)",
-                "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..22.40 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 256)"
-            ]
-        },
-        "tuple": [
-            9,
-            512,
-            2,
             19.047619047619047,
-            5.986791999930574,
-            5.059792000110974,
-            0.22629199997936666,
-            0.09925000017574348,
-            0.07641699994564988,
-            0.0602499999331485,
-            0.19775000009758514,
-            0.09829100008573732,
+            0.05983300025036442,
+            0.04591699962475104,
+            0.3532499999892025,
+            0.1706660000309057,
+            0.07241599996632431,
+            0.06291699992289068,
+            0.3550829997038818,
+            0.18612500025483314,
             172032,
             32768,
             172032,
@@ -1640,59 +1501,135 @@
         ]
     },
     {
+        "N": 9,
+        "rows": 512,
+        "M": 2,
+        "with_indexes": {
+            "storage_index_pct": 38.095238095238095,
+            "table_bytes": 172032,
+            "index_bytes": 65536,
+            "select_cold_ms": 0.048999999762600055,
+            "select_hot_ms": 0.040625000110594556,
+            "insert_cold_ms": 0.34904200037999544,
+            "insert_hot_ms": 0.1777500001480803,
+            "select_samples_cold_ms": [
+                0.048999999762600055
+            ],
+            "select_samples_hot_ms": [
+                0.040625000110594556
+            ],
+            "insert_samples_cold_ms": [
+                0.34904200037999544
+            ],
+            "insert_samples_hot_ms": [
+                0.1777500001480803
+            ],
+            "select_explain": [
+                "Aggregate  (cost=8.29..8.30 rows=1 width=8)",
+                "  Output: count(*)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.27..8.29 rows=1 width=0)",
+                "        Output: id",
+                "        Index Cond: (bench_data.id = 256)"
+            ]
+        },
+        "without_indexes": {
+            "table_bytes": 172032,
+            "index_bytes": 0,
+            "select_cold_ms": 0.07320800023080665,
+            "select_hot_ms": 0.06008299988025101,
+            "storage_index_pct": 0.0,
+            "insert_cold_ms": 0.4007080001429131,
+            "insert_hot_ms": 0.20041600009790272,
+            "select_samples_cold_ms": [
+                0.07320800023080665
+            ],
+            "select_samples_hot_ms": [
+                0.06008299988025101
+            ],
+            "insert_samples_cold_ms": [
+                0.4007080001429131
+            ],
+            "insert_samples_hot_ms": [
+                0.20041600009790272
+            ],
+            "select_explain": [
+                "Aggregate  (cost=22.40..22.41 rows=1 width=8)",
+                "  Output: count(*)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..22.40 rows=1 width=0)",
+                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
+                "        Filter: (bench_data_noidx.id = 256)"
+            ]
+        },
+        "tuple": [
+            9,
+            512,
+            2,
+            38.095238095238095,
+            0.048999999762600055,
+            0.040625000110594556,
+            0.34904200037999544,
+            0.1777500001480803,
+            0.07320800023080665,
+            0.06008299988025101,
+            0.4007080001429131,
+            0.20041600009790272,
+            172032,
+            65536,
+            172032,
+            0
+        ]
+    },
+    {
         "N": 10,
         "rows": 1024,
         "M": 1,
         "with_indexes": {
-            "storage_index_pct": 0.0,
+            "storage_index_pct": 13.513513513513514,
             "table_bytes": 303104,
-            "index_bytes": 0,
-            "select_cold_ms": 6.2169579998681,
-            "select_hot_ms": 5.852000000004409,
-            "insert_cold_ms": 0.25262500003009336,
-            "insert_hot_ms": 0.1473750000968721,
+            "index_bytes": 40960,
+            "select_cold_ms": 0.058291000186727615,
+            "select_hot_ms": 0.040750000152911525,
+            "insert_cold_ms": 0.4010840002592886,
+            "insert_hot_ms": 0.24462500005029142,
             "select_samples_cold_ms": [
-                6.2169579998681
+                0.058291000186727615
             ],
             "select_samples_hot_ms": [
-                5.852000000004409
+                0.040750000152911525
             ],
             "insert_samples_cold_ms": [
-                0.25262500003009336
+                0.4010840002592886
             ],
             "insert_samples_hot_ms": [
-                0.1473750000968721
+                0.24462500005029142
             ],
             "select_explain": [
-                "Aggregate  (cost=10000000044.80..10000000044.81 rows=1 width=8)",
+                "Aggregate  (cost=8.29..8.30 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data  (cost=10000000000.00..10000000044.80 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data.id = 512)",
-                "JIT:",
-                "  Functions: 4",
-                "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.28..8.29 rows=1 width=0)",
+                "        Output: id",
+                "        Index Cond: (bench_data.id = 512)"
             ]
         },
         "without_indexes": {
             "table_bytes": 303104,
             "index_bytes": 0,
-            "select_cold_ms": 0.08974999991551158,
-            "select_hot_ms": 0.07987499998307612,
+            "select_cold_ms": 0.08424999987255433,
+            "select_hot_ms": 0.07624999989275238,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.20500000005085894,
-            "insert_hot_ms": 0.09829100008573732,
+            "insert_cold_ms": 0.35416699984125444,
+            "insert_hot_ms": 0.20612499974959064,
             "select_samples_cold_ms": [
-                0.08974999991551158
+                0.08424999987255433
             ],
             "select_samples_hot_ms": [
-                0.07987499998307612
+                0.07624999989275238
             ],
             "insert_samples_cold_ms": [
-                0.20500000005085894
+                0.35416699984125444
             ],
             "insert_samples_hot_ms": [
-                0.09829100008573732
+                0.20612499974959064
             ],
             "select_explain": [
                 "Aggregate  (cost=44.80..44.81 rows=1 width=8)",
@@ -1706,97 +1643,15 @@
             10,
             1024,
             1,
-            0.0,
-            6.2169579998681,
-            5.852000000004409,
-            0.25262500003009336,
-            0.1473750000968721,
-            0.08974999991551158,
-            0.07987499998307612,
-            0.20500000005085894,
-            0.09829100008573732,
-            303104,
-            0,
-            303104,
-            0
-        ]
-    },
-    {
-        "N": 10,
-        "rows": 1024,
-        "M": 2,
-        "with_indexes": {
-            "storage_index_pct": 13.513513513513514,
-            "table_bytes": 303104,
-            "index_bytes": 40960,
-            "select_cold_ms": 6.008042000075875,
-            "select_hot_ms": 5.629082999803359,
-            "insert_cold_ms": 0.25862499978757114,
-            "insert_hot_ms": 0.10541599999669415,
-            "select_samples_cold_ms": [
-                6.008042000075875
-            ],
-            "select_samples_hot_ms": [
-                5.629082999803359
-            ],
-            "insert_samples_cold_ms": [
-                0.25862499978757114
-            ],
-            "insert_samples_hot_ms": [
-                0.10541599999669415
-            ],
-            "select_explain": [
-                "Aggregate  (cost=10000000044.80..10000000044.81 rows=1 width=8)",
-                "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data  (cost=10000000000.00..10000000044.80 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data.id = 512)",
-                "JIT:",
-                "  Functions: 4",
-                "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
-            ]
-        },
-        "without_indexes": {
-            "table_bytes": 303104,
-            "index_bytes": 0,
-            "select_cold_ms": 0.15366600018751342,
-            "select_hot_ms": 0.14525000005960464,
-            "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.290833000008206,
-            "insert_hot_ms": 0.1320410001426353,
-            "select_samples_cold_ms": [
-                0.15366600018751342
-            ],
-            "select_samples_hot_ms": [
-                0.14525000005960464
-            ],
-            "insert_samples_cold_ms": [
-                0.290833000008206
-            ],
-            "insert_samples_hot_ms": [
-                0.1320410001426353
-            ],
-            "select_explain": [
-                "Aggregate  (cost=44.80..44.81 rows=1 width=8)",
-                "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..44.80 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data_noidx.id = 512)"
-            ]
-        },
-        "tuple": [
-            10,
-            1024,
-            2,
             13.513513513513514,
-            6.008042000075875,
-            5.629082999803359,
-            0.25862499978757114,
-            0.10541599999669415,
-            0.15366600018751342,
-            0.14525000005960464,
-            0.290833000008206,
-            0.1320410001426353,
+            0.058291000186727615,
+            0.040750000152911525,
+            0.4010840002592886,
+            0.24462500005029142,
+            0.08424999987255433,
+            0.07624999989275238,
+            0.35416699984125444,
+            0.20612499974959064,
             303104,
             40960,
             303104,
@@ -1804,59 +1659,135 @@
         ]
     },
     {
+        "N": 10,
+        "rows": 1024,
+        "M": 2,
+        "with_indexes": {
+            "storage_index_pct": 27.027027027027028,
+            "table_bytes": 303104,
+            "index_bytes": 81920,
+            "select_cold_ms": 0.04695899997386732,
+            "select_hot_ms": 0.04058400008943863,
+            "insert_cold_ms": 0.34474999984013266,
+            "insert_hot_ms": 0.17154199986180174,
+            "select_samples_cold_ms": [
+                0.04695899997386732
+            ],
+            "select_samples_hot_ms": [
+                0.04058400008943863
+            ],
+            "insert_samples_cold_ms": [
+                0.34474999984013266
+            ],
+            "insert_samples_hot_ms": [
+                0.17154199986180174
+            ],
+            "select_explain": [
+                "Aggregate  (cost=8.29..8.30 rows=1 width=8)",
+                "  Output: count(*)",
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.28..8.29 rows=1 width=0)",
+                "        Output: id",
+                "        Index Cond: (bench_data.id = 512)"
+            ]
+        },
+        "without_indexes": {
+            "table_bytes": 303104,
+            "index_bytes": 0,
+            "select_cold_ms": 0.1223750000463042,
+            "select_hot_ms": 0.09291699961977429,
+            "storage_index_pct": 0.0,
+            "insert_cold_ms": 0.421249999817519,
+            "insert_hot_ms": 0.21320899986676523,
+            "select_samples_cold_ms": [
+                0.1223750000463042
+            ],
+            "select_samples_hot_ms": [
+                0.09291699961977429
+            ],
+            "insert_samples_cold_ms": [
+                0.421249999817519
+            ],
+            "insert_samples_hot_ms": [
+                0.21320899986676523
+            ],
+            "select_explain": [
+                "Aggregate  (cost=44.80..44.81 rows=1 width=8)",
+                "  Output: count(*)",
+                "  ->  Seq Scan on public.bench_data_noidx  (cost=0.00..44.80 rows=1 width=0)",
+                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
+                "        Filter: (bench_data_noidx.id = 512)"
+            ]
+        },
+        "tuple": [
+            10,
+            1024,
+            2,
+            27.027027027027028,
+            0.04695899997386732,
+            0.04058400008943863,
+            0.34474999984013266,
+            0.17154199986180174,
+            0.1223750000463042,
+            0.09291699961977429,
+            0.421249999817519,
+            0.21320899986676523,
+            303104,
+            81920,
+            303104,
+            0
+        ]
+    },
+    {
         "N": 11,
         "rows": 2048,
         "M": 1,
         "with_indexes": {
-            "storage_index_pct": 0.0,
+            "storage_index_pct": 11.76470588235294,
             "table_bytes": 557056,
-            "index_bytes": 0,
-            "select_cold_ms": 6.135666999853129,
-            "select_hot_ms": 5.0975419999303995,
-            "insert_cold_ms": 0.364250000075117,
-            "insert_hot_ms": 0.13662499986821786,
+            "index_bytes": 65536,
+            "select_cold_ms": 0.0994170000012673,
+            "select_hot_ms": 0.0838329997350229,
+            "insert_cold_ms": 0.49766699976316886,
+            "insert_hot_ms": 0.23779100001775078,
             "select_samples_cold_ms": [
-                6.135666999853129
+                0.0994170000012673
             ],
             "select_samples_hot_ms": [
-                5.0975419999303995
+                0.0838329997350229
             ],
             "insert_samples_cold_ms": [
-                0.364250000075117
+                0.49766699976316886
             ],
             "insert_samples_hot_ms": [
-                0.13662499986821786
+                0.23779100001775078
             ],
             "select_explain": [
-                "Aggregate  (cost=10000000088.60..10000000088.61 rows=1 width=8)",
+                "Aggregate  (cost=8.30..8.31 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data  (cost=10000000000.00..10000000088.60 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data.id = 1024)",
-                "JIT:",
-                "  Functions: 4",
-                "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.28..8.29 rows=1 width=0)",
+                "        Output: id",
+                "        Index Cond: (bench_data.id = 1024)"
             ]
         },
         "without_indexes": {
             "table_bytes": 557056,
             "index_bytes": 0,
-            "select_cold_ms": 0.22912500003258174,
-            "select_hot_ms": 0.19329099995957222,
+            "select_cold_ms": 0.13716600005864166,
+            "select_hot_ms": 0.12037499982398003,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.701583000136452,
-            "insert_hot_ms": 0.336542000013651,
+            "insert_cold_ms": 0.5506669999704172,
+            "insert_hot_ms": 0.3104580000581336,
             "select_samples_cold_ms": [
-                0.22912500003258174
+                0.13716600005864166
             ],
             "select_samples_hot_ms": [
-                0.19329099995957222
+                0.12037499982398003
             ],
             "insert_samples_cold_ms": [
-                0.701583000136452
+                0.5506669999704172
             ],
             "insert_samples_hot_ms": [
-                0.336542000013651
+                0.3104580000581336
             ],
             "select_explain": [
                 "Aggregate  (cost=88.60..88.61 rows=1 width=8)",
@@ -1870,17 +1801,17 @@
             11,
             2048,
             1,
-            0.0,
-            6.135666999853129,
-            5.0975419999303995,
-            0.364250000075117,
-            0.13662499986821786,
-            0.22912500003258174,
-            0.19329099995957222,
-            0.701583000136452,
-            0.336542000013651,
+            11.76470588235294,
+            0.0994170000012673,
+            0.0838329997350229,
+            0.49766699976316886,
+            0.23779100001775078,
+            0.13716600005864166,
+            0.12037499982398003,
+            0.5506669999704172,
+            0.3104580000581336,
             557056,
-            0,
+            65536,
             557056,
             0
         ]
@@ -1890,55 +1821,52 @@
         "rows": 2048,
         "M": 2,
         "with_indexes": {
-            "storage_index_pct": 10.294117647058822,
+            "storage_index_pct": 22.058823529411764,
             "table_bytes": 557056,
-            "index_bytes": 57344,
-            "select_cold_ms": 6.058374999838634,
-            "select_hot_ms": 4.964040999993813,
-            "insert_cold_ms": 0.2934999999979482,
-            "insert_hot_ms": 0.13616699993690418,
+            "index_bytes": 122880,
+            "select_cold_ms": 0.06479199964815052,
+            "select_hot_ms": 0.04295799999454175,
+            "insert_cold_ms": 0.4404160004014557,
+            "insert_hot_ms": 0.18254199994771625,
             "select_samples_cold_ms": [
-                6.058374999838634
+                0.06479199964815052
             ],
             "select_samples_hot_ms": [
-                4.964040999993813
+                0.04295799999454175
             ],
             "insert_samples_cold_ms": [
-                0.2934999999979482
+                0.4404160004014557
             ],
             "insert_samples_hot_ms": [
-                0.13616699993690418
+                0.18254199994771625
             ],
             "select_explain": [
-                "Aggregate  (cost=10000000088.60..10000000088.61 rows=1 width=8)",
+                "Aggregate  (cost=8.30..8.31 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data  (cost=10000000000.00..10000000088.60 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data.id = 1024)",
-                "JIT:",
-                "  Functions: 4",
-                "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.28..8.29 rows=1 width=0)",
+                "        Output: id",
+                "        Index Cond: (bench_data.id = 1024)"
             ]
         },
         "without_indexes": {
             "table_bytes": 557056,
             "index_bytes": 0,
-            "select_cold_ms": 0.13812499992127414,
-            "select_hot_ms": 0.11929200013582886,
+            "select_cold_ms": 0.12720900031126803,
+            "select_hot_ms": 0.11408299997128779,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.26475000004211324,
-            "insert_hot_ms": 0.13079100017421297,
+            "insert_cold_ms": 0.4857090002587938,
+            "insert_hot_ms": 0.3042500002266024,
             "select_samples_cold_ms": [
-                0.13812499992127414
+                0.12720900031126803
             ],
             "select_samples_hot_ms": [
-                0.11929200013582886
+                0.11408299997128779
             ],
             "insert_samples_cold_ms": [
-                0.26475000004211324
+                0.4857090002587938
             ],
             "insert_samples_hot_ms": [
-                0.13079100017421297
+                0.3042500002266024
             ],
             "select_explain": [
                 "Aggregate  (cost=88.60..88.61 rows=1 width=8)",
@@ -1952,17 +1880,17 @@
             11,
             2048,
             2,
-            10.294117647058822,
-            6.058374999838634,
-            4.964040999993813,
-            0.2934999999979482,
-            0.13616699993690418,
-            0.13812499992127414,
-            0.11929200013582886,
-            0.26475000004211324,
-            0.13079100017421297,
+            22.058823529411764,
+            0.06479199964815052,
+            0.04295799999454175,
+            0.4404160004014557,
+            0.18254199994771625,
+            0.12720900031126803,
+            0.11408299997128779,
+            0.4857090002587938,
+            0.3042500002266024,
             557056,
-            57344,
+            122880,
             557056,
             0
         ]
@@ -1972,55 +1900,52 @@
         "rows": 4096,
         "M": 1,
         "with_indexes": {
-            "storage_index_pct": 0.0,
+            "storage_index_pct": 10.76923076923077,
             "table_bytes": 1064960,
-            "index_bytes": 0,
-            "select_cold_ms": 6.368667000060668,
-            "select_hot_ms": 5.389541999875291,
-            "insert_cold_ms": 0.2946669999346341,
-            "insert_hot_ms": 0.1375829999687994,
+            "index_bytes": 114688,
+            "select_cold_ms": 0.08416599985139328,
+            "select_hot_ms": 0.07579099974464043,
+            "insert_cold_ms": 0.4745000001094013,
+            "insert_hot_ms": 0.25716700019984273,
             "select_samples_cold_ms": [
-                6.368667000060668
+                0.08416599985139328
             ],
             "select_samples_hot_ms": [
-                5.389541999875291
+                0.07579099974464043
             ],
             "insert_samples_cold_ms": [
-                0.2946669999346341
+                0.4745000001094013
             ],
             "insert_samples_hot_ms": [
-                0.1375829999687994
+                0.25716700019984273
             ],
             "select_explain": [
-                "Aggregate  (cost=10000000176.20..10000000176.21 rows=1 width=8)",
+                "Aggregate  (cost=8.30..8.31 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data  (cost=10000000000.00..10000000176.20 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data.id = 2048)",
-                "JIT:",
-                "  Functions: 4",
-                "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.28..8.30 rows=1 width=0)",
+                "        Output: id",
+                "        Index Cond: (bench_data.id = 2048)"
             ]
         },
         "without_indexes": {
             "table_bytes": 1064960,
             "index_bytes": 0,
-            "select_cold_ms": 0.2351250000174332,
-            "select_hot_ms": 0.21845799983566394,
+            "select_cold_ms": 0.23824999971111538,
+            "select_hot_ms": 0.24533299983886536,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.2817500001128792,
-            "insert_hot_ms": 0.10216600003332132,
+            "insert_cold_ms": 0.6811250000282598,
+            "insert_hot_ms": 0.42325000003984314,
             "select_samples_cold_ms": [
-                0.2351250000174332
+                0.23824999971111538
             ],
             "select_samples_hot_ms": [
-                0.21845799983566394
+                0.24533299983886536
             ],
             "insert_samples_cold_ms": [
-                0.2817500001128792
+                0.6811250000282598
             ],
             "insert_samples_hot_ms": [
-                0.10216600003332132
+                0.42325000003984314
             ],
             "select_explain": [
                 "Aggregate  (cost=176.20..176.21 rows=1 width=8)",
@@ -2034,17 +1959,17 @@
             12,
             4096,
             1,
-            0.0,
-            6.368667000060668,
-            5.389541999875291,
-            0.2946669999346341,
-            0.1375829999687994,
-            0.2351250000174332,
-            0.21845799983566394,
-            0.2817500001128792,
-            0.10216600003332132,
+            10.76923076923077,
+            0.08416599985139328,
+            0.07579099974464043,
+            0.4745000001094013,
+            0.25716700019984273,
+            0.23824999971111538,
+            0.24533299983886536,
+            0.6811250000282598,
+            0.42325000003984314,
             1064960,
-            0,
+            114688,
             1064960,
             0
         ]
@@ -2054,55 +1979,52 @@
         "rows": 4096,
         "M": 2,
         "with_indexes": {
-            "storage_index_pct": 6.923076923076923,
+            "storage_index_pct": 17.692307692307693,
             "table_bytes": 1064960,
-            "index_bytes": 73728,
-            "select_cold_ms": 6.308208000064042,
-            "select_hot_ms": 5.310874999850057,
-            "insert_cold_ms": 0.32029199996941315,
-            "insert_hot_ms": 0.1498329997957626,
+            "index_bytes": 188416,
+            "select_cold_ms": 0.08166699990397319,
+            "select_hot_ms": 0.0691669997650024,
+            "insert_cold_ms": 0.47404199995071394,
+            "insert_hot_ms": 0.2658339999470627,
             "select_samples_cold_ms": [
-                6.308208000064042
+                0.08166699990397319
             ],
             "select_samples_hot_ms": [
-                5.310874999850057
+                0.0691669997650024
             ],
             "insert_samples_cold_ms": [
-                0.32029199996941315
+                0.47404199995071394
             ],
             "insert_samples_hot_ms": [
-                0.1498329997957626
+                0.2658339999470627
             ],
             "select_explain": [
-                "Aggregate  (cost=10000000176.20..10000000176.21 rows=1 width=8)",
+                "Aggregate  (cost=8.30..8.31 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data  (cost=10000000000.00..10000000176.20 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data.id = 2048)",
-                "JIT:",
-                "  Functions: 4",
-                "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.28..8.30 rows=1 width=0)",
+                "        Output: id",
+                "        Index Cond: (bench_data.id = 2048)"
             ]
         },
         "without_indexes": {
             "table_bytes": 1064960,
             "index_bytes": 0,
-            "select_cold_ms": 0.23654100004932843,
-            "select_hot_ms": 0.22862499986331386,
+            "select_cold_ms": 0.24191699958464596,
+            "select_hot_ms": 0.23233299998537404,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.24262500005534093,
-            "insert_hot_ms": 0.13412499993137317,
+            "insert_cold_ms": 0.7963749999362335,
+            "insert_hot_ms": 0.41804200009210035,
             "select_samples_cold_ms": [
-                0.23654100004932843
+                0.24191699958464596
             ],
             "select_samples_hot_ms": [
-                0.22862499986331386
+                0.23233299998537404
             ],
             "insert_samples_cold_ms": [
-                0.24262500005534093
+                0.7963749999362335
             ],
             "insert_samples_hot_ms": [
-                0.13412499993137317
+                0.41804200009210035
             ],
             "select_explain": [
                 "Aggregate  (cost=176.20..176.21 rows=1 width=8)",
@@ -2116,17 +2038,17 @@
             12,
             4096,
             2,
-            6.923076923076923,
-            6.308208000064042,
-            5.310874999850057,
-            0.32029199996941315,
-            0.1498329997957626,
-            0.23654100004932843,
-            0.22862499986331386,
-            0.24262500005534093,
-            0.13412499993137317,
+            17.692307692307693,
+            0.08166699990397319,
+            0.0691669997650024,
+            0.47404199995071394,
+            0.2658339999470627,
+            0.24191699958464596,
+            0.23233299998537404,
+            0.7963749999362335,
+            0.41804200009210035,
             1064960,
-            73728,
+            188416,
             1064960,
             0
         ]
@@ -2136,55 +2058,52 @@
         "rows": 8192,
         "M": 1,
         "with_indexes": {
-            "storage_index_pct": 0.0,
+            "storage_index_pct": 9.84251968503937,
             "table_bytes": 2080768,
-            "index_bytes": 0,
-            "select_cold_ms": 6.467917000009038,
-            "select_hot_ms": 5.431999999927939,
-            "insert_cold_ms": 0.3352080000240676,
-            "insert_hot_ms": 0.16316599999299797,
+            "index_bytes": 204800,
+            "select_cold_ms": 0.09300000010625808,
+            "select_hot_ms": 0.0804170003902982,
+            "insert_cold_ms": 0.5026670000916056,
+            "insert_hot_ms": 0.259584000104951,
             "select_samples_cold_ms": [
-                6.467917000009038
+                0.09300000010625808
             ],
             "select_samples_hot_ms": [
-                5.431999999927939
+                0.0804170003902982
             ],
             "insert_samples_cold_ms": [
-                0.3352080000240676
+                0.5026670000916056
             ],
             "insert_samples_hot_ms": [
-                0.16316599999299797
+                0.259584000104951
             ],
             "select_explain": [
-                "Aggregate  (cost=10000000351.40..10000000351.41 rows=1 width=8)",
+                "Aggregate  (cost=8.30..8.31 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data  (cost=10000000000.00..10000000351.40 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data.id = 4096)",
-                "JIT:",
-                "  Functions: 4",
-                "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.28..8.30 rows=1 width=0)",
+                "        Output: id",
+                "        Index Cond: (bench_data.id = 4096)"
             ]
         },
         "without_indexes": {
             "table_bytes": 2080768,
             "index_bytes": 0,
-            "select_cold_ms": 0.4462919998786674,
-            "select_hot_ms": 0.3896250000252621,
+            "select_cold_ms": 0.3934169999411097,
+            "select_hot_ms": 0.37825000026714406,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.3802920000453014,
-            "insert_hot_ms": 0.14237499999580905,
+            "insert_cold_ms": 1.126457999816921,
+            "insert_hot_ms": 0.6035829997017572,
             "select_samples_cold_ms": [
-                0.4462919998786674
+                0.3934169999411097
             ],
             "select_samples_hot_ms": [
-                0.3896250000252621
+                0.37825000026714406
             ],
             "insert_samples_cold_ms": [
-                0.3802920000453014
+                1.126457999816921
             ],
             "insert_samples_hot_ms": [
-                0.14237499999580905
+                0.6035829997017572
             ],
             "select_explain": [
                 "Aggregate  (cost=351.40..351.41 rows=1 width=8)",
@@ -2198,17 +2117,17 @@
             13,
             8192,
             1,
-            0.0,
-            6.467917000009038,
-            5.431999999927939,
-            0.3352080000240676,
-            0.16316599999299797,
-            0.4462919998786674,
-            0.3896250000252621,
-            0.3802920000453014,
-            0.14237499999580905,
+            9.84251968503937,
+            0.09300000010625808,
+            0.0804170003902982,
+            0.5026670000916056,
+            0.259584000104951,
+            0.3934169999411097,
+            0.37825000026714406,
+            1.126457999816921,
+            0.6035829997017572,
             2080768,
-            0,
+            204800,
             2080768,
             0
         ]
@@ -2218,55 +2137,52 @@
         "rows": 8192,
         "M": 2,
         "with_indexes": {
-            "storage_index_pct": 4.724409448818897,
+            "storage_index_pct": 14.566929133858267,
             "table_bytes": 2080768,
-            "index_bytes": 98304,
-            "select_cold_ms": 6.734959000141316,
-            "select_hot_ms": 5.539707999787424,
-            "insert_cold_ms": 0.3267920001235325,
-            "insert_hot_ms": 0.13904100001127517,
+            "index_bytes": 303104,
+            "select_cold_ms": 0.08466700001008576,
+            "select_hot_ms": 0.07333300027312362,
+            "insert_cold_ms": 0.54516699992746,
+            "insert_hot_ms": 0.24949999988166383,
             "select_samples_cold_ms": [
-                6.734959000141316
+                0.08466700001008576
             ],
             "select_samples_hot_ms": [
-                5.539707999787424
+                0.07333300027312362
             ],
             "insert_samples_cold_ms": [
-                0.3267920001235325
+                0.54516699992746
             ],
             "insert_samples_hot_ms": [
-                0.13904100001127517
+                0.24949999988166383
             ],
             "select_explain": [
-                "Aggregate  (cost=10000000351.40..10000000351.41 rows=1 width=8)",
+                "Aggregate  (cost=8.30..8.31 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data  (cost=10000000000.00..10000000351.40 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data.id = 4096)",
-                "JIT:",
-                "  Functions: 4",
-                "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.28..8.30 rows=1 width=0)",
+                "        Output: id",
+                "        Index Cond: (bench_data.id = 4096)"
             ]
         },
         "without_indexes": {
             "table_bytes": 2080768,
             "index_bytes": 0,
-            "select_cold_ms": 0.39762500000506407,
-            "select_hot_ms": 0.3910829998403642,
+            "select_cold_ms": 0.5431250001493027,
+            "select_hot_ms": 0.4589159998431569,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.29191699991315545,
-            "insert_hot_ms": 0.13491699996848183,
+            "insert_cold_ms": 1.0580419998404977,
+            "insert_hot_ms": 0.5772919998889847,
             "select_samples_cold_ms": [
-                0.39762500000506407
+                0.5431250001493027
             ],
             "select_samples_hot_ms": [
-                0.3910829998403642
+                0.4589159998431569
             ],
             "insert_samples_cold_ms": [
-                0.29191699991315545
+                1.0580419998404977
             ],
             "insert_samples_hot_ms": [
-                0.13491699996848183
+                0.5772919998889847
             ],
             "select_explain": [
                 "Aggregate  (cost=351.40..351.41 rows=1 width=8)",
@@ -2280,17 +2196,17 @@
             13,
             8192,
             2,
-            4.724409448818897,
-            6.734959000141316,
-            5.539707999787424,
-            0.3267920001235325,
-            0.13904100001127517,
-            0.39762500000506407,
-            0.3910829998403642,
-            0.29191699991315545,
-            0.13491699996848183,
+            14.566929133858267,
+            0.08466700001008576,
+            0.07333300027312362,
+            0.54516699992746,
+            0.24949999988166383,
+            0.5431250001493027,
+            0.4589159998431569,
+            1.0580419998404977,
+            0.5772919998889847,
             2080768,
-            98304,
+            303104,
             2080768,
             0
         ]
@@ -2300,55 +2216,52 @@
         "rows": 16384,
         "M": 1,
         "with_indexes": {
-            "storage_index_pct": 0.0,
+            "storage_index_pct": 9.362549800796813,
             "table_bytes": 4112384,
-            "index_bytes": 0,
-            "select_cold_ms": 6.8160419998548605,
-            "select_hot_ms": 6.44662500008053,
-            "insert_cold_ms": 0.3257500000017899,
-            "insert_hot_ms": 0.16404100006184308,
+            "index_bytes": 385024,
+            "select_cold_ms": 0.10470899997017113,
+            "select_hot_ms": 0.0877089996720315,
+            "insert_cold_ms": 0.5270840001685428,
+            "insert_hot_ms": 0.24895799970181542,
             "select_samples_cold_ms": [
-                6.8160419998548605
+                0.10470899997017113
             ],
             "select_samples_hot_ms": [
-                6.44662500008053
+                0.0877089996720315
             ],
             "insert_samples_cold_ms": [
-                0.3257500000017899
+                0.5270840001685428
             ],
             "insert_samples_hot_ms": [
-                0.16404100006184308
+                0.24895799970181542
             ],
             "select_explain": [
-                "Aggregate  (cost=10000000701.80..10000000701.81 rows=1 width=8)",
+                "Aggregate  (cost=8.30..8.31 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data  (cost=10000000000.00..10000000701.80 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data.id = 8192)",
-                "JIT:",
-                "  Functions: 4",
-                "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.29..8.30 rows=1 width=0)",
+                "        Output: id",
+                "        Index Cond: (bench_data.id = 8192)"
             ]
         },
         "without_indexes": {
             "table_bytes": 4112384,
             "index_bytes": 0,
-            "select_cold_ms": 0.6948749999082793,
-            "select_hot_ms": 0.6747500001438311,
+            "select_cold_ms": 0.7499999996980478,
+            "select_hot_ms": 0.6675409999843396,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.3375840001353936,
-            "insert_hot_ms": 0.15066600008140085,
+            "insert_cold_ms": 1.749957999891194,
+            "insert_hot_ms": 0.9257920000891318,
             "select_samples_cold_ms": [
-                0.6948749999082793
+                0.7499999996980478
             ],
             "select_samples_hot_ms": [
-                0.6747500001438311
+                0.6675409999843396
             ],
             "insert_samples_cold_ms": [
-                0.3375840001353936
+                1.749957999891194
             ],
             "insert_samples_hot_ms": [
-                0.15066600008140085
+                0.9257920000891318
             ],
             "select_explain": [
                 "Aggregate  (cost=701.80..701.81 rows=1 width=8)",
@@ -2362,17 +2275,17 @@
             14,
             16384,
             1,
-            0.0,
-            6.8160419998548605,
-            6.44662500008053,
-            0.3257500000017899,
-            0.16404100006184308,
-            0.6948749999082793,
-            0.6747500001438311,
-            0.3375840001353936,
-            0.15066600008140085,
+            9.362549800796813,
+            0.10470899997017113,
+            0.0877089996720315,
+            0.5270840001685428,
+            0.24895799970181542,
+            0.7499999996980478,
+            0.6675409999843396,
+            1.749957999891194,
+            0.9257920000891318,
             4112384,
-            0,
+            385024,
             4112384,
             0
         ]
@@ -2382,55 +2295,52 @@
         "rows": 16384,
         "M": 2,
         "with_indexes": {
-            "storage_index_pct": 3.7848605577689245,
+            "storage_index_pct": 13.147410358565736,
             "table_bytes": 4112384,
-            "index_bytes": 155648,
-            "select_cold_ms": 7.650124999827312,
-            "select_hot_ms": 6.572957999878781,
-            "insert_cold_ms": 0.37124999994375685,
-            "insert_hot_ms": 0.1455420001548191,
+            "index_bytes": 540672,
+            "select_cold_ms": 0.09691600007499801,
+            "select_hot_ms": 0.0849160001052951,
+            "insert_cold_ms": 0.581333000354789,
+            "insert_hot_ms": 0.28979100034121075,
             "select_samples_cold_ms": [
-                7.650124999827312
+                0.09691600007499801
             ],
             "select_samples_hot_ms": [
-                6.572957999878781
+                0.0849160001052951
             ],
             "insert_samples_cold_ms": [
-                0.37124999994375685
+                0.581333000354789
             ],
             "insert_samples_hot_ms": [
-                0.1455420001548191
+                0.28979100034121075
             ],
             "select_explain": [
-                "Aggregate  (cost=10000000701.80..10000000701.81 rows=1 width=8)",
+                "Aggregate  (cost=8.30..8.31 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data  (cost=10000000000.00..10000000701.80 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data.id = 8192)",
-                "JIT:",
-                "  Functions: 4",
-                "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.29..8.30 rows=1 width=0)",
+                "        Output: id",
+                "        Index Cond: (bench_data.id = 8192)"
             ]
         },
         "without_indexes": {
             "table_bytes": 4112384,
             "index_bytes": 0,
-            "select_cold_ms": 0.727249999954438,
-            "select_hot_ms": 0.7053750000522996,
+            "select_cold_ms": 0.7310840001082397,
+            "select_hot_ms": 0.6730409995725495,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.3252500000598957,
-            "insert_hot_ms": 0.14154100017549354,
+            "insert_cold_ms": 1.7061670000657614,
+            "insert_hot_ms": 0.9663750001891458,
             "select_samples_cold_ms": [
-                0.727249999954438
+                0.7310840001082397
             ],
             "select_samples_hot_ms": [
-                0.7053750000522996
+                0.6730409995725495
             ],
             "insert_samples_cold_ms": [
-                0.3252500000598957
+                1.7061670000657614
             ],
             "insert_samples_hot_ms": [
-                0.14154100017549354
+                0.9663750001891458
             ],
             "select_explain": [
                 "Aggregate  (cost=701.80..701.81 rows=1 width=8)",
@@ -2444,17 +2354,17 @@
             14,
             16384,
             2,
-            3.7848605577689245,
-            7.650124999827312,
-            6.572957999878781,
-            0.37124999994375685,
-            0.1455420001548191,
-            0.727249999954438,
-            0.7053750000522996,
-            0.3252500000598957,
-            0.14154100017549354,
+            13.147410358565736,
+            0.09691600007499801,
+            0.0849160001052951,
+            0.581333000354789,
+            0.28979100034121075,
+            0.7310840001082397,
+            0.6730409995725495,
+            1.7061670000657614,
+            0.9663750001891458,
             4112384,
-            155648,
+            540672,
             4112384,
             0
         ]
@@ -2464,55 +2374,52 @@
         "rows": 32768,
         "M": 1,
         "with_indexes": {
-            "storage_index_pct": 0.0,
+            "storage_index_pct": 9.218436873747494,
             "table_bytes": 8175616,
-            "index_bytes": 0,
-            "select_cold_ms": 9.35945800006266,
-            "select_hot_ms": 10.503666999966299,
-            "insert_cold_ms": 0.5891670000437443,
-            "insert_hot_ms": 0.6185830000049464,
+            "index_bytes": 753664,
+            "select_cold_ms": 0.09758300029716338,
+            "select_hot_ms": 0.08316599996760488,
+            "insert_cold_ms": 1.3031250000494765,
+            "insert_hot_ms": 0.3809579998232948,
             "select_samples_cold_ms": [
-                9.35945800006266
+                0.09758300029716338
             ],
             "select_samples_hot_ms": [
-                10.503666999966299
+                0.08316599996760488
             ],
             "insert_samples_cold_ms": [
-                0.5891670000437443
+                1.3031250000494765
             ],
             "insert_samples_hot_ms": [
-                0.6185830000049464
+                0.3809579998232948
             ],
             "select_explain": [
-                "Aggregate  (cost=10000001402.60..10000001402.61 rows=1 width=8)",
+                "Aggregate  (cost=8.31..8.32 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data  (cost=10000000000.00..10000001402.60 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data.id = 16384)",
-                "JIT:",
-                "  Functions: 4",
-                "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.29..8.30 rows=1 width=0)",
+                "        Output: id",
+                "        Index Cond: (bench_data.id = 16384)"
             ]
         },
         "without_indexes": {
             "table_bytes": 8175616,
             "index_bytes": 0,
-            "select_cold_ms": 2.4302080000779824,
-            "select_hot_ms": 1.5560829999685666,
+            "select_cold_ms": 1.4085830002841249,
+            "select_hot_ms": 1.2839579999308626,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.38104099985503126,
-            "insert_hot_ms": 0.26087499986715557,
+            "insert_cold_ms": 3.099833000305807,
+            "insert_hot_ms": 1.8783330001497234,
             "select_samples_cold_ms": [
-                2.4302080000779824
+                1.4085830002841249
             ],
             "select_samples_hot_ms": [
-                1.5560829999685666
+                1.2839579999308626
             ],
             "insert_samples_cold_ms": [
-                0.38104099985503126
+                3.099833000305807
             ],
             "insert_samples_hot_ms": [
-                0.26087499986715557
+                1.8783330001497234
             ],
             "select_explain": [
                 "Aggregate  (cost=1402.60..1402.61 rows=1 width=8)",
@@ -2526,17 +2433,17 @@
             15,
             32768,
             1,
-            0.0,
-            9.35945800006266,
-            10.503666999966299,
-            0.5891670000437443,
-            0.6185830000049464,
-            2.4302080000779824,
-            1.5560829999685666,
-            0.38104099985503126,
-            0.26087499986715557,
+            9.218436873747494,
+            0.09758300029716338,
+            0.08316599996760488,
+            1.3031250000494765,
+            0.3809579998232948,
+            1.4085830002841249,
+            1.2839579999308626,
+            3.099833000305807,
+            1.8783330001497234,
             8175616,
-            0,
+            753664,
             8175616,
             0
         ]
@@ -2546,55 +2453,52 @@
         "rows": 32768,
         "M": 2,
         "with_indexes": {
-            "storage_index_pct": 3.2064128256513023,
+            "storage_index_pct": 12.424849699398797,
             "table_bytes": 8175616,
-            "index_bytes": 262144,
-            "select_cold_ms": 11.44379100014703,
-            "select_hot_ms": 7.511750000048778,
-            "insert_cold_ms": 0.4079169998476573,
-            "insert_hot_ms": 0.16616700008853513,
+            "index_bytes": 1015808,
+            "select_cold_ms": 0.09316700015915558,
+            "select_hot_ms": 0.08362499966096948,
+            "insert_cold_ms": 0.5839999998897838,
+            "insert_hot_ms": 0.35862499998984276,
             "select_samples_cold_ms": [
-                11.44379100014703
+                0.09316700015915558
             ],
             "select_samples_hot_ms": [
-                7.511750000048778
+                0.08362499966096948
             ],
             "insert_samples_cold_ms": [
-                0.4079169998476573
+                0.5839999998897838
             ],
             "insert_samples_hot_ms": [
-                0.16616700008853513
+                0.35862499998984276
             ],
             "select_explain": [
-                "Aggregate  (cost=10000001402.60..10000001402.61 rows=1 width=8)",
+                "Aggregate  (cost=8.31..8.32 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data  (cost=10000000000.00..10000001402.60 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data.id = 16384)",
-                "JIT:",
-                "  Functions: 4",
-                "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.29..8.30 rows=1 width=0)",
+                "        Output: id",
+                "        Index Cond: (bench_data.id = 16384)"
             ]
         },
         "without_indexes": {
             "table_bytes": 8175616,
             "index_bytes": 0,
-            "select_cold_ms": 1.5829159999611875,
-            "select_hot_ms": 1.60429200013823,
+            "select_cold_ms": 1.386082999943028,
+            "select_hot_ms": 1.2810839998564916,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.3830000000561995,
-            "insert_hot_ms": 0.1937499998803105,
+            "insert_cold_ms": 2.996125000208849,
+            "insert_hot_ms": 1.8202920000476297,
             "select_samples_cold_ms": [
-                1.5829159999611875
+                1.386082999943028
             ],
             "select_samples_hot_ms": [
-                1.60429200013823
+                1.2810839998564916
             ],
             "insert_samples_cold_ms": [
-                0.3830000000561995
+                2.996125000208849
             ],
             "insert_samples_hot_ms": [
-                0.1937499998803105
+                1.8202920000476297
             ],
             "select_explain": [
                 "Aggregate  (cost=1402.60..1402.61 rows=1 width=8)",
@@ -2608,17 +2512,17 @@
             15,
             32768,
             2,
-            3.2064128256513023,
-            11.44379100014703,
-            7.511750000048778,
-            0.4079169998476573,
-            0.16616700008853513,
-            1.5829159999611875,
-            1.60429200013823,
-            0.3830000000561995,
-            0.1937499998803105,
+            12.424849699398797,
+            0.09316700015915558,
+            0.08362499966096948,
+            0.5839999998897838,
+            0.35862499998984276,
+            1.386082999943028,
+            1.2810839998564916,
+            2.996125000208849,
+            1.8202920000476297,
             8175616,
-            262144,
+            1015808,
             8175616,
             0
         ]
@@ -2628,55 +2532,52 @@
         "rows": 65536,
         "M": 1,
         "with_indexes": {
-            "storage_index_pct": 0.0,
+            "storage_index_pct": 9.090909090909092,
             "table_bytes": 16310272,
-            "index_bytes": 0,
-            "select_cold_ms": 9.846749999951498,
-            "select_hot_ms": 8.92258299995774,
-            "insert_cold_ms": 0.3482500001155131,
-            "insert_hot_ms": 0.1402499999585416,
+            "index_bytes": 1482752,
+            "select_cold_ms": 0.09612500025468762,
+            "select_hot_ms": 0.0977089998741576,
+            "insert_cold_ms": 0.5966249996163242,
+            "insert_hot_ms": 0.42341700009274064,
             "select_samples_cold_ms": [
-                9.846749999951498
+                0.09612500025468762
             ],
             "select_samples_hot_ms": [
-                8.92258299995774
+                0.0977089998741576
             ],
             "insert_samples_cold_ms": [
-                0.3482500001155131
+                0.5966249996163242
             ],
             "insert_samples_hot_ms": [
-                0.1402499999585416
+                0.42341700009274064
             ],
             "select_explain": [
-                "Aggregate  (cost=10000002805.20..10000002805.21 rows=1 width=8)",
+                "Aggregate  (cost=8.31..8.32 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data  (cost=10000000000.00..10000002805.20 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data.id = 32768)",
-                "JIT:",
-                "  Functions: 4",
-                "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.29..8.31 rows=1 width=0)",
+                "        Output: id",
+                "        Index Cond: (bench_data.id = 32768)"
             ]
         },
         "without_indexes": {
             "table_bytes": 16310272,
             "index_bytes": 0,
-            "select_cold_ms": 3.67441699995652,
-            "select_hot_ms": 3.2154579998859845,
+            "select_cold_ms": 3.4860840000874305,
+            "select_hot_ms": 2.9985420001139573,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.3220829999008856,
-            "insert_hot_ms": 0.1431250000223372,
+            "insert_cold_ms": 5.484791000071709,
+            "insert_hot_ms": 4.09608300014952,
             "select_samples_cold_ms": [
-                3.67441699995652
+                3.4860840000874305
             ],
             "select_samples_hot_ms": [
-                3.2154579998859845
+                2.9985420001139573
             ],
             "insert_samples_cold_ms": [
-                0.3220829999008856
+                5.484791000071709
             ],
             "insert_samples_hot_ms": [
-                0.1431250000223372
+                4.09608300014952
             ],
             "select_explain": [
                 "Aggregate  (cost=2805.20..2805.21 rows=1 width=8)",
@@ -2690,17 +2591,17 @@
             16,
             65536,
             1,
-            0.0,
-            9.846749999951498,
-            8.92258299995774,
-            0.3482500001155131,
-            0.1402499999585416,
-            3.67441699995652,
-            3.2154579998859845,
-            0.3220829999008856,
-            0.1431250000223372,
+            9.090909090909092,
+            0.09612500025468762,
+            0.0977089998741576,
+            0.5966249996163242,
+            0.42341700009274064,
+            3.4860840000874305,
+            2.9985420001139573,
+            5.484791000071709,
+            4.09608300014952,
             16310272,
-            0,
+            1482752,
             16310272,
             0
         ]
@@ -2710,55 +2611,52 @@
         "rows": 65536,
         "M": 2,
         "with_indexes": {
-            "storage_index_pct": 2.9131089904570566,
+            "storage_index_pct": 12.004018081366148,
             "table_bytes": 16310272,
-            "index_bytes": 475136,
-            "select_cold_ms": 9.75662500013641,
-            "select_hot_ms": 40.646624999908454,
-            "insert_cold_ms": 0.355124999941836,
-            "insert_hot_ms": 0.1429589999588643,
+            "index_bytes": 1957888,
+            "select_cold_ms": 0.09012500004246249,
+            "select_hot_ms": 0.058958000408892985,
+            "insert_cold_ms": 0.5921249999119027,
+            "insert_hot_ms": 0.26145800029553357,
             "select_samples_cold_ms": [
-                9.75662500013641
+                0.09012500004246249
             ],
             "select_samples_hot_ms": [
-                40.646624999908454
+                0.058958000408892985
             ],
             "insert_samples_cold_ms": [
-                0.355124999941836
+                0.5921249999119027
             ],
             "insert_samples_hot_ms": [
-                0.1429589999588643
+                0.26145800029553357
             ],
             "select_explain": [
-                "Aggregate  (cost=10000002805.20..10000002805.21 rows=1 width=8)",
+                "Aggregate  (cost=8.31..8.32 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data  (cost=10000000000.00..10000002805.20 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data.id = 32768)",
-                "JIT:",
-                "  Functions: 4",
-                "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.29..8.31 rows=1 width=0)",
+                "        Output: id",
+                "        Index Cond: (bench_data.id = 32768)"
             ]
         },
         "without_indexes": {
             "table_bytes": 16310272,
             "index_bytes": 0,
-            "select_cold_ms": 3.4348330000284477,
-            "select_hot_ms": 3.1872499998826243,
+            "select_cold_ms": 3.2452919999741425,
+            "select_hot_ms": 3.10254200030613,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.31962500020199514,
-            "insert_hot_ms": 0.13829099998474703,
+            "insert_cold_ms": 5.437208999865106,
+            "insert_hot_ms": 3.583249999792315,
             "select_samples_cold_ms": [
-                3.4348330000284477
+                3.2452919999741425
             ],
             "select_samples_hot_ms": [
-                3.1872499998826243
+                3.10254200030613
             ],
             "insert_samples_cold_ms": [
-                0.31962500020199514
+                5.437208999865106
             ],
             "insert_samples_hot_ms": [
-                0.13829099998474703
+                3.583249999792315
             ],
             "select_explain": [
                 "Aggregate  (cost=2805.20..2805.21 rows=1 width=8)",
@@ -2772,17 +2670,17 @@
             16,
             65536,
             2,
-            2.9131089904570566,
-            9.75662500013641,
-            40.646624999908454,
-            0.355124999941836,
-            0.1429589999588643,
-            3.4348330000284477,
-            3.1872499998826243,
-            0.31962500020199514,
-            0.13829099998474703,
+            12.004018081366148,
+            0.09012500004246249,
+            0.058958000408892985,
+            0.5921249999119027,
+            0.26145800029553357,
+            3.2452919999741425,
+            3.10254200030613,
+            5.437208999865106,
+            3.583249999792315,
             16310272,
-            475136,
+            1957888,
             16310272,
             0
         ]
@@ -2792,55 +2690,52 @@
         "rows": 131072,
         "M": 1,
         "with_indexes": {
-            "storage_index_pct": 0.0,
+            "storage_index_pct": 9.077193864722153,
             "table_bytes": 32579584,
-            "index_bytes": 0,
-            "select_cold_ms": 13.816458000064813,
-            "select_hot_ms": 13.897416000190788,
-            "insert_cold_ms": 0.5255000000943255,
-            "insert_hot_ms": 0.14570899998034292,
+            "index_bytes": 2957312,
+            "select_cold_ms": 0.10708299987527425,
+            "select_hot_ms": 0.09191700019073323,
+            "insert_cold_ms": 0.9463750002396409,
+            "insert_hot_ms": 0.25970800015784334,
             "select_samples_cold_ms": [
-                13.816458000064813
+                0.10708299987527425
             ],
             "select_samples_hot_ms": [
-                13.897416000190788
+                0.09191700019073323
             ],
             "insert_samples_cold_ms": [
-                0.5255000000943255
+                0.9463750002396409
             ],
             "insert_samples_hot_ms": [
-                0.14570899998034292
+                0.25970800015784334
             ],
             "select_explain": [
-                "Aggregate  (cost=10000005610.40..10000005610.41 rows=1 width=8)",
+                "Aggregate  (cost=8.31..8.32 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data  (cost=10000000000.00..10000005610.40 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data.id = 65536)",
-                "JIT:",
-                "  Functions: 4",
-                "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.29..8.31 rows=1 width=0)",
+                "        Output: id",
+                "        Index Cond: (bench_data.id = 65536)"
             ]
         },
         "without_indexes": {
             "table_bytes": 32579584,
             "index_bytes": 0,
-            "select_cold_ms": 9.233666000000085,
-            "select_hot_ms": 7.955500000207394,
+            "select_cold_ms": 8.060291999754554,
+            "select_hot_ms": 7.489874999919266,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.43287500011501834,
-            "insert_hot_ms": 0.15925000002425804,
+            "insert_cold_ms": 11.770250000154192,
+            "insert_hot_ms": 9.084207999876526,
             "select_samples_cold_ms": [
-                9.233666000000085
+                8.060291999754554
             ],
             "select_samples_hot_ms": [
-                7.955500000207394
+                7.489874999919266
             ],
             "insert_samples_cold_ms": [
-                0.43287500011501834
+                11.770250000154192
             ],
             "insert_samples_hot_ms": [
-                0.15925000002425804
+                9.084207999876526
             ],
             "select_explain": [
                 "Aggregate  (cost=5610.40..5610.41 rows=1 width=8)",
@@ -2854,17 +2749,17 @@
             17,
             131072,
             1,
-            0.0,
-            13.816458000064813,
-            13.897416000190788,
-            0.5255000000943255,
-            0.14570899998034292,
-            9.233666000000085,
-            7.955500000207394,
-            0.43287500011501834,
-            0.15925000002425804,
+            9.077193864722153,
+            0.10708299987527425,
+            0.09191700019073323,
+            0.9463750002396409,
+            0.25970800015784334,
+            8.060291999754554,
+            7.489874999919266,
+            11.770250000154192,
+            9.084207999876526,
             32579584,
-            0,
+            2957312,
             32579584,
             0
         ]
@@ -2874,55 +2769,52 @@
         "rows": 131072,
         "M": 2,
         "with_indexes": {
-            "storage_index_pct": 2.8413376917274324,
+            "storage_index_pct": 11.918531556449585,
             "table_bytes": 32579584,
-            "index_bytes": 925696,
-            "select_cold_ms": 19.80245799995828,
-            "select_hot_ms": 15.10516700000153,
-            "insert_cold_ms": 0.4866250001214212,
-            "insert_hot_ms": 0.1758749999680731,
+            "index_bytes": 3883008,
+            "select_cold_ms": 0.09658299995862762,
+            "select_hot_ms": 0.08454199996776879,
+            "insert_cold_ms": 0.6210000001374283,
+            "insert_hot_ms": 0.251500000103988,
             "select_samples_cold_ms": [
-                19.80245799995828
+                0.09658299995862762
             ],
             "select_samples_hot_ms": [
-                15.10516700000153
+                0.08454199996776879
             ],
             "insert_samples_cold_ms": [
-                0.4866250001214212
+                0.6210000001374283
             ],
             "insert_samples_hot_ms": [
-                0.1758749999680731
+                0.251500000103988
             ],
             "select_explain": [
-                "Aggregate  (cost=10000005610.40..10000005610.41 rows=1 width=8)",
+                "Aggregate  (cost=8.31..8.32 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data  (cost=10000000000.00..10000005610.40 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data.id = 65536)",
-                "JIT:",
-                "  Functions: 4",
-                "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.29..8.31 rows=1 width=0)",
+                "        Output: id",
+                "        Index Cond: (bench_data.id = 65536)"
             ]
         },
         "without_indexes": {
             "table_bytes": 32579584,
             "index_bytes": 0,
-            "select_cold_ms": 7.822125000075175,
-            "select_hot_ms": 7.222167000008994,
+            "select_cold_ms": 8.818166999844834,
+            "select_hot_ms": 8.265791999747307,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.39862499988885247,
-            "insert_hot_ms": 0.14454200004365703,
+            "insert_cold_ms": 10.291749999851163,
+            "insert_hot_ms": 8.94491700000799,
             "select_samples_cold_ms": [
-                7.822125000075175
+                8.818166999844834
             ],
             "select_samples_hot_ms": [
-                7.222167000008994
+                8.265791999747307
             ],
             "insert_samples_cold_ms": [
-                0.39862499988885247
+                10.291749999851163
             ],
             "insert_samples_hot_ms": [
-                0.14454200004365703
+                8.94491700000799
             ],
             "select_explain": [
                 "Aggregate  (cost=5610.40..5610.41 rows=1 width=8)",
@@ -2936,17 +2828,17 @@
             17,
             131072,
             2,
-            2.8413376917274324,
-            19.80245799995828,
-            15.10516700000153,
-            0.4866250001214212,
-            0.1758749999680731,
-            7.822125000075175,
-            7.222167000008994,
-            0.39862499988885247,
-            0.14454200004365703,
+            11.918531556449585,
+            0.09658299995862762,
+            0.08454199996776879,
+            0.6210000001374283,
+            0.251500000103988,
+            8.818166999844834,
+            8.265791999747307,
+            10.291749999851163,
+            8.94491700000799,
             32579584,
-            925696,
+            3883008,
             32579584,
             0
         ]
@@ -2956,55 +2848,52 @@
         "rows": 262144,
         "M": 1,
         "with_indexes": {
-            "storage_index_pct": 0.0,
+            "storage_index_pct": 9.081761006289309,
             "table_bytes": 65126400,
-            "index_bytes": 0,
-            "select_cold_ms": 22.227124999972148,
-            "select_hot_ms": 21.657125000047017,
-            "insert_cold_ms": 0.5110409999815602,
-            "insert_hot_ms": 0.1504159999967669,
+            "index_bytes": 5914624,
+            "select_cold_ms": 0.10333299997000722,
+            "select_hot_ms": 0.08562499988329364,
+            "insert_cold_ms": 0.8380829999623529,
+            "insert_hot_ms": 0.27691700006471365,
             "select_samples_cold_ms": [
-                22.227124999972148
+                0.10333299997000722
             ],
             "select_samples_hot_ms": [
-                21.657125000047017
+                0.08562499988329364
             ],
             "insert_samples_cold_ms": [
-                0.5110409999815602
+                0.8380829999623529
             ],
             "insert_samples_hot_ms": [
-                0.1504159999967669
+                0.27691700006471365
             ],
             "select_explain": [
-                "Aggregate  (cost=10000011220.80..10000011220.81 rows=1 width=8)",
+                "Aggregate  (cost=8.44..8.45 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data  (cost=10000000000.00..10000011220.80 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data.id = 131072)",
-                "JIT:",
-                "  Functions: 4",
-                "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.42..8.44 rows=1 width=0)",
+                "        Output: id",
+                "        Index Cond: (bench_data.id = 131072)"
             ]
         },
         "without_indexes": {
             "table_bytes": 65126400,
             "index_bytes": 0,
-            "select_cold_ms": 18.699166000033074,
-            "select_hot_ms": 16.519540999979654,
+            "select_cold_ms": 10.185125000134576,
+            "select_hot_ms": 7.226083000205108,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.38999999992483936,
-            "insert_hot_ms": 0.15616699988640903,
+            "insert_cold_ms": 12.15787499995713,
+            "insert_hot_ms": 11.579375000110304,
             "select_samples_cold_ms": [
-                18.699166000033074
+                10.185125000134576
             ],
             "select_samples_hot_ms": [
-                16.519540999979654
+                7.226083000205108
             ],
             "insert_samples_cold_ms": [
-                0.38999999992483936
+                12.15787499995713
             ],
             "insert_samples_hot_ms": [
-                0.15616699988640903
+                11.579375000110304
             ],
             "select_explain": [
                 "Aggregate  (cost=10309.44..10309.45 rows=1 width=8)",
@@ -3019,17 +2908,17 @@
             18,
             262144,
             1,
-            0.0,
-            22.227124999972148,
-            21.657125000047017,
-            0.5110409999815602,
-            0.1504159999967669,
-            18.699166000033074,
-            16.519540999979654,
-            0.38999999992483936,
-            0.15616699988640903,
+            9.081761006289309,
+            0.10333299997000722,
+            0.08562499988329364,
+            0.8380829999623529,
+            0.27691700006471365,
+            10.185125000134576,
+            7.226083000205108,
+            12.15787499995713,
+            11.579375000110304,
             65126400,
-            0,
+            5914624,
             65126400,
             0
         ]
@@ -3039,55 +2928,52 @@
         "rows": 262144,
         "M": 2,
         "with_indexes": {
-            "storage_index_pct": 2.8301886792452833,
+            "storage_index_pct": 11.91194968553459,
             "table_bytes": 65126400,
-            "index_bytes": 1843200,
-            "select_cold_ms": 25.882542000090325,
-            "select_hot_ms": 21.788499999956912,
-            "insert_cold_ms": 0.45058399996378284,
-            "insert_hot_ms": 0.15650000000277942,
+            "index_bytes": 7757824,
+            "select_cold_ms": 0.09620900027584867,
+            "select_hot_ms": 0.09004200001072604,
+            "insert_cold_ms": 1.0593330002848234,
+            "insert_hot_ms": 0.4847919999519945,
             "select_samples_cold_ms": [
-                25.882542000090325
+                0.09620900027584867
             ],
             "select_samples_hot_ms": [
-                21.788499999956912
+                0.09004200001072604
             ],
             "insert_samples_cold_ms": [
-                0.45058399996378284
+                1.0593330002848234
             ],
             "insert_samples_hot_ms": [
-                0.15650000000277942
+                0.4847919999519945
             ],
             "select_explain": [
-                "Aggregate  (cost=10000011220.80..10000011220.81 rows=1 width=8)",
+                "Aggregate  (cost=4.44..4.45 rows=1 width=8)",
                 "  Output: count(*)",
-                "  ->  Seq Scan on public.bench_data  (cost=10000000000.00..10000011220.80 rows=1 width=0)",
-                "        Output: id, c01, c02, c03, c04, c05, c06, c07, c08, c09, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30",
-                "        Filter: (bench_data.id = 131072)",
-                "JIT:",
-                "  Functions: 4",
-                "  Options: Inlining true, Optimization true, Expressions true, Deforming true"
+                "  ->  Index Only Scan using bench_data_pkey on public.bench_data  (cost=0.42..4.44 rows=1 width=0)",
+                "        Output: id",
+                "        Index Cond: (bench_data.id = 131072)"
             ]
         },
         "without_indexes": {
             "table_bytes": 65126400,
             "index_bytes": 0,
-            "select_cold_ms": 15.755582999872786,
-            "select_hot_ms": 15.381499999875814,
+            "select_cold_ms": 11.280499999884341,
+            "select_hot_ms": 11.171125000146276,
             "storage_index_pct": 0.0,
-            "insert_cold_ms": 0.32499999997526174,
-            "insert_hot_ms": 0.14424999994844256,
+            "insert_cold_ms": 12.16258399972503,
+            "insert_hot_ms": 11.602582999785227,
             "select_samples_cold_ms": [
-                15.755582999872786
+                11.280499999884341
             ],
             "select_samples_hot_ms": [
-                15.381499999875814
+                11.171125000146276
             ],
             "insert_samples_cold_ms": [
-                0.32499999997526174
+                12.16258399972503
             ],
             "insert_samples_hot_ms": [
-                0.14424999994844256
+                11.602582999785227
             ],
             "select_explain": [
                 "Aggregate  (cost=10309.44..10309.45 rows=1 width=8)",
@@ -3102,17 +2988,17 @@
             18,
             262144,
             2,
-            2.8301886792452833,
-            25.882542000090325,
-            21.788499999956912,
-            0.45058399996378284,
-            0.15650000000277942,
-            15.755582999872786,
-            15.381499999875814,
-            0.32499999997526174,
-            0.14424999994844256,
+            11.91194968553459,
+            0.09620900027584867,
+            0.09004200001072604,
+            1.0593330002848234,
+            0.4847919999519945,
+            11.280499999884341,
+            11.171125000146276,
+            12.16258399972503,
+            11.602582999785227,
             65126400,
-            1843200,
+            7757824,
             65126400,
             0
         ]

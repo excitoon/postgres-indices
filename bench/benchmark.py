@@ -33,7 +33,7 @@ NOIDX_RANDOM_PAGE_COST = float(os.getenv("NOIDX_RANDOM_PAGE_COST", "1000000"))
 
 DDL_TABLE = """
 CREATE TABLE IF NOT EXISTS source_data (
-    id SERIAL PRIMARY KEY,
+    id INT PRIMARY KEY,
     c01 INTEGER,
     c02 INTEGER,
     c03 INTEGER,
@@ -71,14 +71,16 @@ CREATE TABLE IF NOT EXISTS source_data (
 # We'll generate using SQL for speed, combining generate_series with patterns
 
 CREATE_FILL_FUNCTION = """
-CREATE OR REPLACE FUNCTION fill_source_data(n_rows bigint) RETURNS void AS $$
+CREATE OR REPLACE FUNCTION fill_source_data(start_id bigint, n_rows bigint) RETURNS void AS $$
 BEGIN
-  INSERT INTO source_data (
-    c01,c02,c03,c04,c05,c06,c07,c08,c09,c10,
-    c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,
-    c21,c22,c23,c24,c25,c26,c27,c28,c29,c30
-  )
-  SELECT
+    INSERT INTO source_data (
+        id,
+        c01,c02,c03,c04,c05,c06,c07,c08,c09,c10,
+        c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,
+        c21,c22,c23,c24,c25,c26,c27,c28,c29,c30
+    )
+    SELECT
+        gs AS id,
         mod(gs, 1000),                   -- c01 small cardinality
         mod((gs / 10), 10000),           -- c02 correlated range
         mod((gs * 17), 500000),          -- c03 permuted
@@ -99,17 +101,17 @@ BEGIN
         mod((gs * 23 + 13), 2000),       -- c18
         mod((gs * 29 + 15), 1000),       -- c19
         mod((gs * 31 + 17), 500),        -- c20
-    md5(gs::text),               -- c21 pseudo text
-    md5((gs*7)::text),           -- c22 pseudo text different
-    left(md5((gs*13)::text), 16),-- c23 shorter text
-    left(md5((gs*17)::text), 8), -- c24 shorter text
+        md5(gs::text),               -- c21 pseudo text
+        md5((gs*7)::text),           -- c22 pseudo text different
+        left(md5((gs*13)::text), 16),-- c23 shorter text
+        left(md5((gs*17)::text), 8), -- c24 shorter text
         (mod(gs, 100000)) / 3.0,         -- c25 numeric
         (mod(gs, 50000)) / 7.0,          -- c26 numeric
         to_timestamp(1700000000 + mod(gs, 1000000)), -- c27 recent timestamps
         date '2020-01-01' + (mod(gs, 2000))::int,    -- c28 dates
         (mod(gs, 2)) = 0,                -- c29 boolean
-    decode(left(md5(gs::text), 16), 'hex')     -- c30 bytea
-  FROM generate_series(1, n_rows) AS gs;
+        decode(left(md5(gs::text), 16), 'hex')     -- c30 bytea
+    FROM generate_series(start_id, start_id + n_rows - 1) AS gs;
 END;
 $$ LANGUAGE plpgsql;
 """
@@ -119,7 +121,7 @@ DROP_BENCH_TABLE = "DROP TABLE IF EXISTS bench_data;"
 CREATE_BENCH_TABLE = """
 -- Copy structure and constraints (including PK) but not indexes beyond PK are created here; additional indexes added explicitly
 CREATE TABLE bench_data (
-    LIKE source_data INCLUDING DEFAULTS INCLUDING GENERATED INCLUDING IDENTITY INCLUDING CONSTRAINTS INCLUDING STORAGE INCLUDING COMPRESSION
+    LIKE source_data INCLUDING INDEXES INCLUDING DEFAULTS INCLUDING GENERATED INCLUDING IDENTITY INCLUDING CONSTRAINTS INCLUDING STORAGE INCLUDING COMPRESSION
 );
 """
 
@@ -206,8 +208,9 @@ def ensure_baseline(conn):
         target = 2 ** MAX_N
         to_add = max(0, target - current)
         if to_add > 0:
-            print(f"Populating source_data with {to_add} rows (target {target})...")
-            exec_sql(cur, "SELECT fill_source_data(%s);", (to_add,))
+            start_id = current + 1
+            print(f"Populating source_data with {to_add} rows (target {target}), starting at id={start_id}...")
+            exec_sql(cur, "SELECT fill_source_data(%s, %s);", (start_id, to_add))
             exec_sql(cur, "VACUUM ANALYZE source_data;")
 
 
@@ -295,45 +298,54 @@ def measure_insert_cold_hot(cur, rows: int, table: str) -> Tuple[float, float]:
     batch = INSERT_BATCH
 
     def insert_batch():
-        exec_sql(cur, f"""
-            INSERT INTO {table} (
-              c01,c02,c03,c04,c05,c06,c07,c08,c09,c10,
-              c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,
-              c21,c22,c23,c24,c25,c26,c27,c28,c29,c30
-            )
-            SELECT
-              mod(gs, 1000),
-              mod((gs / 10), 10000),
-              mod((gs * 17), 500000),
-              mod((gs * 37 + 13), 1000000),
-              mod((gs >> 3), 20000),
-              mod(gs, 2),
-              mod(gs, 7),
-              mod(gs, 24),
-              mod(gs, 60),
-              mod(gs, 100),
-              mod((gs * 3), 100000),
-              mod((gs * 5 + 1), 75000),
-              mod((gs * 7 + 3), 50000),
-              mod((gs * 11 + 5), 25000),
-              mod((gs * 13 + 7), 12500),
-              mod((gs * 17 + 9), 8000),
-              mod((gs * 19 + 11), 4000),
-              mod((gs * 23 + 13), 2000),
-              mod((gs * 29 + 15), 1000),
-              mod((gs * 31 + 17), 500),
-              md5(gs::text),
-              md5((gs*7)::text),
-              left(md5((gs*13)::text), 16),
-              left(md5((gs*17)::text), 8),
-              (mod(gs, 100000)) / 3.0,
-              (mod(gs, 50000)) / 7.0,
-              to_timestamp(1700000000 + (mod(gs, 1000000))),
-              date '2020-01-01' + ((mod(gs, 2000)))::int,
-              (mod(gs, 2)) = 0,
-              decode(left(md5(gs::text), 16), 'hex')
-            FROM generate_series(1, %s) AS gs;
-        """, (batch,))
+        # Determine next id to insert and generate explicit ids
+        exec_sql(cur, f"SELECT COALESCE(MAX(id),0) + 1 FROM {table};")
+        start_id = cur.fetchone()[0]
+        hi_id = start_id + batch - 1
+        sql = f"""
+                        INSERT INTO {table} (
+                            id,
+                            c01,c02,c03,c04,c05,c06,c07,c08,c09,c10,
+                            c11,c12,c13,c14,c15,c16,c17,c18,c19,c20,
+                            c21,c22,c23,c24,c25,c26,c27,c28,c29,c30
+                        )
+                        SELECT
+                            gs AS id,
+                            mod((gs - %s + 1), 1000),
+                            mod(((gs - %s + 1) / 10), 10000),
+                            mod(((gs - %s + 1) * 17), 500000),
+                            mod(((gs - %s + 1) * 37 + 13), 1000000),
+                            mod(((gs - %s + 1) >> 3), 20000),
+                            mod((gs - %s + 1), 2),
+                            mod((gs - %s + 1), 7),
+                            mod((gs - %s + 1), 24),
+                            mod((gs - %s + 1), 60),
+                            mod((gs - %s + 1), 100),
+                            mod(((gs - %s + 1) * 3), 100000),
+                            mod(((gs - %s + 1) * 5 + 1), 75000),
+                            mod(((gs - %s + 1) * 7 + 3), 50000),
+                            mod(((gs - %s + 1) * 11 + 5), 25000),
+                            mod(((gs - %s + 1) * 13 + 7), 12500),
+                            mod(((gs - %s + 1) * 17 + 9), 8000),
+                            mod(((gs - %s + 1) * 19 + 11), 4000),
+                            mod(((gs - %s + 1) * 23 + 13), 2000),
+                            mod(((gs - %s + 1) * 29 + 15), 1000),
+                            mod(((gs - %s + 1) * 31 + 17), 500),
+                            md5((gs - %s + 1)::text),
+                            md5(((gs - %s + 1)*7)::text),
+                            left(md5(((gs - %s + 1)*13)::text), 16),
+                            left(md5(((gs - %s + 1)*17)::text), 8),
+                            (mod((gs - %s + 1), 100000)) / 3.0,
+                            (mod((gs - %s + 1), 50000)) / 7.0,
+                            to_timestamp(1700000000 + (mod((gs - %s + 1), 1000000))),
+                            date '2020-01-01' + ((mod((gs - %s + 1), 2000)))::int,
+                            (mod((gs - %s + 1), 2)) = 0,
+                            decode(left(md5((gs - %s + 1)::text), 16), 'hex')
+            FROM generate_series(%s::int, %s::int) AS gs;
+            """
+        # 30 occurrences of start_id for column expressions + 2 bounds for generate_series
+        params = tuple([start_id] * 30 + [start_id, hi_id])
+        exec_sql(cur, sql, params)
 
     cold_ms = time_ms(insert_batch)
     hot_ms = time_ms(insert_batch)

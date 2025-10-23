@@ -74,7 +74,7 @@ Watch the `bench` container logs for progress. Results will appear in `OUT_DIR` 
 ### Run
 
 ```bash
-./run_benchmark.sh -n 25 -m 20 -r 1 -f 10 -b 10
+./run_benchmark.sh -n 18 -m 2 -b 1 -r 1 -f 1 --down --cat
 ```
 
 ### Fetch results
