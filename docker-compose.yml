@@ -1,0 +1,48 @@
+services:
+  db:
+    image: postgres:16
+    container_name: pgbench-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: bench
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d bench"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    volumes:
+      - pgbenchdata:/var/lib/postgresql/data
+    command: ["postgres", "-c", "shared_buffers=1GB", "-c", "max_connections=100", "-c", "synchronous_commit=off", "-c", "wal_compression=on", "-c", "checkpoint_timeout=15min"]
+
+  bench:
+    build:
+      context: ./bench
+      dockerfile: Dockerfile
+    container_name: pgbench-runner
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_HOST: db
+      DB_PORT: "5432"
+      DB_NAME: bench
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      MAX_N: "25"         # highest N: total rows = 2^N in source_data
+      M_MAX: "30"         # sweep M = 1..M_MAX (including PK only at M=1)
+      INSERT_BATCH: "1000" # number of rows to insert for insert timing
+      SCHEMA: public
+    volumes:
+      # Mount a host directory (absolute path) to /bench when BENCH_OUT_DIR is set;
+      # otherwise use a named volume 'benchout'.
+      - ${BENCH_OUT_DIR:-benchout}:/bench
+    command: ["python", "-u", "/app/benchmark.py"]
+
+volumes:
+  pgbenchdata:
+    driver: local
+  benchout:
+    driver: local
